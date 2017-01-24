@@ -1,124 +1,141 @@
-sexlab approach 28-4-2014 v3���Ȃ��Ȃ��A�v���[�`���Ă���Ȃ������̂�
-����ɏC�������ŁB���{�ꉻ�ς݁Battraction�s�v�B��ҋ����ς݁B
-������܂ŖY��Ă����ǁA�X�^���h�A�����t�H�����[�Ƃ��̒ǉ��푰�����
-������������悤�ɏC���ς݁BNPC��NPC���Ή��B�y�b�g�Ή��B
+﻿Sexlab Approach JPPlus
+-----------------------------
+sexlab approach 28-4-2014 v3がなかなかアプローチしてくれなかったので
+勝手に修正した版。日本語化済み。attraction不要。作者許諾済み。感謝。
+言われるまで忘れてたけど、スタンドアロンフォロワーとかの追加種族からも
+声をかけられるように修正済み。NPC⇔NPCも対応。ペット対応。
 
-�_�C�A���O����f���relationshiprank��������̂Œ��ӁB�L�����Z������
-������Ȃ��B
-�d�g�݂��s���}���g�̓W�J�Ȃ̂ŁAPC�̎��ӈȊO�͔������Ȃ��B�퓬����
-�������Ȃ��i��퓬���Ȃ�\�����ł���������j
-���͂��܂蔭�����Ȃ��B�Â���Ԃ��ł��������������B
+ダイアログから断るとrelationshiprankが下がるので注意。キャンセルだと
+下がらない。
+仕組みが不可視マントの展開なので、PCの周辺以外は発生しない。戦闘中は
+発生しない（非戦闘中なら構え中でも発生する）
+昼はあまり発生しない。暗い夜間が最も発生率が高い。
 
 
-���������o�O
-�ENPC��NPC�ŁA�܂�ɐ��|�������Ȃ��ł��̂܂܍s�ׂɂȂ邱�Ƃ�����B
+直したいバグ
+・NPC⇔NPCで、まれに声掛けをしないでそのまま行為になることがある。
 
-�d�l
-�ENPC��NPC�̎��̒f��ꍇ��MCM�{���͋@�\���Ȃ��B�\����̖��Ȃ̂ł��܂蒼���C�Ȃ��B
-�E�u���Ă��āv�͎��Ԑ�������B�u���������邼�I�v��NPC���v���Ă���2�����炢�B
-�EPC�ւ̂��U�����L�����Z���ŏI��������Ƃ�����񕷂���邱�Ƃ�����B
-�@�܂��A�������Ă��炵�������������ꂽ�Ƃ������ƂŁB
-�EPC�Ƙb���Ă���NPC��NPC��NPC�ŉ���肳��邱�Ƃ�����B
-�@=> �C�x���g�̃V�[���i�s���͑΍�ς݁A���ʂ̉�b�ł͑��ς�炸�����\������B
-�EMCM�̃N�G�X�g���Ƃ̃g�O����(����)�@�\���ĂȂ��B�@�\�����炢���Ȃ��B
+まれに確認されているバグらしきもの(作者環境で未再現)
+・死体となった敵にアプローチ、蘇生させてことに及ぶことがある(？)。
 
+仕様
+・NPC⇔NPCの時の断る場合はMCM[倍率]は機能しない(ポイント追加は機能する)。
+・「ついてきて」は時間制限あり。「声をかけるぞ！」とNPCが思ってから2分くらい。
+・PCへのお誘いをキャンセルで終了させるともう一回聞かれることがある。
+　まあ、無視してたらしつこく聞き直されたということで。
+・PCと話しているNPCをNPC⇔NPCで横取りされることがある。
+　=> イベントのシーン進行中は対策済み、普通の会話では相変わらず横取り可能性あり。
+・MCMのクエストごとのトグルは機能してない。機能したらいいなあ。
+・プレイヤーが男だったら必ず攻め、女だったら受け。同性声掛けの場合も同じ。
+
+
+2017-01-25
+-----------------------------
+・1021～1118のespに不具合があったため、一度でもセーブしてしまったら、以下が必要。
+
+1. 今使ってるApproachを外してからSkyrimを立ち上げてセーブ
+2. セーブツールなどでスクリプト除去(SaveTool.exeなら、FixScriptInstance)
+3. 新版インストール
+
+・1021, 1118で追加したMCMの機能が全く動いていなかったのを修正。
+・死体へのアプローチに対して消極的防止コードの追加。
 
 
 2016-11-18
 -----------------------------
-�E�X�V�͒P���ɏ㏑����OK�B
-�EMCM�ɃJ�b�v�����O�A�N�Z�T��ON/OFF�ǉ�(�f�t�H���gON)�B
-�EMCM��NPC��PC����relationshiprank�㉺��ON/OFF�ǉ�(�f�t�H���gOFF)�B
-�ENPC��NPC�̃y�b�g���݂̃V�[���̍œK���B
-�E�v���C���[���C�v�v�Z���̌�����(�قڔ������Ɠ����v�Z����)�B
-�ENPC��NPC���C�v�̎�����MCM�ł�ON/OFF(�f�t�H���gON)
-�� ��L�Q�̔����m���͐��|���v�Z�� / 10
-�EMCM�ɔ������ɉ��Z/���Z�ł��鐔�l�̐ݒ��ǉ��B
-�� �������͌v�Z��̐��l��0-100�͈͓̔��ɂ��Ă���A�����_����0-100�̐��l�Ɣ�r����
-�@ ���邽�߁A-100�ɂ���Ύd�l��͔������Ȃ��A100�ɂ���Ύd�l��͕K�����|���ɂȂ�B
- �@Base chance multipler�͊|���Z�ł̒����B�p�r�ɍ����������B
+・更新は単純に上書きでOK。
+・MCMにカップリングアクセサリON/OFF追加(デフォルトON)。
+・MCMにNPC→PC時のrelationshiprank上下のON/OFF追加(デフォルトOFF)。
+・NPC⇔NPCのペット絡みのシーンの最適化。
+・プレイヤーレイプ計算式の見直し(ほぼ発生率と同じ計算式に)。
+・NPC⇔NPCレイプの実装とMCMでのON/OFF(デフォルトON)
+※ 上記２つの発生確率は声掛け計算式 / 10
+・MCMに発生率に加算/減算できる数値の設定を追加。
+※ 発生率は計算後の数値を0-100の範囲内にしてから、ランダムの0-100の数値と比較して
+　 いるため、-100にすれば仕様上は発生しない、100にすれば仕様上は必ず声掛けになる。
+ 　Base chance multiplerは掛け算での調整。用途に合った方を。
 
-�E��������S�̓I�ɉ����C������`�Œ����B
+・発生率を全体的に下方修正する形で調整。
 
 
 2016-10-21
 -----------------------------
-�E�X�V�͒P���ɏ㏑����OK�B
-�E10-15�̃p�b�P�[�W���O�~�X�C���B
-�EMCM��Papyrus���O�o�̗͂��ǉ��B
+・更新は単純に上書きでOK。
+・10-15のパッケージングミス修正。
+・MCMにPapyrusログ出力の欄追加。
 
 
 2016-10-15
 -----------------------------
-�E�X�V�͒P���ɏ㏑����OK�B���񃍁[�h����papyrus���O��warning�o��B�Z�[�u�����[�h��
-�@�Ȃ��Ȃ�͂��B
+・更新は単純に上書きでOK。初回ロード時はpapyrusログにwarning出る。セーブ＆ロードで
+　なくなるはず。
 
-�E�y�b�g�Ή��B���̒ʂ�Ȃ̂ŒjNPC�̏�NPC��蔭�����͒Ⴂ�B
-�@�E�y�b�g��Aroused Creature�������arousal���A�Ȃ���΃^�[�Q�b�g��arousal���g���B
-�@�E�^�[�Q�b�g�͏�NPC����B�y�b�g����NPC�̂݁B��NPC���y�b�g�͂Ȃ��B
-�@�E�h�[���K�[�h�̃n�X�L�[��FLP�َ̈��M�Œ��Ԃɂ����N�}�Ńe�X�g�ς݁B
+・ペット対応。↓の通りなので男NPC⇔女NPCより発生率は低い。
+　・ペットはAroused Creatureがあればarousalを、なければターゲットのarousalを使う。
+　・ターゲットは女NPC限定。ペット→女NPCのみ。女NPC→ペットはない。
+　・ドーンガードのハスキーとFLPの異種交信で仲間にしたクマでテスト済み。
 
-�E�J�b�v�����O�p�A�N�Z�T��(�u�`���J�v�j�̒ǉ��B
-�@�E����𑕔����Ă���NPC�́A�����J�𑕔����Ă��鑊��(PC�܂�)�ɂ������|�����Ȃ��B
-�@�E����𑕔����Ă���PC/NPC�́A�����J�𑕔����Ă��鑊�肩�炵�����|������Ȃ��B
-�@�E�p�[�e�B�[�S���ɓ����J�𑕔�������ƁA�p�[�e�B�[�ԓ��m�݂̂̐��|���ɂȂ�A
-�@�@���NPC�͈��NPC�ɂ������|�����Ȃ��Ȃ�B
-�@�E���̒N���������Ă��Ȃ��J�𑕔����Ă���PC/NPC�͑S�����|�����Ȃ��Ȃ�/����Ȃ��Ȃ�B
-�@�E59�ԃX���b�g�B�X���b�g�ύX�B���O�ύX�B�����AddItemMenu���R���\�[���ŁB
-�@�� �����I�ɂ͐��|�����悤�Ƃ��Ē��߂Ă��鏈���ɂȂ��Ă���̂ŁA�S�̓I�Ȑ��|���p�x��
-�@�@ (�A�C�e���������Ă�l�Ԃ�����΂���ق�/�Z�������l���ł���΂���ق�)������B
+・カップリング用アクセサリ(「～の絆」）の追加。
+　・これを装備しているNPCは、同じ絆を装備している相手(PC含む)にしか声掛けしない。
+　・これを装備しているPC/NPCは、同じ絆を装備している相手からしか声掛けされない。
+　・パーティー全員に同じ絆を装備させると、パーティー間同士のみの声掛けになり、
+　　一般NPCは一般NPCにしか声掛けしなくなる。
+　・他の誰も装備していない絆を装備しているPC/NPCは全く声掛けしなくなる/されなくなる。
+　・59番スロット。スロット変更可。名前変更可。入手はAddItemMenuかコンソールで。
+　※ 内部的には声掛けしようとして諦めている処理になっているので、全体的な声掛け頻度は
+　　 (アイテムを持ってる人間がいればいるほど/セルが多人数であればあるほど)下がる。
 
-�@�@xx01b1b6�@�E�@�����J
-�@�@xx01b71a�@�E�@�����J
-�@�@xx01b71c�@�E�@�n���J
-�@�@xx01b71d�@�E�@�����J
-�@�@xx01b71e�@�E�@�����J�@�� ���O�ɂ����ʂ̕ω��͂Ȃ��B5�y�A�܂őΉ��ł���悤��5��B
+　　xx01b1b6　・　竜の絆
+　　xx01b71a　・　炎の絆
+　　xx01b71c　・　刃の絆
+　　xx01b71d　・　血の絆
+　　xx01b71e　・　風の絆　※ 名前による効果の変化はない。5ペアまで対応できるように5種。
 
-�E�Z���[�i���񂪘R��Ă����̂ŁA�g�p�[�e�B�[�����o�[�h�����CurrentFollowerFaction
-�@����`�[�����C�g���������Ă��邩�ۂ��ɕύX�B
-�ENPC��NPC�̎��Ƀ��C�v���[�V������e���悤�ɕύX�B
-�E�y�b�g�Ή��܂߂ă_�C�A���O���X�V�A�l�Ԃ̂����͕ύX�BSEQ���X�V�B
-�ENPC��NPC�̕Ԏ��̍ۂ̌v�Z���Ŕ��f����Ă��Ȃ������������𔽉f����悤�ɏC���B
-�@�E�v���C���[�̍s�׎��́{�|�B
-�@�E�^�[�Q�b�g(����)�������ۂ��B
-�ENPC��PC�ւ̌v�Z���ꕔ�ύX(�����Ɂ|������)
+・セラーナさんが漏れていたので、“パーティーメンバー”判定をCurrentFollowerFaction
+　からチームメイト属性がついているか否かに変更。
+・NPC⇔NPCの時にレイプモーションを弾くように変更。
+・ペット対応含めてダイアログを更新、人間のも文章変更。SEQも更新。
+・NPC⇔NPCの返事の際の計算式で反映されていなかった条件式を反映するように修正。
+　・プレイヤーの行為時の＋－。
+　・ターゲット(自分)が裸か否か。
+・NPC→PCへの計算式一部変更(微妙に－方向に)
 
-�E�X�N���v�g�̒��g�����B
+・スクリプトの中身整理。
 
 
 2016-09-26
 -----------------------------
-�E�v���C���[�ȊO�Ή��̂��߂̍\���ω��̂��߁A�ȉ����K�v�B
-�@���ŃA���C���X�g�[�� �� �Z�[�u�N���[�i�[ �� �V�ŃC���X�g�[��
+・プレイヤー以外対応のための構造変化のため、以下が必要。
+　旧版アンインストール → セーブクリーナー → 新版インストール
 
-�ENPC��NPC�ɑΉ�
+・NPC⇔NPCに対応
 
-�E�����������E����͈̂ȉ�
-�@�EAroused�̐��~�l�i��{�R���j
-�@�E1000Unit�͈͂Ƀx�b�h�����邩�i�g���邩�ǂ����͊֌W�Ȃ��j
-�@�E���ԁi��{�A���|�j
-�@�E���邳
-�@�E�^�[�Q�b�g�������ۂ�
-�@�ECurrentFollowerFaction�ɓ����Ă���ғ��m���ۂ�
-�@�ENPC��NPC�͓����������Ȃ��APC����͔������ቺ
-�@�� relationshiprank�͌��ĂȂ��B
-�@�� PC���s�ג����ǂ����i�s�ג��Ȃ�啝�{�j
-�@�� ��Ԃ̈Â��Ƃ����PC���s�ג��̂܂ܕ����Ă����ƁA�����摜�̂悤�Ƀh�[���K�[�h��ࣂ��B
+・発生率を左右するのは以下
+　・Arousedの性欲値（基本コレ）
+　・1000Unit範囲にベッドがあるか（使えるかどうかは関係なし）
+　・時間（夜＋、昼－）
+　・明るさ
+　・ターゲットが裸か否か
+　・CurrentFollowerFactionに入っている者同士か否か
+　・NPC⇔NPCは同性愛発生なし、PC相手は発生率低下
+　※ relationshiprankは見てない。
+　※ PCが行為中かどうか（行為中なら大幅＋）
+　★ 夜間の暗いところでPCが行為中のまま放っておくと、同梱画像のようにドーンガードも爛れる。
 
-�@�ENPC��PC����̓�����B
+　・NPC→PCも大体同じ基準。
 
-�E���炩�̃V�[������NPC�͐��|�����Ȃ��悤�ɕύX
-�E�������������������̂�������܂ŋ}���悤�C��
-�@(�t�H�����[�����������[�h�ɓ���ƕ����Ă��܂����߂��Ă���Ȃ�)
-�EWhistle�N�G�X�g������(�u�����������ȁI�v�Ƃ��u������ˁI�v���Č�������)
-�ESEQ�t�@�C�����ꂽ�B
-�E�|�󏭂��C���B
-�Eattraction�O���������ŋS�̂悤�ɏo�Ă���error�Ƃ�warning�S���������B
+・何らかのシーン中のNPCは声掛けしないように変更
+・声かけが歩きだったのを小走りまで急ぐよう修正
+　(フォロワーが声かけモードに入ると歩いてしまうためついてこれない)
+・Whistleクエスト無効化(「かっこいいな！」とか「可愛いわね！」って言われるやつ)
+・SEQファイル入れた。
+・翻訳少し修正。
+・attraction外したせいで鬼のように出ていたerrorとかwarning全部消した。
 
 
 2016-04-18
 -----------------------------
-sexlab approach 28-4-2014 v3���Ȃ��Ȃ��A�v���[�`���Ă���Ȃ������̂�
-����ɏC�������ŁB���{�ꉻ�ς݁Battraction�s�v�B��ҋ����ς݁B
-������܂ŖY��Ă����ǁA�X�^���h�A�����t�H�����[�Ƃ��̒ǉ��푰�����
-������������悤�ɏC���ς݁B
+sexlab approach 28-4-2014 v3がなかなかアプローチしてくれなかったので
+勝手に修正した版。日本語化済み。attraction不要。作者許諾済み。
+言われるまで忘れてたけど、スタンドアロンフォロワーとかの追加種族からも
+声をかけられるように修正済み。
