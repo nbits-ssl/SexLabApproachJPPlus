@@ -18,6 +18,8 @@ bool property isDuringCloakPulse = false Auto
 int Property actorsEffectStarted = 0 Auto
 int Property actorsEffectFinished = 0 Auto
 
+bool Property isSkipUpdateMode = false Auto
+
 slapp_util Property slappUtil Auto
 
 int myActorAmountAware = 0
@@ -100,6 +102,20 @@ EndFunction
 Function EndtInitOfQuestByIndex(int index)
     slappUtil.log("index END = " + index + " approachQuestsInitilizationArray[index] = " + approachQuestsInitilizationArray[index])
     approachQuestsInitilizationArray[index] = false
+EndFunction
+
+Function clearQuestStatus()
+	int idx = approachQuestsInitilizationArray.Length
+	while (idx > 0)
+		idx -= 1
+		approachQuestsInitilizationArray[idx] = false
+	endwhile
+	
+	int qidx = getregisteredAmount()
+	while (qidx > 0)
+		qidx -= 1
+		approachQuests[qidx].SetStage(100)
+	endwhile
 EndFunction
 
 int Function RegisterQuest(Quest newQuest, SLApproachBaseQuestScript newQuestScript, string newQuestName, int type = 1)

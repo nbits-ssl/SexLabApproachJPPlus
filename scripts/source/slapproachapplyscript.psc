@@ -13,6 +13,7 @@ Event OnEffectStart(Actor akTarget, Actor playerActor)
 		while(indexCounter > 0)
 			indexCounter -= 1
 			SLApproachBaseQuestScript xqscript = SLApproachMain.getApproachQuestScript(indexCounter)
+			
 			if(xqscript.isSituationValid(akTarget,playerActor))
 				if(xqscript.chanceRoll(akTarget, playerActor,SLApproachMain.baseChanceMultiplier))
 					init = SLApproachMain.StartInitOfQuestByIndex(indexCounter)
