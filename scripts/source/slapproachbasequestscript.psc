@@ -19,10 +19,6 @@ Function startApproach(Actor akRef)
 	RegisterForSingleUpdate(maxTime)
 EndFunction
 
-Function addActor(Actor akRef)
-	;
-endfunction
-
 Bool Function isSituationValid(Actor akRef, Actor player)
 	if(!player.IsInCombat()  && !akRef.IsInCombat()&& \
 		SexLab.IsValidActor(akRef) && !player.IsOnMount() && \
