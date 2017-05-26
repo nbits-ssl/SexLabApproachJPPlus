@@ -23,6 +23,7 @@ bool Property isSkipUpdateMode = false Auto
 slapp_util Property slappUtil Auto
 
 int myActorAmountAware = 0
+
 int Property actorAmountAware
 	int function get()
 		if(isDuringCloakPulse )
@@ -34,6 +35,7 @@ int Property actorAmountAware
 		myActorAmountAware = value
 	endFunction
 endProperty
+
 actor[] awareActors
 
 int my_cloakRange = 192
@@ -64,43 +66,43 @@ Function initApproachQuestRegister()
 
 	approachQuestsInitilizationArray= New bool[8]
 	int counter = 8
-       while counter
-       	counter -= 1
-       	approachQuestsInitilizationArray[counter] = false           
-       endwhile
 
-	approachQuests=New Quest[8]
+	while counter
+		counter -= 1
+		approachQuestsInitilizationArray[counter] = false           
+	endwhile
+
+	approachQuests = New Quest[8]
 	approachQuestNames = new string[8]
 	approachQuestSripts = new SLApproachBaseQuestScript[8]
 EndFunction
 
 Function Maintenance()
-    ; Debug.Notification("SexLab Approach is starting...")
-    if(!initilized)
-       initApproachQuestRegister()
+	if(!initilized)
+		initApproachQuestRegister()
 	awareActors = new actor[64]
-    endif
-    initilized = true
-    PlayerRef.RemoveSpell(SLApproachCloakAbility)
-    
-    UnregisterForAllModEvents()
-    ; Debug.Notification("SexLab Approach is running.")
-    ; PlayerRef.AddSpell(SLApproachCloakAbility)
+	endif
+	
+	initilized = true
+	PlayerRef.RemoveSpell(SLApproachCloakAbility)
+
+	UnregisterForAllModEvents()
 EndFunction
+
 SPELL Property SLApproachCloakAbility  Auto  
 
 bool Function StartInitOfQuestByIndex(int index)
-    slappUtil.log("START? index = " + index + " approachQuestsInitilizationArray[index] = " + approachQuestsInitilizationArray[index])
-    If(approachQuestsInitilizationArray[index])
-        return false
-    else
-        approachQuestsInitilizationArray[index] = true
-        return true
-    endif
+	slappUtil.log("START? index = " + index + " appQuestInitArray => " + approachQuestsInitilizationArray[index])
+	If(approachQuestsInitilizationArray[index])
+		return false
+	else
+		approachQuestsInitilizationArray[index] = true
+		return true
+	endif
 EndFunction
 
 Function EndtInitOfQuestByIndex(int index)
-    slappUtil.log("index END = " + index + " approachQuestsInitilizationArray[index] = " + approachQuestsInitilizationArray[index])
+    slappUtil.log("END index = " + index + " appQuestInitArray => " + approachQuestsInitilizationArray[index])
     approachQuestsInitilizationArray[index] = false
 EndFunction
 
