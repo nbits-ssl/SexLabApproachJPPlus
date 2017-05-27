@@ -35,8 +35,12 @@ Function startApproach(Actor akRef)
 		elseif(SexLab.IsActorActive(target))
 			slappUtil.log("Sex to Other by: pass : target Locked by other sex")
 			maxTime = 5
+		elseif(target.IsInDialogueWithPlayer())
+			slappUtil.log("Sex to Other by: pass : target Locked by talking")
+			maxTime = 5
 		elseif(!SexLab.IsValidActor(target))
 			slappUtil.log("Sex to Other by: pass : target is maybe dead or not loaded or...")
+			maxTime = 5
 		elseif (roll < result)
 			SSLAppAsk2Scene.Start()
 		elseif(SLApproachMain.enableRapeFlag)

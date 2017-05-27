@@ -2,14 +2,14 @@
 ;NEXT FRAGMENT INDEX 13
 Scriptname QF_SLApproachAskForSex2Quest_04012AFD Extends Quest Hidden
 
-;BEGIN ALIAS PROPERTY TargetActor
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_TargetActor Auto
-;END ALIAS PROPERTY
-
 ;BEGIN ALIAS PROPERTY initialActor
 ;ALIAS PROPERTY TYPE ReferenceAlias
 ReferenceAlias Property Alias_initialActor Auto
+;END ALIAS PROPERTY
+
+;BEGIN ALIAS PROPERTY TargetActor
+;ALIAS PROPERTY TYPE ReferenceAlias
+ReferenceAlias Property Alias_TargetActor Auto
 ;END ALIAS PROPERTY
 
 ;BEGIN ALIAS PROPERTY PlayerRef
@@ -20,7 +20,7 @@ ReferenceAlias Property Alias_PlayerRef Auto
 ;BEGIN FRAGMENT Fragment_2
 Function Fragment_2()
 ;BEGIN CODE
-SLAPSex2Quest.SetStage(5)
+self.SetStage(5)
 ;END CODE
 EndFunction
 ;END FRAGMENT
