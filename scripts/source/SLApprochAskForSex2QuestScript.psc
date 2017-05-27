@@ -41,19 +41,25 @@ Function startApproach(Actor akRef)
 		elseif(!SexLab.IsValidActor(target))
 			slappUtil.log("Sex to Other by: pass : target is maybe dead or not loaded or...")
 			maxTime = 5
+		elseif (akRef.IsEquipped(SLAppRingServant) || akRef.IsEquipped(SLAppRingSlave))
+			SSLAppAsk2Scene.Start()
 		elseif (roll < result)
 			SSLAppAsk2Scene.Start()
 		elseif(SLApproachMain.enableRapeFlag)
-			int second_result = slappUtil.ValidateChance(calcChance(akRef, target) / 10)
-			int second_extra = SLApproachMain.userAddingPointNpc / 10
-			second_result = second_result + second_extra
-			int second_roll = Utility.RandomInt(0, 100)
-			slappUtil.log("Ask to Other rape chance: ANS by : "  + akRef.GetActorBase().GetName() + " : " + second_result + " & " + second_roll)
-		
-			if (second_roll < second_result)
+			if (akRef.IsEquipped(SLAppRingBeast))
 				SSLAppAsk2SceneRape.Start()
 			else
-				SSLAppAsk2SceneDisagree.Start()
+				int second_result = slappUtil.ValidateChance(calcChance(akRef, target) / 10)
+				int second_extra = SLApproachMain.userAddingPointNpc / 10
+				second_result = second_result + second_extra
+				int second_roll = Utility.RandomInt(0, 100)
+				slappUtil.log("Ask to Other rape chance: ANS by : "  + akRef.GetActorBase().GetName() + " : " + second_result + " & " + second_roll)
+			
+				if (second_roll < second_result)
+					SSLAppAsk2SceneRape.Start()
+				else
+					SSLAppAsk2SceneDisagree.Start()
+				endif
 			endif
 		else ; disable rape
 			SSLAppAsk2SceneDisagree.Start()
@@ -93,15 +99,16 @@ bool Function chanceRoll(Actor akRef, Actor Player, float baseChanceMultiplier)
 	if(queststage >= 10 && queststage < 100)
 		; slappUtil.log("Sex to Other by: pass : " + akRef.GetActorBase().GetName() + " - " + self.GetStage())		
 		return false
-	endif
-	if(SSLAppAsk2Scene.IsPlaying() || SSLAppAsk2SceneDisagree.IsPlaying() || SSLAppAsk2SceneRape.IsPlaying())
+	elseif (SSLAppAsk2Scene.IsPlaying() || SSLAppAsk2SceneDisagree.IsPlaying() || SSLAppAsk2SceneRape.IsPlaying())
 		slappUtil.log("Sex to Other by: pass : Scene Locked")
 		return false
-	endif
-	if(SexLab.IsActorActive(akRef))
+	elseif (SexLab.IsActorActive(akRef))
 		slappUtil.log("Sex to Other by: pass : akRef Locked by other sex")
 		return false
+	elseif (akRef.IsEquipped(SLAppRingShame))
+		return false
 	endif
+	
 	Scene aks = akRef.GetCurrentScene()
 	if(aks)
 		string akscene = aks.GetOwningQuest().GetId()
@@ -220,3 +227,11 @@ Faction Property PotentialFollowerFaction  Auto
 Keyword Property kSLAppPromiseRing  Auto  
 
 Scene Property SSLAppAsk2SceneRape  Auto  
+
+Armor Property SLAppRingServant  Auto  
+
+Armor Property SLAppRingSlave  Auto  
+
+Armor Property SLAppRingShame  Auto  
+
+Armor Property SLAppRingBeast  Auto  

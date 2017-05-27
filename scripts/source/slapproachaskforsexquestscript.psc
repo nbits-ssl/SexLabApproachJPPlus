@@ -14,6 +14,11 @@ bool property willRape  Auto Conditional
 
 Function rollRapeChance(Actor akRef)
 	if(SLApproachMain.enableRapeFlag)
+		if (akRef.IsEquipped(SLAppRingBeast))
+			willRape = true
+			return
+		endif
+		
 		int amountAware = SLApproachMain.actorAmountAware
 		if(amountAware <=0)
 			slappUtil.log("Wrong amount of aware actors : " + amountAware)
@@ -91,12 +96,12 @@ bool Function chanceRoll(Actor akRef, Actor PlayerRef, float baseChanceMultiplie
 	if(!slappUtil.ValidatePromise(akRef, PlayerRef))
 		slappUtil.log("Ask to Sex blocked by Promise: " + akRef.GetActorBase().GetName())
 		return false
-	endif
-	
-	if(SexLab.IsActorActive(PlayerRef))
+	elseif (SexLab.IsActorActive(PlayerRef))
+		return false
+	elseif (akRef.IsEquipped(SLAppRingShame))
 		return false
 	endif
-
+	
 	int chance = akRef.GetFactionRank(arousalFaction)
 	int relationship =  akRef.GetRelationshipRank(PlayerReference.GetActorReference())
 	
@@ -163,3 +168,10 @@ SLApproachMainScript Property SLAttractionMain  Auto
 Faction Property ArousalFaction  Auto
 Keyword Property kArmorCuirass Auto
 Keyword Property kClothingBody Auto
+Armor Property SLAppRingServant  Auto  
+
+Armor Property SLAppRingSlave  Auto  
+
+Armor Property SLAppRingShame  Auto  
+
+Armor Property SLAppRingBeast  Auto  
