@@ -131,6 +131,10 @@ bool Function chanceRoll(Actor akRef, Actor Player, float baseChanceMultiplier)
 
 	Actor target = SexLab.FindAvailableActor(akRef, 1000.0, gender, Player)
 	if(target)
+		if(!akRef.GetRace().AllowPickpocket() && !target.IsPlayerTeammate()) ; Pet only approach teammates
+			return false
+		endif
+		
 		slappUtil.log("Sex to Other by: " + akRef.GetActorBase().GetName() + " - " + target.GetBaseObject().GetName() + " - stage " + self.GetStage())
 		
 		if(!slappUtil.ValidatePromise(akRef, target))
