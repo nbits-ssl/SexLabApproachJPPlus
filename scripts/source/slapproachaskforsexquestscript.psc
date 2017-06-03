@@ -93,7 +93,7 @@ Function sexRelationshipUp(Actor akRef, Actor PlayerRef)
 Endfunction
 
 bool Function chanceRoll(Actor akRef, Actor PlayerRef, float baseChanceMultiplier)
-	if(!slappUtil.ValidatePromise(akRef, PlayerRef))
+	if (!slappUtil.ValidatePromise(akRef, PlayerRef))
 		slappUtil.log("Ask to Sex blocked by Promise: " + akRef.GetActorBase().GetName())
 		return false
 	elseif (SexLab.IsActorActive(PlayerRef))
@@ -168,10 +168,10 @@ SLApproachMainScript Property SLAttractionMain  Auto
 Faction Property ArousalFaction  Auto
 Keyword Property kArmorCuirass Auto
 Keyword Property kClothingBody Auto
-Armor Property SLAppRingServant  Auto  
-
-Armor Property SLAppRingSlave  Auto  
 
 Armor Property SLAppRingShame  Auto  
 
-Armor Property SLAppRingBeast  Auto  
+; Armor Property SLAppRingServant  Auto  
+; Armor Property SLAppRingSlave  Auto  
+; Armor Property SLAppRingBeast  Auto  
+; Armor Property SLAppRingLove  Auto  

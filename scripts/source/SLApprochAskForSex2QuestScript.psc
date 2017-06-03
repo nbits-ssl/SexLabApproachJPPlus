@@ -233,9 +233,7 @@ Keyword Property kSLAppPromiseRing  Auto
 Scene Property SSLAppAsk2SceneRape  Auto  
 
 Armor Property SLAppRingServant  Auto  
-
 Armor Property SLAppRingSlave  Auto  
-
 Armor Property SLAppRingShame  Auto  
-
 Armor Property SLAppRingBeast  Auto  
+; Armor Property SLAppRingLove  Auto  

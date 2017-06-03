@@ -91,8 +91,10 @@ EndFunction
 bool Function ValidatePromise(Actor akRef, Actor target)
 	if (!SLApproachMain.enablePromiseFlag)
 		return true
-	elseif(akRef.WornHasKeyword(kSLAppPromiseRing))
-		if(target.WornHasKeyword(kSLAppPromiseRing))
+	elseif (akRef.IsEquipped(SLAppRingLove) || target.IsEquipped(SLAppRingLove))
+		return true
+	elseif (akRef.WornHasKeyword(kSLAppPromiseRing))
+		if (target.WornHasKeyword(kSLAppPromiseRing))
 			if(akRef.IsEquipped(SLAppRing01) && target.IsEquipped(SLAppRing01))
 				return true
 			elseif(akRef.IsEquipped(SLAppRing02) && target.IsEquipped(SLAppRing02))
@@ -149,3 +151,4 @@ Armor Property SLAppRing02  Auto
 Armor Property SLAppRing03  Auto  
 Armor Property SLAppRing04  Auto  
 Armor Property SLAppRing05  Auto  
+Armor Property SLAppRingLove  Auto  
