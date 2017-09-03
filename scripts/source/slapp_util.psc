@@ -111,7 +111,7 @@ bool Function ValidatePromise(Actor akRef, Actor target)
 		return false
 	elseif (target.WornHasKeyword(kSLAppPromiseRing))
 		return false
-	elseif (akRef.IsEquipped(SLAppRingShyness) && !target.IsPlayerTeammate())
+	elseif (akRef.IsEquipped(SLAppRingShyness) && !target.IsPlayerTeammate() && target != PlayerRef.GetActorRef())
 		return false
 	elseif (target.IsEquipped(SLAppRingShyness) && !akRef.IsPlayerTeammate())
 		return false
@@ -144,8 +144,8 @@ Function StartSexTopicInfo(ReferenceAlias akRef, ReferenceAlias target)
 EndFunction
 
 SLApproachMainScript Property SLApproachMain Auto
-
 SexLabFramework Property SexLab  Auto
+
 Keyword Property kArmorCuirass Auto
 Keyword Property kClothingBody Auto
 Keyword Property kSLAppPromiseRing  Auto
@@ -157,3 +157,5 @@ Armor Property SLAppRing04  Auto
 Armor Property SLAppRing05  Auto  
 Armor Property SLAppRingLove  Auto  
 Armor Property SLAppRingShyness  Auto  
+
+ReferenceAlias Property PlayerRef  Auto  
