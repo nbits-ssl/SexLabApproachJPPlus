@@ -109,7 +109,11 @@ bool Function ValidatePromise(Actor akRef, Actor target)
 		endif
 		
 		return false
-	elseif(target.WornHasKeyword(kSLAppPromiseRing))
+	elseif (target.WornHasKeyword(kSLAppPromiseRing))
+		return false
+	elseif (akRef.IsEquipped(SLAppRingShyness) && !target.IsPlayerTeammate())
+		return false
+	elseif (target.IsEquipped(SLAppRingShyness) && !akRef.IsPlayerTeammate())
 		return false
 	else
 		return true
@@ -152,3 +156,4 @@ Armor Property SLAppRing03  Auto
 Armor Property SLAppRing04  Auto  
 Armor Property SLAppRing05  Auto  
 Armor Property SLAppRingLove  Auto  
+Armor Property SLAppRingShyness  Auto  
