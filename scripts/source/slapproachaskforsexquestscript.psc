@@ -160,18 +160,17 @@ Function endApproach()
 	;endif
 Endfunction
 
-ReferenceAlias Property talkingActor  Auto  
-Scene Property SLApproachAskForSexQuestScene  Auto  
-Scene Property SLApproachAskForSexQuestFollowPlayerScene Auto
-ReferenceAlias Property PlayerReference Auto
 SLApproachMainScript Property SLAttractionMain  Auto
 Faction Property ArousalFaction  Auto
+
+ReferenceAlias Property talkingActor  Auto  
+ReferenceAlias Property PlayerReference Auto
+
+Scene Property SLApproachAskForSexQuestScene  Auto  
+Scene Property SLApproachAskForSexQuestFollowPlayerScene Auto
+
 Keyword Property kArmorCuirass Auto
 Keyword Property kClothingBody Auto
 
 Armor Property SLAppRingShame  Auto  
-
-; Armor Property SLAppRingServant  Auto  
-; Armor Property SLAppRingSlave  Auto  
-; Armor Property SLAppRingBeast  Auto  
-; Armor Property SLAppRingLove  Auto  
+Armor Property SLAppRingBeast  Auto  
