@@ -7,6 +7,10 @@ Function startApproach(Actor akRef)
 	if(SSLAppAsk2.isRunning())
 		Actor target = ansRef.GetActorRef()
 		
+		if (target.IsDead())
+			return
+		endif ; second check
+		
 		int chance
 		if(target.IsInFaction(arousalFaction))
 			chance = target.GetFactionRank(arousalFaction)
@@ -38,7 +42,7 @@ Function startApproach(Actor akRef)
 		elseif(target.IsInDialogueWithPlayer())
 			slappUtil.log("Sex to Other by: pass : target Locked by talking")
 			maxTime = 5
-		elseif(!SexLab.IsValidActor(target))
+		elseif(!SexLab.IsValidActor(target)) ;third check
 			slappUtil.log("Sex to Other by: pass : target is maybe dead or not loaded or...")
 			maxTime = 5
 		elseif (akRef.IsEquipped(SLAppRingServant) || akRef.IsEquipped(SLAppRingSlave))
@@ -124,14 +128,12 @@ bool Function chanceRoll(Actor akRef, Actor Player, float baseChanceMultiplier)
 	else
 		gender = 0
 	endif
-
-	if(gender == -1)
-		return false
-	endif
-
+	
 	Actor target = SexLab.FindAvailableActor(akRef, 1000.0, gender, Player)
 	if(target)
-		if(!akRef.GetRace().AllowPickpocket() && !target.IsPlayerTeammate()) ; Pet only approach teammates
+		if (target.IsDead())
+			return false ; first check
+		elseif (!akRef.GetRace().AllowPickpocket() && !target.IsPlayerTeammate()) ; Pet only approach teammates
 			return false
 		endif
 		
@@ -202,35 +204,27 @@ Function register()
 EndFunction
 
 Quest Property SLAPSex2Quest  Auto  
-ReferenceAlias Property initialActor  Auto  
-
-Faction Property ArousalFaction  Auto  
-
-Scene Property SLApproachAskForSex2QuestScene  Auto  
-
-ReferenceAlias Property TargetActor  Auto  
-
 Quest Property SSLAppAsk2  Auto  
 
+ReferenceAlias Property initialActor  Auto  
+ReferenceAlias Property TargetActor  Auto  
 ReferenceAlias Property askRef  Auto  
-
 ReferenceAlias Property ansRef  Auto  
 
+Faction Property ArousalFaction  Auto  
+Faction Property CurrentFollowerFaction  Auto  
+Faction Property PotentialFollowerFaction  Auto  
+
+Scene Property SLApproachAskForSex2QuestScene  Auto  
 Scene Property SSLAppAsk2Scene  Auto  
 Scene Property SSLAppAsk2SceneDisagree  Auto  
+Scene Property SSLAppAsk2SceneRape  Auto  
 
 Keyword Property kArmorCuirass Auto
 Keyword Property kClothingBody Auto
-
-Actor Property PlayerRef  Auto  
-
-Faction Property CurrentFollowerFaction  Auto  
-
-Faction Property PotentialFollowerFaction  Auto  
-
 Keyword Property kSLAppPromiseRing  Auto  
 
-Scene Property SSLAppAsk2SceneRape  Auto  
+Actor Property PlayerRef  Auto  
 
 Armor Property SLAppRingServant  Auto  
 Armor Property SLAppRingSlave  Auto  
