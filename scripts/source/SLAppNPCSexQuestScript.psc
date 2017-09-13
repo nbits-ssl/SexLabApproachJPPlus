@@ -1,4 +1,4 @@
-Scriptname SLApprochAskForSex2QuestScript extends SLApproachBaseQuestScript  Conditional
+Scriptname SLAppNPCSexQuestScript extends SLApproachBaseQuestScript  Conditional
 
 slapp_util Property slappUtil Auto
 
@@ -205,26 +205,16 @@ Function register()
 	endwhile
 EndFunction
 
-Quest Property SLAPSex2Quest  Auto  
 Quest Property SSLAppAsk2  Auto  
 
-ReferenceAlias Property initialActor  Auto  
-ReferenceAlias Property TargetActor  Auto  
 ReferenceAlias Property askRef  Auto  
 ReferenceAlias Property ansRef  Auto  
 
 Faction Property ArousalFaction  Auto  
-Faction Property CurrentFollowerFaction  Auto  
-Faction Property PotentialFollowerFaction  Auto  
 
-Scene Property SLApproachAskForSex2QuestScene  Auto  
 Scene Property SSLAppAsk2Scene  Auto  
 Scene Property SSLAppAsk2SceneDisagree  Auto  
 Scene Property SSLAppAsk2SceneRape  Auto  
-
-Keyword Property kArmorCuirass Auto
-Keyword Property kClothingBody Auto
-Keyword Property kSLAppPromiseRing  Auto  
 
 Actor Property PlayerRef  Auto  
 
@@ -232,4 +222,14 @@ Armor Property SLAppRingServant  Auto
 Armor Property SLAppRingSlave  Auto  
 Armor Property SLAppRingShame  Auto  
 Armor Property SLAppRingBeast  Auto  
+
+;Quest Property SLAPSex2Quest  Auto  
+;ReferenceAlias Property initialActor  Auto  
+;ReferenceAlias Property TargetActor  Auto  
+;Faction Property CurrentFollowerFaction  Auto  
+;Faction Property PotentialFollowerFaction  Auto  
+;Keyword Property kArmorCuirass Auto
+;Keyword Property kClothingBody Auto
+;Keyword Property kSLAppPromiseRing  Auto  
 ; Armor Property SLAppRingLove  Auto  
+; Scene Property SLApproachAskForSex2QuestScene  Auto  

@@ -1,4 +1,4 @@
-Scriptname SLApproachAskForSexQuestScript extends SLApproachBaseQuestScript Conditional
+Scriptname SLAppPCSexQuestScript extends SLApproachBaseQuestScript Conditional 
 
 slapp_util Property slappUtil Auto
 
@@ -160,7 +160,6 @@ Function endApproach()
 	;endif
 Endfunction
 
-;SLApproachMainScript Property SLAttractionMain  Auto
 Faction Property ArousalFaction  Auto
 
 ReferenceAlias Property talkingActor  Auto  
@@ -168,9 +167,6 @@ ReferenceAlias Property PlayerReference Auto
 
 Scene Property SLApproachAskForSexQuestScene  Auto  
 Scene Property SLApproachAskForSexQuestFollowPlayerScene Auto
-
-Keyword Property kArmorCuirass Auto
-Keyword Property kClothingBody Auto
 
 Armor Property SLAppRingShame  Auto  
 Armor Property SLAppRingBeast  Auto  
