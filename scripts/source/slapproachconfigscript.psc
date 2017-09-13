@@ -9,6 +9,7 @@ int debugLogFlagOID
 int enablePromiseFlagOID
 int enableRapeFlagOID
 int enableRelationChangeFlagOID
+int enableElderRaceFlagOID
 
 int userAddingPointPcOID
 int userAddingPointNpcOID
@@ -25,10 +26,11 @@ event OnPageReset(string page)
 	cloakRangeOID =  AddSliderOption("Cloak range:", SLApproachMain.cloakRange)
 	baseChanceMultiplierOID =  AddSliderOption("Base chance multiplier:", SLApproachMain.baseChanceMultiplier, "{1}")
 	totalAwarnessRangeOID = AddSliderOption("Total awarness range:", SLApproachMain.totalAwarnessRange)
-	debugLogFlagOID = AddToggleOption("Output papyrus log", SLApproachMain.debugLogFlag)
 	enablePromiseFlagOID = AddToggleOption("Enable promise ring", SLApproachMain.enablePromiseFlag)
 	enableRapeFlagOID = AddToggleOption("Enable rape", SLApproachMain.enableRapeFlag)
 	enableRelationChangeFlagOID = AddToggleOption("Enable to change relationship rank", SLApproachMain.enableRelationChangeFlag)
+	enableElderRaceFlagOID = AddToggleOption("Enable ElderRace", SLApproachMain.enableElderRaceFlag)
+	debugLogFlagOID = AddToggleOption("Output papyrus log", SLApproachMain.debugLogFlag)
 
 	SetCursorPosition(1)
 
@@ -61,6 +63,9 @@ event OnOptionSelect(int option)
 	elseif(option == enableRelationChangeFlagOID)
 		SLApproachMain.enableRelationChangeFlag = !SLApproachMain.enableRelationChangeFlag
 		SetToggleOptionValue(enableRelationChangeFlagOID, SLApproachMain.enableRelationChangeFlag)
+	elseif(option == enableElderRaceFlagOID)
+		SLApproachMain.enableElderRaceFlag = !SLApproachMain.enableElderRaceFlag
+		SetToggleOptionValue(enableElderRaceFlagOID, SLApproachMain.enableElderRaceFlag)
 	endif
 endevent
 

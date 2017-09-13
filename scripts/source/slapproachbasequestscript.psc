@@ -20,13 +20,15 @@ Function startApproach(Actor akRef)
 EndFunction
 
 Bool Function isSituationValid(Actor akRef, Actor player)
-	if(!player.IsInCombat()  && !akRef.IsInCombat()&& \
+	if (!player.IsInCombat()  && !akRef.IsInCombat()&& \
 		SexLab.IsValidActor(akRef) && !player.IsOnMount() && \
 		!player.IsSwimming() && !player.IsSneaking())
 		
-		if(akRef.GetRace().AllowPickpocket())
+		if (!SLApproachMain.enableElderRaceFlag && akRef.GetRace() == ElderRace)
+			return false
+		elseif (akRef.GetRace().AllowPickpocket())
 			return true
-		elseif(akRef.IsPlayerTeammate())
+		elseif (akRef.IsPlayerTeammate())
 			return true
 		endif
 	endif
@@ -49,10 +51,12 @@ Event OnInit()
     ;register()
 EndEvent
 
-SLApproachMainScript Property SLApproachMain auto
-Quest Property ApproachQuest  Auto  
-
 SexLabFramework Property SexLab  Auto  
+SLApproachMainScript Property SLApproachMain auto
+Quest Property ApproachQuest  Auto  ; overwrite by real approach quests
+Race Property ElderRace  Auto  
+
 
 ; Faction Property CurrentFollowerFaction  Auto  
 ; Faction Property PotentialFollowerFaction  Auto  
+

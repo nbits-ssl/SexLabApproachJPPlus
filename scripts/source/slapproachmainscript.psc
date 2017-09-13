@@ -10,6 +10,7 @@ bool Property debugLogFlag = false Auto
 bool Property enablePromiseFlag = true Auto
 bool Property enableRapeFlag = true Auto
 bool Property enableRelationChangeFlag = false Auto
+bool Property enableElderRaceFlag = false Auto
 
 int Property userAddingPointPc = 0 Auto
 int Property userAddingPointNpc = 0 Auto

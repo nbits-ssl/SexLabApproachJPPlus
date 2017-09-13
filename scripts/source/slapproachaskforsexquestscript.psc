@@ -160,7 +160,7 @@ Function endApproach()
 	;endif
 Endfunction
 
-SLApproachMainScript Property SLAttractionMain  Auto
+;SLApproachMainScript Property SLAttractionMain  Auto
 Faction Property ArousalFaction  Auto
 
 ReferenceAlias Property talkingActor  Auto  

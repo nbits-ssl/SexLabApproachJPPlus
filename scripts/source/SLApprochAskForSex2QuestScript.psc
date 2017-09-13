@@ -135,6 +135,8 @@ bool Function chanceRoll(Actor akRef, Actor Player, float baseChanceMultiplier)
 			return false ; first check
 		elseif (!akRef.GetRace().AllowPickpocket() && !target.IsPlayerTeammate()) ; Pet only approach teammates
 			return false
+		elseif (!SLApproachMain.enableElderRaceFlag && target.GetRace() == ElderRace)
+			return false
 		endif
 		
 		slappUtil.log("Sex to Other by: " + akRef.GetActorBase().GetName() + " - " + target.GetBaseObject().GetName() + " - stage " + self.GetStage())

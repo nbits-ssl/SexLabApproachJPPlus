@@ -38,4 +38,4 @@ SLApproachMainScript Property SLApproachMain  Auto
 Faction Property ArousalFaction Auto
 Faction  Property SLApproachMonitorAbility Auto
 
-SLApproachMainScript Property SLAttractionMain  Auto
+;SLApproachMainScript Property SLAttractionMain  Auto
