@@ -8,37 +8,47 @@ Function StartSex(ReferenceAlias askRef, ReferenceAlias ansRef, bool rape = fals
 		return
 	endif
 	
+	self.StartSexActors(askAct, ansAct, rape)
+EndFunction
+
+Function StartSexActors(Actor src, Actor dst, bool rape = false)
 	sslBaseAnimation[] anims
 	actor[] sexActors = new actor[2]
 	
-	if (rape)
-		if(askAct.GetActorBase().GetSex() == 1)
-			anims =  SexLab.GetAnimationsByTags(2, "fm,cowgirl")
-			sexActors[0] = askAct
-			sexActors[1] = ansAct
-		elseif(askAct.GetActorBase().GetSex() == 0)
-			anims =  SexLab.GetAnimationsByTags(2, "aggressive", "cowgirl")
-			sexActors[0] = ansAct
-			sexActors[1] = askAct
-		else ; creature
-			anims =  SexLab.GetAnimationsByTags(2, "cf")
-			sexActors[0] = ansAct
-			sexActors[1] = askAct
+	int srcSex = SexLab.GetGender(src)
+	int dstSex = SexLab.GetGender(dst)
+	
+	if (!rape)
+		; anims =  SexLab.GetAnimationsByTags(2, "MF", "aggressive")
+		
+		if((srcSex == 1 && dstsex == 1) || (srcSex == 0 && srcSex == 0)) ; same sex
+			sexActors[0] = dst
+			sexActors[1] = src
+		elseif (srcSex == 1)
+			sexActors[0] = src
+			sexActors[1] = dst
+		else
+			sexActors[0] = dst
+			sexActors[1] = src
 		endif
 		
-		SexLab.StartSex(sexActors, anims, Victim = ansAct)
-	else
-		anims =  SexLab.GetAnimationsByTags(2, "MF", "aggressive")
-
-		if(askAct.GetActorBase().GetSex() == 1)
-			sexActors[0] = askAct
-			sexActors[1] = ansAct
-		else
-			sexActors[0] = ansAct
-			sexActors[1] = askAct
-		endif
-
 		SexLab.StartSex(sexActors, anims)
+	else
+		if (srcSex == 1) ; female
+			anims =  SexLab.GetAnimationsByTags(2, "fm,cowgirl")
+			sexActors[0] = src
+			sexActors[1] = dst
+		elseif (srcSex == 0) ; male
+			anims =  SexLab.GetAnimationsByTags(2, "aggressive", "cowgirl")
+			sexActors[0] = dst
+			sexActors[1] = src
+		else ; creature
+			anims =  SexLab.GetAnimationsByTags(2, "cf")
+			sexActors[0] = dst
+			sexActors[1] = src
+		endif
+		
+		SexLab.StartSex(sexActors, anims, Victim = dst)
 	endif
 EndFunction
 

@@ -105,7 +105,7 @@ bool Function chanceRoll(Actor akRef, Actor PlayerRef, float baseChanceMultiplie
 	int chance = akRef.GetFactionRank(arousalFaction)
 	int relationship =  akRef.GetRelationshipRank(PlayerReference.GetActorReference())
 	
-	if(akRef.GetActorBase().GetSex() == PlayerRef.GetActorBase().GetSex())
+	if(SexLab.GetGender(akRef) == SexLab.GetGender(PlayerRef))
 		chance -= 50
 	endif
 	
@@ -162,23 +162,7 @@ EndFunction
 
 
 Function StartSex(Actor PlayerRef, Actor akSpeaker, bool rape = false)
-	Actor[] sexActors = new Actor[2]
-	
-	if(PlayerRef.GetActorBase().GetSex() == 1)
-		sexActors[0] = PlayerRef
-		sexActors[1] = akSpeaker
-	else
-		sexActors[0] = akSpeaker
-		sexActors[1] = PlayerRef
-	endif
-	
-	sslBaseAnimation[] anims
-	if (!rape)
-		SexLab.StartSex(sexActors, anims)
-	else
-		anims = SexLab.GetAnimationsByTag(2, "Aggressive")
-		SexLab.StartSex(sexActors, anims, victim = PlayerRef)
-	endif
+	SexUtil.StartSexActors(akSpeaker, PlayerRef, rape)
 EndFunction
 
 Function enjoy(Actor akSpeaker)
@@ -207,6 +191,8 @@ Function travelWith(Actor akSpeaker)
 	SLApproachAskForSexQuestFollowPlayerScene.Start()
 EndFunction
 
+
+SLAppSexUtil Property SexUtil Auto
 
 Faction Property ArousalFaction  Auto
 

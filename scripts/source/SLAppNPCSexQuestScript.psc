@@ -123,7 +123,8 @@ bool Function chanceRoll(Actor akRef, Actor Player, float baseChanceMultiplier)
 	endif
 
 	int gender = -1
-	if(akRef.GetActorBase().GetSex() != 1)
+	int srcgender = SexLab.GetGender(akRef)
+	if (srcgender != 1 || srcgender != 3) ; not female or female creature
 		gender = 1
 	else
 		gender = 0
