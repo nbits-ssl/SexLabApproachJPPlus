@@ -44,7 +44,7 @@ Function rollRapeChance(Actor akRef)
 	else
 		willRape = false
 	endif
-Endfunction
+EndFunction
 
 Function sexRelationshipDown(Actor akRef, Actor PlayerRef, int multiplier = 1)
 	if(SLApproachMain.enableRelationChangeFlag)
@@ -67,7 +67,7 @@ Function sexRelationshipDown(Actor akRef, Actor PlayerRef, int multiplier = 1)
 
 		akRef.SetRelationshipRank(PlayerRef,relationship)
 	endif
-Endfunction
+EndFunction
 
 Function sexRelationshipUp(Actor akRef, Actor PlayerRef)
 	if(SLApproachMain.enableRelationChangeFlag)
@@ -90,7 +90,7 @@ Function sexRelationshipUp(Actor akRef, Actor PlayerRef)
 
 		akRef.SetRelationshipRank(PlayerRef,relationship)
 	endif
-Endfunction
+EndFunction
 
 bool Function chanceRoll(Actor akRef, Actor PlayerRef, float baseChanceMultiplier)
 	if (!slappUtil.ValidatePromise(akRef, PlayerRef))
@@ -137,7 +137,7 @@ bool Function chanceRoll(Actor akRef, Actor PlayerRef, float baseChanceMultiplie
 	else
 		return false
 	endif
-endfunction
+EndFunction
 
 Function register()
 	index = -1
@@ -158,7 +158,55 @@ Function endApproach()
 		SLApproachAskForSexQuestFollowPlayerScene.Stop()
 		parent.endApproach()
 	;endif
-Endfunction
+EndFunction
+
+
+Function StartSex(Actor PlayerRef, Actor akSpeaker, bool rape = false)
+	Actor[] sexActors = new Actor[2]
+	
+	if(PlayerRef.GetActorBase().GetSex() == 1)
+		sexActors[0] = PlayerRef
+		sexActors[1] = akSpeaker
+	else
+		sexActors[0] = akSpeaker
+		sexActors[1] = PlayerRef
+	endif
+	
+	sslBaseAnimation[] anims
+	if (!rape)
+		SexLab.StartSex(sexActors, anims)
+	else
+		anims = SexLab.GetAnimationsByTag(2, "Aggressive")
+		SexLab.StartSex(sexActors, anims, victim = PlayerRef)
+	endif
+EndFunction
+
+Function enjoy(Actor akSpeaker)
+	Actor PlayerRef = PlayerReference.GetActorRef()
+	
+	self.StartSex(PlayerRef, akSpeaker)
+	self.endApproach()
+	self.sexRelationshipUp(akSpeaker, PlayerRef)
+EndFunction
+
+Function disagree(Actor akSpeaker)
+	self.endApproach()
+	self.sexRelationshipDown(akSpeaker, PlayerReference.GetActorRef())
+EndFunction
+
+Function rapedBy(Actor akSpeaker)
+	Actor PlayerRef = PlayerReference.GetActorRef()
+
+	self.StartSex(PlayerRef, akSpeaker, true)
+	self.endApproach()
+	self.sexRelationshipDown(akSpeaker, PlayerRef, 3)
+EndFunction
+
+Function travelWith(Actor akSpeaker)
+	self.SetStage(15)
+	SLApproachAskForSexQuestFollowPlayerScene.Start()
+EndFunction
+
 
 Faction Property ArousalFaction  Auto
 

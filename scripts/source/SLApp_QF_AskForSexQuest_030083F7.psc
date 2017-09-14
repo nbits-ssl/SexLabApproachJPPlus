@@ -32,4 +32,4 @@ EndFunction
 
 ;END FRAGMENT CODE - Do not edit anything between this and the begin comment
 
-SLApproachAskForSexQuestScript Property QuestScript Auto
+SLAppPCSexQuestScript Property QuestScript Auto
