@@ -130,19 +130,6 @@ int Function ValidateChance(int x)
 	endif
 EndFunction
 
-Function StartSexTopicInfo(ReferenceAlias akRef, ReferenceAlias target)
-	Actor[] sexActors = new Actor[2]
-	if(akRef.GetActorReference().GetLeveledActorBase().GetSex() == 1)
-		sexActors[0] = akRef.GetActorReference()
-		sexActors[1] = target.GetActorReference()
-	else
-		sexActors[0] = target.GetActorReference()
-		sexActors[1] = akRef.GetActorReference()
-	endif
-	sslBaseAnimation[] anims
-	SexLab.StartSex(sexActors, anims)
-EndFunction
-
 SLApproachMainScript Property SLApproachMain Auto
 SexLabFramework Property SexLab  Auto
 
