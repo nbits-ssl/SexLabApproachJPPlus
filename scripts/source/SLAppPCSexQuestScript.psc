@@ -107,7 +107,7 @@ bool Function chanceRoll(Actor akRef, Actor PlayerRef, float baseChanceMultiplie
 	endif
 	
 	int chance = akRef.GetFactionRank(arousalFaction)
-	int relationship =  akRef.GetRelationshipRank(PlayerReference.GetActorReference())
+	int relationship =  akRef.GetRelationshipRank(PlayerRef)
 	
 	if (SexLab.GetGender(akRef) == SexLab.GetGender(PlayerRef))
 		chance -= 50
