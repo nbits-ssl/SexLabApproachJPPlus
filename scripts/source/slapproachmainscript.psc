@@ -93,10 +93,10 @@ EndFunction
 SPELL Property SLApproachCloakAbility  Auto  
 
 bool Function StartInitOfQuestByIndex(int index)
-	slappUtil.log("START? index = " + index + " appQuestInitArray => " + approachQuestsInitilizationArray[index])
 	If(approachQuestsInitilizationArray[index])
 		return false
 	else
+		slappUtil.log("START index = " + index + " appQuestInitArray => " + approachQuestsInitilizationArray[index])
 		approachQuestsInitilizationArray[index] = true
 		return true
 	endif

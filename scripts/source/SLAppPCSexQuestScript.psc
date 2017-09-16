@@ -3,7 +3,7 @@ Scriptname SLAppPCSexQuestScript extends SLApproachBaseQuestScript Conditional
 slapp_util Property slappUtil Auto
 
 Function startApproach(Actor akRef)
-	maxTime = 120
+	maxTime = 30
 	talkingActor.ForceRefTo(akRef)
 	rollRapeChance(akRef)
 	SLApproachAskForSexQuestScene.Start()
@@ -20,7 +20,7 @@ Function rollRapeChance(Actor akRef)
 		endif
 		
 		int amountAware = SLApproachMain.actorAmountAware
-		if(amountAware <=0)
+		if(amountAware <= 0)
 			slappUtil.log("Wrong amount of aware actors : " + amountAware)
 			Utility.Wait(0.1)
 			amountAware = 1
@@ -96,16 +96,20 @@ bool Function chanceRoll(Actor akRef, Actor PlayerRef, float baseChanceMultiplie
 	if (!slappUtil.ValidatePromise(akRef, PlayerRef))
 		slappUtil.log("Ask to Sex blocked by Promise: " + akRef.GetActorBase().GetName())
 		return false
+	elseif (SLApproachAskForSexQuestFollowPlayerScene.isPlaying())
+		return false
 	elseif (SexLab.IsActorActive(PlayerRef))
 		return false
 	elseif (akRef.IsEquipped(SLAppRingShame))
+		return false
+	elseif ((SexLab.GetGender(akRef) == 2) && (SexLab.GetGender(PlayerRef) == 0)) ; c/m
 		return false
 	endif
 	
 	int chance = akRef.GetFactionRank(arousalFaction)
 	int relationship =  akRef.GetRelationshipRank(PlayerReference.GetActorReference())
 	
-	if(SexLab.GetGender(akRef) == SexLab.GetGender(PlayerRef))
+	if (SexLab.GetGender(akRef) == SexLab.GetGender(PlayerRef))
 		chance -= 50
 	endif
 	
@@ -143,23 +147,31 @@ Function register()
 	index = -1
 	while(index == -1)
 		Utility.Wait(1.0)
-		 index = SLApproachMain.RegisterQuest(ApproachQuest, self, "Ask for sex", 1)
+		index = SLApproachMain.RegisterQuest(ApproachQuest, self, "Ask for sex", 1)
 	endwhile
 EndFunction
 
 Function endApproach()
-	;int retryTime = 30
-	;if(SLApproachAskForSexQuestFollowPlayerScene.isPlaying())
-	;	RegisterForSingleUpdate(retryTime)
-	;	slappUtil.log("Ask for Sex : Now following scene is playing, retry.")
-	;else
-		approachEnding = true
-		SLApproachAskForSexQuestScene.Stop()
-		SLApproachAskForSexQuestFollowPlayerScene.Stop()
-		parent.endApproach()
-	;endif
+	int retryTime = 30
+	if (SLApproachAskForSexQuestFollowPlayerScene.isPlaying())
+		slappUtil.log("Ask for Sex : Now following scene is playing, retry.")
+		RegisterForSingleUpdate(retryTime)
+	else
+		self._endApproach()
+	endif
 EndFunction
 
+Function endApproachForce()
+	slappUtil.log("Ask for Sex : endApproachForce() !!")
+	self._endApproach()
+EndFunction
+
+Function _endApproach()
+	approachEnding = true
+	SLApproachAskForSexQuestScene.Stop()
+	SLApproachAskForSexQuestFollowPlayerScene.Stop()
+	parent.endApproach()
+EndFunction
 
 Function StartSex(Actor PlayerRef, Actor akSpeaker, bool rape = false)
 	SexUtil.StartSexActors(akSpeaker, PlayerRef, rape)
@@ -169,11 +181,13 @@ Function enjoy(Actor akSpeaker)
 	Actor PlayerRef = PlayerReference.GetActorRef()
 	
 	self.StartSex(PlayerRef, akSpeaker)
+	self.followSceneStop()
 	self.endApproach()
 	self.sexRelationshipUp(akSpeaker, PlayerRef)
 EndFunction
 
 Function disagree(Actor akSpeaker)
+	self.followSceneStop()
 	self.endApproach()
 	self.sexRelationshipDown(akSpeaker, PlayerReference.GetActorRef())
 EndFunction
@@ -182,6 +196,7 @@ Function rapedBy(Actor akSpeaker)
 	Actor PlayerRef = PlayerReference.GetActorRef()
 
 	self.StartSex(PlayerRef, akSpeaker, true)
+	self.followSceneStop()
 	self.endApproach()
 	self.sexRelationshipDown(akSpeaker, PlayerRef, 3)
 EndFunction
@@ -189,6 +204,12 @@ EndFunction
 Function travelWith(Actor akSpeaker)
 	self.SetStage(15)
 	SLApproachAskForSexQuestFollowPlayerScene.Start()
+EndFunction
+
+Function followSceneStop()
+	if (SLApproachAskForSexQuestFollowPlayerScene.isPlaying())
+		SLApproachAskForSexQuestFollowPlayerScene.Stop()
+	endif
 EndFunction
 
 

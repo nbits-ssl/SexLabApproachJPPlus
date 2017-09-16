@@ -101,7 +101,7 @@ bool Function chanceRoll(Actor akRef, Actor Player, float baseChanceMultiplier)
 
 	int queststage = self.GetStage()
 	if(queststage >= 10 && queststage < 100)
-		; slappUtil.log("Sex to Other by: pass : " + akRef.GetActorBase().GetName() + " - " + self.GetStage())		
+		; slappUtil.log("Sex to Other by: pass : " + akRef.GetActorBase().GetName() + " - " + self.GetStage()) 
 		return false
 	elseif (SSLAppAsk2Scene.IsPlaying() || SSLAppAsk2SceneDisagree.IsPlaying() || SSLAppAsk2SceneRape.IsPlaying())
 		slappUtil.log("Sex to Other by: pass : Scene Locked")
@@ -124,7 +124,7 @@ bool Function chanceRoll(Actor akRef, Actor Player, float baseChanceMultiplier)
 
 	int gender = -1
 	int srcgender = SexLab.GetGender(akRef)
-	if (srcgender != 1 || srcgender != 3) ; not female or female creature
+	if (srcgender != 1 && srcgender != 3) ; not female and female creature
 		gender = 1
 	else
 		gender = 0
@@ -193,8 +193,6 @@ Function endApproach()
 	SSLAppAsk2Scene.Stop()
 	SSLAppAsk2SceneRape.Stop()
 	SSLAppAsk2SceneDisagree.Stop()
-	; askRef.Clear()
-	; ansReF.Clear()
 	parent.endApproach()
 EndFunction
 
@@ -223,14 +221,3 @@ Armor Property SLAppRingServant  Auto
 Armor Property SLAppRingSlave  Auto  
 Armor Property SLAppRingShame  Auto  
 Armor Property SLAppRingBeast  Auto  
-
-;Quest Property SLAPSex2Quest  Auto  
-;ReferenceAlias Property initialActor  Auto  
-;ReferenceAlias Property TargetActor  Auto  
-;Faction Property CurrentFollowerFaction  Auto  
-;Faction Property PotentialFollowerFaction  Auto  
-;Keyword Property kArmorCuirass Auto
-;Keyword Property kClothingBody Auto
-;Keyword Property kSLAppPromiseRing  Auto  
-; Armor Property SLAppRingLove  Auto  
-; Scene Property SLApproachAskForSex2QuestScene  Auto  

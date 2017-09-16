@@ -32,7 +32,9 @@ Function StartSexActors(Actor src, Actor dst, bool rape = false)
 			sexActors[1] = src
 		endif
 		
-		SexLab.StartSex(sexActors, anims)
+		if (src.Is3DLoaded())
+			SexLab.StartSex(sexActors, anims)
+		endif
 	else
 		if (srcSex == 1) ; female
 			anims =  SexLab.GetAnimationsByTags(2, "fm,cowgirl")
@@ -48,7 +50,9 @@ Function StartSexActors(Actor src, Actor dst, bool rape = false)
 			sexActors[1] = src
 		endif
 		
-		SexLab.StartSex(sexActors, anims, Victim = dst)
+		if (src.Is3DLoaded())
+			SexLab.StartSex(sexActors, anims, Victim = dst)
+		endif
 	endif
 EndFunction
 
