@@ -117,7 +117,8 @@ Function clearQuestStatus()
 	int qidx = getregisteredAmount()
 	while (qidx > 0)
 		qidx -= 1
-		approachQuests[qidx].SetStage(100)
+		;approachQuests[qidx].SetStage(100)
+		approachQuestSripts[qidx].endApproachForce()
 	endwhile
 EndFunction
 

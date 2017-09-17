@@ -43,6 +43,9 @@ Function endApproach()
 	approachEnding = false
 EndFunction
 
+Function endApproachForce()
+EndFunction
+
 bool Function chanceRoll(Actor akRef,Actor PlayerRef, float baseChanceMultiplier)
 	return false
 EndFunction

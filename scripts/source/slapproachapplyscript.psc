@@ -15,15 +15,17 @@ Event OnEffectStart(Actor akTarget, Actor playerActor)
 			SLApproachBaseQuestScript xqscript = SLApproachMain.getApproachQuestScript(indexCounter)
 			
 			if(xqscript.isSituationValid(akTarget,playerActor))
-				if(xqscript.chanceRoll(akTarget, playerActor,SLApproachMain.baseChanceMultiplier))
-					init = SLApproachMain.StartInitOfQuestByIndex(indexCounter)
-					if(init)
+				init = SLApproachMain.StartInitOfQuestByIndex(indexCounter)
+				if(init)
+					if(xqscript.chanceRoll(akTarget, playerActor,SLApproachMain.baseChanceMultiplier))
 						Quest xquest = SLApproachMain.getApproachQuest(indexCounter)
 						xquest.Reset()
 						xquest.SetStage(10)
 						slappUtil.log("INIT: " + indexCounter + " - " + xquest.getstage()+ " - " + xquest.isrunning())
 						
 						xqscript.startApproach(akTarget)
+					else
+						SLApproachMain.EndtInitOfQuestByIndex(indexCounter)
 					endif
 				endif
 			endif

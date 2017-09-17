@@ -3,7 +3,10 @@ Scriptname SLAppNPCSexQuestScript extends SLApproachBaseQuestScript  Conditional
 slapp_util Property slappUtil Auto
 
 Function startApproach(Actor akRef)
-	maxTime = 30
+	maxTime = 15
+	if(!SSLAppAsk2.isRunning())
+		SSLAppAsk2.Start()
+	endif
 	if(SSLAppAsk2.isRunning())
 		Actor target = ansRef.GetActorRef()
 		
@@ -35,16 +38,16 @@ Function startApproach(Actor akRef)
 		
 		if(SexLab.IsActorActive(akRef))
 			slappUtil.log("Sex to Other by: pass : akRef Locked by other sex")
-			maxTime = 5
+			maxTime = 2
 		elseif(SexLab.IsActorActive(target))
 			slappUtil.log("Sex to Other by: pass : target Locked by other sex")
-			maxTime = 5
+			maxTime = 2
 		elseif(target.IsInDialogueWithPlayer())
 			slappUtil.log("Sex to Other by: pass : target Locked by talking")
-			maxTime = 5
+			maxTime = 2
 		elseif(!SexLab.IsValidActor(target)) ;third check
 			slappUtil.log("Sex to Other by: pass : target is maybe dead or not loaded or...")
-			maxTime = 5
+			maxTime = 2
 		elseif (akRef.IsEquipped(SLAppRingServant) || akRef.IsEquipped(SLAppRingSlave))
 			SSLAppAsk2Scene.Start()
 		elseif (roll < result)
@@ -70,7 +73,10 @@ Function startApproach(Actor akRef)
 		endif
 		
 		askRef.GetActorRef().EvaluatePackage()
+	else
+		slappUtil.log("Sex to Other: SSLAppAsk2 isn't running.")
 	endif
+	
 	parent.startApproach(akRef)
 EndFunction
 
@@ -95,10 +101,6 @@ int Function calcChance(Actor akRef, Actor target)
 endFunction
 
 bool Function chanceRoll(Actor akRef, Actor Player, float baseChanceMultiplier)
-	if(!SSLAppAsk2.isRunning())
-		SSLAppAsk2.Start()
-	endif
-
 	int queststage = self.GetStage()
 	if(queststage >= 10 && queststage < 100)
 		; slappUtil.log("Sex to Other by: pass : " + akRef.GetActorBase().GetName() + " - " + self.GetStage()) 
@@ -116,10 +118,10 @@ bool Function chanceRoll(Actor akRef, Actor Player, float baseChanceMultiplier)
 	Scene aks = akRef.GetCurrentScene()
 	if(aks)
 		string akscene = aks.GetOwningQuest().GetId()
-		if(akscene != "SSLAppAsk2" && akscene != "SLApproachAskForSexQuest")
+		;if(akscene != "SSLAppAsk2" && akscene != "SLApproachAskForSexQuest")
 			slappUtil.log("Sex to Other blocked by other scene (Ask): " + akRef.GetActorBase().GetName() + " : " + akscene)
 			return false
-		endif
+		;endif
 	endif
 
 	int gender = -1
@@ -150,10 +152,10 @@ bool Function chanceRoll(Actor akRef, Actor Player, float baseChanceMultiplier)
 		Scene ans = target.GetCurrentScene()
 		if(ans)
 			string anscene = ans.GetOwningQuest().GetId()
-			if(anscene != "SSLAppAsk2" && anscene != "SLApproachAskForSexQuest")
+			;if(anscene != "SSLAppAsk2" && anscene != "SLApproachAskForSexQuest")
 				slappUtil.log("Sex to Other blocked by other scene (Ans): " + akRef.GetActorBase().GetName() + " : " + anscene)
 				return false
-			endif
+			;endif
 		endif
 
 		; for HBC
@@ -173,7 +175,7 @@ bool Function chanceRoll(Actor akRef, Actor Player, float baseChanceMultiplier)
 			; 	slappUtil.log("Ask to other: already ref to")
 			; 	return false
 			; endif
-
+			
 			askRef.ForceRefTo(akRef)
 			ansRef.ForceRefTo(target)
 			
@@ -193,7 +195,17 @@ Function endApproach()
 	SSLAppAsk2Scene.Stop()
 	SSLAppAsk2SceneRape.Stop()
 	SSLAppAsk2SceneDisagree.Stop()
+	SSLAppAsk2.Stop()
 	parent.endApproach()
+EndFunction
+
+Function endApproachForce()
+	slappUtil.log("Ask to Other: endApproachForce() !!")
+	ActorBase fordebugname = askRef.GetActorRef().GetActorBase()
+	if (fordebugname)
+		slappUtil.log("Ask to Other Force Stop: " + fordebugname.GetName())
+	endif
+	self.endApproach()
 EndFunction
 
 Function register()

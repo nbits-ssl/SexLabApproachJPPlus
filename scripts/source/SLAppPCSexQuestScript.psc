@@ -130,10 +130,10 @@ bool Function chanceRoll(Actor akRef, Actor PlayerRef, float baseChanceMultiplie
 	Scene aks = akRef.GetCurrentScene()
 	if(aks)
 		string akscene = aks.GetOwningQuest().GetId()
-		if(akscene != "SSLAppAsk2" && akscene != "SLApproachAskForSexQuest")
+		;if(akscene != "SSLAppAsk2" && akscene != "SLApproachAskForSexQuest")
 			slappUtil.log("Ask for Sex result: Blocked by another Scene: " + akRef.GetActorBase().GetName() + " : " + akscene)
 			return false
-		endif
+		;endif
 	endif
 
 	if(roll < result)
@@ -163,6 +163,10 @@ EndFunction
 
 Function endApproachForce()
 	slappUtil.log("Ask for Sex : endApproachForce() !!")
+	ActorBase fordebugname = talkingActor.GetActorRef().GetActorBase()
+	if (fordebugname)
+		slappUtil.log("Ask to Other Force Stop: " + fordebugname.GetName())
+	endif
 	self._endApproach()
 EndFunction
 
