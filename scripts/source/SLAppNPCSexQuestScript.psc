@@ -201,9 +201,12 @@ EndFunction
 
 Function endApproachForce()
 	slappUtil.log("Ask to Other: endApproachForce() !!")
-	ActorBase fordebugname = askRef.GetActorRef().GetActorBase()
-	if (fordebugname)
-		slappUtil.log("Ask to Other Force Stop: " + fordebugname.GetName())
+	Actor fordebugact = askRef.GetActorRef()
+	if (fordebugact)
+		ActorBase fordebugname = fordebugact.GetActorBase()
+		if (fordebugname)
+			slappUtil.log("Ask to Other Force Stop: " + fordebugname.GetName())
+		endif
 	endif
 	self.endApproach()
 EndFunction

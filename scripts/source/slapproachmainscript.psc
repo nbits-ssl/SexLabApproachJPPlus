@@ -103,8 +103,10 @@ bool Function StartInitOfQuestByIndex(int index)
 EndFunction
 
 Function EndtInitOfQuestByIndex(int index)
-    slappUtil.log("END index = " + index + " appQuestInitArray => " + approachQuestsInitilizationArray[index])
-    approachQuestsInitilizationArray[index] = false
+	if (index >= 0)
+		slappUtil.log("END index = " + index + " appQuestInitArray => " + approachQuestsInitilizationArray[index])
+		approachQuestsInitilizationArray[index] = false
+	endif
 EndFunction
 
 Function clearQuestStatus()
