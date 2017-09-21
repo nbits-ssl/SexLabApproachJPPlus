@@ -23,10 +23,14 @@ Bool Function isSituationValid(Actor akRef, Actor player)
 	if (!player.IsInCombat()  && !akRef.IsInCombat()&& \
 		SexLab.IsValidActor(akRef) && !player.IsOnMount() && \
 		!player.IsSwimming() && !player.IsSneaking())
+
+		Race akRace = akRef.GetRace()
 		
-		if (!SLApproachMain.enableElderRaceFlag && akRef.GetRace() == ElderRace)
+		if (!SLApproachMain.enableElderRaceFlag && akRace == ElderRace)
 			return false
-		elseif (akRef.GetRace().AllowPickpocket())
+		elseif (akRace == HorseRace) ; for Immersive Horse
+			return false
+		elseif (akRace.AllowPickpocket())
 			return true
 		elseif (akRef.IsPlayerTeammate())
 			return true
@@ -63,3 +67,5 @@ Race Property ElderRace  Auto
 ; Faction Property CurrentFollowerFaction  Auto  
 ; Faction Property PotentialFollowerFaction  Auto  
 
+
+Race Property HorseRace  Auto  
