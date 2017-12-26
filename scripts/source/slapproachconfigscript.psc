@@ -20,35 +20,50 @@ event OnPageReset(string page)
 	SetCursorFillMode(TOP_TO_BOTTOM)
 	SetCursorPosition(0)
 
-	AddHeaderOption("General: ")
+	AddHeaderOption("$SLAppGeneral")
 	
-	cloakFrequencyOID =  AddSliderOption("Cloak frequency:", SLApproachMain.cloakFrequency,"per {0} sec.")
-	cloakRangeOID =  AddSliderOption("Cloak range:", SLApproachMain.cloakRange)
-	baseChanceMultiplierOID =  AddSliderOption("Base chance multiplier:", SLApproachMain.baseChanceMultiplier, "{1}")
-	totalAwarnessRangeOID = AddSliderOption("Total awarness range:", SLApproachMain.totalAwarnessRange)
-	enablePromiseFlagOID = AddToggleOption("Enable promise ring", SLApproachMain.enablePromiseFlag)
-	enableRapeFlagOID = AddToggleOption("Enable rape", SLApproachMain.enableRapeFlag)
-	enableRelationChangeFlagOID = AddToggleOption("Enable to change relationship rank", SLApproachMain.enableRelationChangeFlag)
-	enableElderRaceFlagOID = AddToggleOption("Enable ElderRace", SLApproachMain.enableElderRaceFlag)
-	debugLogFlagOID = AddToggleOption("Output papyrus log", SLApproachMain.debugLogFlag)
+	cloakFrequencyOID =  AddSliderOption("$CloakFrequency", SLApproachMain.cloakFrequency,"$per0sec")
+	cloakRangeOID =  AddSliderOption("$CloakRange", SLApproachMain.cloakRange)
+	baseChanceMultiplierOID =  AddSliderOption("$BaseChanceMultiplier", SLApproachMain.baseChanceMultiplier, "{1}")
+	totalAwarnessRangeOID = AddSliderOption("$TotalAwarnessRange", SLApproachMain.totalAwarnessRange)
+	enablePromiseFlagOID = AddToggleOption("$EnablePromiseRing", SLApproachMain.enablePromiseFlag)
+	enableRapeFlagOID = AddToggleOption("$EnableRape", SLApproachMain.enableRapeFlag)
+	enableRelationChangeFlagOID = AddToggleOption("$EnableChangeRelationshipRank", SLApproachMain.enableRelationChangeFlag)
+	enableElderRaceFlagOID = AddToggleOption("$EnableElderRace", SLApproachMain.enableElderRaceFlag)
+	debugLogFlagOID = AddToggleOption("$OutputPapyrusLog", SLApproachMain.debugLogFlag)
 
 	SetCursorPosition(1)
 
-	AddHeaderOption("Registered approach quests: ")
+	AddHeaderOption("$RegisteredApproachQuests")
 	
 	int indexCounter = SLApproachMain.getRegisteredAmount()
-			
+	
 	while(indexCounter > 0)
 		indexCounter = indexCounter - 1
 		AddToggleOption(SLApproachMain.getApproachQuestName(indexCounter),true)
 	endwhile
 
-	AddHeaderOption("Registered quests options: ")
+	AddHeaderOption("$RegisteredQuestsOptions")
 
-	userAddingPointPcOID =  AddSliderOption("Adding points: NPC->PC:", SLApproachMain.userAddingPointPc, "{0}")
-	userAddingPointNpcOID =  AddSliderOption("Adding points: NPC->NPC:", SLApproachMain.userAddingPointNpc, "{0}")
-	
+	userAddingPointPcOID =  AddSliderOption("$AddingPointsNPCPC", SLApproachMain.userAddingPointPc, "{0}")
+	userAddingPointNpcOID =  AddSliderOption("$AddingPointsNPCNPC", SLApproachMain.userAddingPointNpc, "{0}")
 endevent
+
+Event OnOptionHighlight(int option)
+	if (option == cloakFrequencyOID)
+		SetInfoText("$BaseChanceMultiplierInfo")
+	elseif (option == enableRelationChangeFlagOID)
+		SetInfoText("$EnableChangeRelationshipRankInfo")
+	elseif (option == enableRapeFlagOID)
+		SetInfoText("$EnableRapeInfo")
+	elseif (option == enablePromiseFlagOID)
+		SetInfoText("$EnablePromiseRingInfo")
+	elseif (option == userAddingPointPcOID)
+		SetInfoText("$AddingPointsNPCPCInfo")
+	elseif (option == userAddingPointNpcOID)
+		SetInfoText("$AddingPointsNPCNPCInfo")
+	endif
+EndEvent
 
 event OnOptionSelect(int option)
 	if(option == debugLogFlagOID)
