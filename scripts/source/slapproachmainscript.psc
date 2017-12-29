@@ -7,7 +7,7 @@ float Property baseChanceMultiplier = 1.0 Auto
 int Property totalAwarnessRange = 256 Auto
 
 bool Property debugLogFlag = false Auto
-bool Property enablePromiseFlag = true Auto
+bool Property enablePromiseFlag = false Auto
 bool Property enableRapeFlag = true Auto
 bool Property enableRelationChangeFlag = false Auto
 bool Property enableElderRaceFlag = false Auto

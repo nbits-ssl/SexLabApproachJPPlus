@@ -30,6 +30,8 @@ Bool Function isSituationValid(Actor akRef, Actor player)
 			return false
 		elseif (akRace == HorseRace) ; for Immersive Horse
 			return false
+		elseif (akRace == ManakinRace)
+			return false
 		elseif (akRace.AllowPickpocket())
 			return true
 		elseif (akRef.IsPlayerTeammate())
@@ -62,10 +64,5 @@ SexLabFramework Property SexLab  Auto
 SLApproachMainScript Property SLApproachMain auto
 Quest Property ApproachQuest  Auto  ; overwrite by real approach quests
 Race Property ElderRace  Auto  
-
-
-; Faction Property CurrentFollowerFaction  Auto  
-; Faction Property PotentialFollowerFaction  Auto  
-
-
 Race Property HorseRace  Auto  
+Race Property ManakinRace  Auto  

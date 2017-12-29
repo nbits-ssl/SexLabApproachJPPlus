@@ -91,33 +91,68 @@ EndFunction
 bool Function ValidatePromise(Actor akRef, Actor target)
 	if (!SLApproachMain.enablePromiseFlag)
 		return true
-	elseif (akRef.IsEquipped(SLAppRingLove) || target.IsEquipped(SLAppRingLove))
-		return true
-	elseif (akRef.WornHasKeyword(kSLAppPromiseRing))
-		if (target.WornHasKeyword(kSLAppPromiseRing))
-			if(akRef.IsEquipped(SLAppRing01) && target.IsEquipped(SLAppRing01))
-				return true
-			elseif(akRef.IsEquipped(SLAppRing02) && target.IsEquipped(SLAppRing02))
-				return true
-			elseif(akRef.IsEquipped(SLAppRing03) && target.IsEquipped(SLAppRing03))
-				return true
-			elseif(akRef.IsEquipped(SLAppRing04) && target.IsEquipped(SLAppRing04))
-				return true
-			elseif(akRef.IsEquipped(SLAppRing05) && target.IsEquipped(SLAppRing05))
-				return true
-			endif
-		endif
+	else
+		bool akRefAgree = (akRef.GetItemCount(SLAppRingAgreement) > 0)
+		bool targetAgree = (target.GetItemCount(SLAppRingAgreement) > 0)
 		
+		if (akRef.IsEquipped(SLAppRingLove) || target.IsEquipped(SLAppRingLove))
+			return true
+		elseif (akRef.WornHasKeyword(kSLAppPromiseRing) || akRefAgree)
+			if (target.WornHasKeyword(kSLAppPromiseRing) || targetAgree)
+				if (self._validatePromise(akRef, akRefAgree, target, targetAgree, SLAppRing01))
+					return true
+				elseif (self._validatePromise(akRef, akRefAgree, target, targetAgree, SLAppRing02))
+					return true
+				elseif (self._validatePromise(akRef, akRefAgree, target, targetAgree, SLAppRing03))
+					return true
+				elseif (self._validatePromise(akRef, akRefAgree, target, targetAgree, SLAppRing04))
+					return true
+				elseif (self._validatePromise(akRef, akRefAgree, target, targetAgree, SLAppRing05))
+					return true
+				endif
+			endif
+			
+			return false
+		elseif (target.WornHasKeyword(kSLAppPromiseRing) || targetAgree)
+			return false
+		else
+			return true
+		endif
+	endif
+EndFunction
+
+bool Function _validatePromise(Actor akRef, bool akRefAgree, Actor target, bool targetAgree, Armor keyItem)
+	if (akRef.IsEquipped(keyItem) && target.IsEquipped(keyItem))
+		return true
+	elseif (akRef.IsEquipped(keyItem) && (targetAgree && target.GetItemCount(keyItem)))
+		return true
+	elseif ((akRefAgree && akRef.GetItemCount(keyItem)) && target.IsEquipped(keyItem))
+		return true
+	elseif (akRefAgree && targetAgree && akRef.GetItemCount(keyItem) && target.GetItemCount(keyItem))
+		return true
+	else
 		return false
-	elseif (target.WornHasKeyword(kSLAppPromiseRing))
-		return false
-	elseif (akRef.IsEquipped(SLAppRingShyness) && !target.IsPlayerTeammate() && target != PlayerRef.GetActorRef())
+	endif
+EndFunction
+
+bool Function ValidateShyness(Actor akRef, Actor target)
+	if (akRef.IsEquipped(SLAppRingShyness) && !target.IsPlayerTeammate() && target != PlayerRef.GetActorRef())
 		return false
 	elseif (target.IsEquipped(SLAppRingShyness) && !akRef.IsPlayerTeammate())
 		return false
 	else
 		return true
 	endif
+EndFunction
+
+bool Function ValidateGender(Actor akRef, Actor target)
+	if (SexLab.GetGender(akRef) == SexLab.GetGender(target))
+		if !(akRef.IsEquipped(SLAppRingHomo) && target.IsEquipped(SLAppRingHomo))
+			return false
+		endif
+	endif
+	
+	return true
 EndFunction
 
 int Function ValidateChance(int x)
@@ -144,5 +179,7 @@ Armor Property SLAppRing04  Auto
 Armor Property SLAppRing05  Auto  
 Armor Property SLAppRingLove  Auto  
 Armor Property SLAppRingShyness  Auto  
+Armor Property SLAppRingHomo  Auto  
+Armor Property SLAppRingAgreement  Auto  
 
 ReferenceAlias Property PlayerRef  Auto  

@@ -93,14 +93,16 @@ Function sexRelationshipUp(Actor akRef, Actor PlayerRef)
 EndFunction
 
 bool Function chanceRoll(Actor akRef, Actor PlayerRef, float baseChanceMultiplier)
-	if (!slappUtil.ValidatePromise(akRef, PlayerRef))
-		slappUtil.log("Ask to Sex blocked by Promise: " + akRef.GetActorBase().GetName())
+	if (!slappUtil.ValidatePromise(akRef, PlayerRef) || !slappUtil.ValidateShyness(akRef, PlayerRef))
+		slappUtil.log("Ask to Sex blocked by Promise or Shyness: " + akRef.GetActorBase().GetName())
 		return false
 	elseif (SLApproachAskForSexQuestFollowPlayerScene.isPlaying())
 		return false
 	elseif (SexLab.IsActorActive(PlayerRef))
 		return false
 	elseif (akRef.IsEquipped(SLAppRingShame))
+		return false
+	elseif (akRef.GetItemCount(SLAppRingFamily))
 		return false
 	elseif ((SexLab.GetGender(akRef) == 2) && (SexLab.GetGender(PlayerRef) == 0)) ; c/m
 		return false
@@ -109,7 +111,7 @@ bool Function chanceRoll(Actor akRef, Actor PlayerRef, float baseChanceMultiplie
 	int chance = akRef.GetFactionRank(arousalFaction)
 	int relationship =  akRef.GetRelationshipRank(PlayerRef)
 	
-	if (SexLab.GetGender(akRef) == SexLab.GetGender(PlayerRef))
+	if !(slappUtil.ValidateGender(akRef, PlayerRef))
 		chance -= 50
 	endif
 	
@@ -232,3 +234,4 @@ Scene Property SLApproachAskForSexQuestFollowPlayerScene Auto
 
 Armor Property SLAppRingShame  Auto  
 Armor Property SLAppRingBeast  Auto  
+Armor Property SLAppRingFamily  Auto  

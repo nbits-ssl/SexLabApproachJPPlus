@@ -5,7 +5,7 @@ slapp_util Property slappUtil Auto
 Event OnEffectStart(Actor akTarget, Actor playerActor)
 	SLApproachMain.addActorEffectStarted()
 	
-	if (!akTarget.IsDead() && (akTarget.HasLOS(playerActor) || akTarget.GetDistance(playerActor) <= SLApproachMain.totalAwarnessRange))
+	if (!akTarget.IsDead())
 		SLApproachMain.actorAmountAware += 1
 		bool init
 		int indexCounter = SLApproachMain.getRegisteredAmount()

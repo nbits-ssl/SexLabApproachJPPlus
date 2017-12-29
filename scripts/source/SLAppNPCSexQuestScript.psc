@@ -102,7 +102,7 @@ endFunction
 
 bool Function chanceRoll(Actor akRef, Actor Player, float baseChanceMultiplier)
 	int queststage = self.GetStage()
-	if(queststage >= 10 && queststage < 100)
+	if (queststage >= 10 && queststage < 100)
 		; slappUtil.log("Sex to Other by: pass : " + akRef.GetActorBase().GetName() + " - " + self.GetStage()) 
 		return false
 	elseif (SSLAppAsk2Scene.IsPlaying() || SSLAppAsk2SceneDisagree.IsPlaying() || SSLAppAsk2SceneRape.IsPlaying())
@@ -111,7 +111,7 @@ bool Function chanceRoll(Actor akRef, Actor Player, float baseChanceMultiplier)
 	elseif (SexLab.IsActorActive(akRef))
 		slappUtil.log("Sex to Other by: pass : akRef Locked by other sex")
 		return false
-	elseif (akRef.IsEquipped(SLAppRingShame))
+	elseif (akRef.IsEquipped(SLAppRingShame) || akRef.GetItemCount(SLAppRingFamily) || akRef.GetItemCount(SLAppRingEngagement))
 		return false
 	endif
 	
@@ -124,28 +124,36 @@ bool Function chanceRoll(Actor akRef, Actor Player, float baseChanceMultiplier)
 		;endif
 	endif
 
-	int gender = -1
+	int gender
 	int srcgender = SexLab.GetGender(akRef)
-	if (srcgender != 1 && srcgender != 3) ; not female and female creature
+	if (akRef.IsEquipped(SLAppRingHomo))
+		gender = -1 ; any
+	elseif (srcgender != 1 && srcgender != 3) ; not female and female creature
 		gender = 1
 	else
 		gender = 0
 	endif
 	
 	Actor target = SexLab.FindAvailableActor(akRef, 1000.0, gender, Player)
-	if(target)
+	if (target)
 		if (target.IsDead())
 			return false ; first check
 		elseif (!akRef.GetRace().AllowPickpocket() && !target.IsPlayerTeammate()) ; Pet only approach teammates
 			return false
 		elseif (!SLApproachMain.enableElderRaceFlag && target.GetRace() == ElderRace)
 			return false
+		elseif (target.GetRace() == ManakinRace)
+			return false
+		elseif !(slappUtil.ValidateGender(akRef, target))
+			return false
+		elseif (target.GetItemCount(SLAppRingFamily) || target.GetItemCount(SLAppRingEngagement))
+			return false
 		endif
 		
 		slappUtil.log("Sex to Other by: " + akRef.GetActorBase().GetName() + " - " + target.GetBaseObject().GetName() + " - stage " + self.GetStage())
 		
-		if(!slappUtil.ValidatePromise(akRef, target))
-			slappUtil.log("Sex to Other blocked by Promise: " + akRef.GetActorBase().GetName() + " $ " + target.GetActorBase().GetName())
+		if (!slappUtil.ValidatePromise(akRef, target) || !slappUtil.ValidateShyness(akRef, target))
+			slappUtil.log("Sex to Other blocked by Promise or Shyness: " + akRef.GetActorBase().GetName() + " $ " + target.GetActorBase().GetName())
 			return false
 		endif
 		
@@ -236,3 +244,9 @@ Armor Property SLAppRingServant  Auto
 Armor Property SLAppRingSlave  Auto  
 Armor Property SLAppRingShame  Auto  
 Armor Property SLAppRingBeast  Auto  
+
+Armor Property SLAppRingHomo  Auto  
+
+Armor Property SLAppRingEngagement  Auto  
+
+Armor Property SLAppRingFamily  Auto  
