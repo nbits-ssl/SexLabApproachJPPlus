@@ -57,7 +57,7 @@ Function startApproach(Actor akRef)
 				SSLAppAsk2SceneRape.Start()
 			else
 				int second_result = slappUtil.ValidateChance(calcChance(akRef, target) / 10)
-				int second_extra = SLApproachMain.userAddingPointNpc / 10
+				int second_extra = SLApproachMain.userAddingRapePointNpc
 				second_result = second_result + second_extra
 				int second_roll = Utility.RandomInt(0, 100)
 				slappUtil.log("Ask to Other rape chance: ANS by : "  + akRef.GetActorBase().GetName() + " : " + second_result + " & " + second_roll)

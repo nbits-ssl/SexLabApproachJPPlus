@@ -33,7 +33,7 @@ Function rollRapeChance(Actor akRef)
 		chance -= 10
 		chance = chance / 10
 		chance = slappUtil.ValidateChance(chance)
-		chance += SLApproachMain.userAddingPointPc / 10
+		chance += SLApproachMain.userAddingRapePointPc
 
 		int roll = Utility.RandomInt(0, 100)
 		if(roll < chance)
@@ -106,14 +106,13 @@ bool Function chanceRoll(Actor akRef, Actor PlayerRef, float baseChanceMultiplie
 		return false
 	elseif ((SexLab.GetGender(akRef) == 2) && (SexLab.GetGender(PlayerRef) == 0)) ; c/m
 		return false
+	elseif !(slappUtil.ValidateGender(PlayerRef, akRef, true))
+		return false
 	endif
 	
 	int chance = akRef.GetFactionRank(arousalFaction)
 	int relationship =  akRef.GetRelationshipRank(PlayerRef)
 	
-	if !(slappUtil.ValidateGender(akRef, PlayerRef))
-		chance -= 50
-	endif
 	
 	if(relationship < 0)
 		chance -= 50

@@ -14,6 +14,9 @@ int enableElderRaceFlagOID
 int userAddingPointPcOID
 int userAddingPointNpcOID
 
+int userAddingRapePointPcOID
+int userAddingRapePointNpcOID
+
 SLApproachMainScript Property SLApproachMain Auto
 
 event OnPageReset(string page)
@@ -47,6 +50,9 @@ event OnPageReset(string page)
 
 	userAddingPointPcOID =  AddSliderOption("$AddingPointsNPCPC", SLApproachMain.userAddingPointPc, "{0}")
 	userAddingPointNpcOID =  AddSliderOption("$AddingPointsNPCNPC", SLApproachMain.userAddingPointNpc, "{0}")
+
+	userAddingRapePointPcOID =  AddSliderOption("$AddingRapePointsNPCPC", SLApproachMain.userAddingRapePointPc, "{0}")
+	userAddingRapePointNpcOID =  AddSliderOption("$AddingRapePointsNPCNPC", SLApproachMain.userAddingRapePointNpc, "{0}")
 endevent
 
 Event OnOptionHighlight(int option)
@@ -62,6 +68,10 @@ Event OnOptionHighlight(int option)
 		SetInfoText("$AddingPointsNPCPCInfo")
 	elseif (option == userAddingPointNpcOID)
 		SetInfoText("$AddingPointsNPCNPCInfo")
+	elseif (option == userAddingRapePointPcOID)
+		SetInfoText("$AddingRapePointsNPCPCInfo")
+	elseif (option == userAddingRapePointNpcOID)
+		SetInfoText("$AddingRapePointsNPCNPCInfo")
 	endif
 EndEvent
 
@@ -115,6 +125,16 @@ event OnOptionSliderOpen(int option)
 		SetSliderDialogDefaultValue(SLApproachMain.userAddingPointNpc)
 		SetSliderDialogRange(-100.0, 100.0)
 		SetSliderDialogInterval(1.0)
+	elseif (option == userAddingRapePointPcOID)
+		SetSliderDialogStartValue(SLApproachMain.userAddingRapePointPc)
+		SetSliderDialogDefaultValue(SLApproachMain.userAddingRapePointPc)
+		SetSliderDialogRange(-100.0, 100.0)
+		SetSliderDialogInterval(1.0)
+	elseif (option == userAddingRapePointNpcOID)
+		SetSliderDialogStartValue(SLApproachMain.userAddingRapePointNpc)
+		SetSliderDialogDefaultValue(SLApproachMain.userAddingRapePointNpc)
+		SetSliderDialogRange(-100.0, 100.0)
+		SetSliderDialogInterval(1.0)
 	endif
 endevent
 
@@ -137,5 +157,11 @@ event OnOptionSliderAccept(int option, float value)
 	elseif (option == userAddingPointNpcOID)
 		SLApproachMain.userAddingPointNpc = value as Int
 		SetSliderOptionValue(userAddingPointNpcOID , SLApproachMain.userAddingPointNpc)
+	elseif (option == userAddingRapePointPcOID)
+		SLApproachMain.userAddingRapePointPc = value as Int
+		SetSliderOptionValue(userAddingRapePointPcOID , SLApproachMain.userAddingRapePointPc)
+	elseif (option == userAddingRapePointNpcOID)
+		SLApproachMain.userAddingRapePointNpc = value as Int
+		SetSliderOptionValue(userAddingRapePointNpcOID , SLApproachMain.userAddingRapePointNpc)
 	endif
 endevent

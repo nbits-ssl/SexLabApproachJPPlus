@@ -145,8 +145,12 @@ bool Function ValidateShyness(Actor akRef, Actor target)
 	endif
 EndFunction
 
-bool Function ValidateGender(Actor akRef, Actor target)
-	if (SexLab.GetGender(akRef) == SexLab.GetGender(target))
+bool Function ValidateGender(Actor akRef, Actor target, bool isplayer = false)
+	if (isplayer)
+		if (SexLab.GetGender(akRef) == SexLab.GetGender(target) && !akRef.IsEquipped(SLAppRingHomo))
+			return false
+		endif
+	elseif (SexLab.GetGender(akRef) == SexLab.GetGender(target))
 		if !(akRef.IsEquipped(SLAppRingHomo) && target.IsEquipped(SLAppRingHomo))
 			return false
 		endif
