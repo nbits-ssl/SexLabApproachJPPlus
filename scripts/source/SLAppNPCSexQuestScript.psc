@@ -42,6 +42,9 @@ Function startApproach(Actor akRef)
 		elseif(SexLab.IsActorActive(target))
 			slappUtil.log("Sex to Other by: pass : target Locked by other sex")
 			maxTime = 2
+		elseif (target.IsInCombat() || target.IsWeaponDrawn() || target.IsBleedingOut())
+			slappUtil.log("Sex to Other by: pass : target Locked by combat")
+			maxTime = 2
 		elseif(target.IsInDialogueWithPlayer())
 			slappUtil.log("Sex to Other by: pass : target Locked by talking")
 			maxTime = 2

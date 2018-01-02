@@ -20,9 +20,9 @@ Function startApproach(Actor akRef)
 EndFunction
 
 Bool Function isSituationValid(Actor akRef, Actor player)
-	if (!player.IsInCombat()  && !akRef.IsInCombat()&& \
-		SexLab.IsValidActor(akRef) && !player.IsOnMount() && \
-		!player.IsSwimming() && !player.IsSneaking())
+	if (!player.IsInCombat()  && !akRef.IsInCombat() && !akRef.IsWeaponDrawn() && \
+		SexLab.IsValidActor(akRef) && !player.IsBleedingOut() && !akRef.IsBleedingOut() && \
+		!player.IsOnMount() && !player.IsSwimming() && !player.IsSneaking())
 
 		Race akRace = akRef.GetRace()
 		
