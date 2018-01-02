@@ -43,7 +43,7 @@ event OnPageReset(string page)
 	
 	while(indexCounter > 0)
 		indexCounter = indexCounter - 1
-		AddToggleOption(SLApproachMain.getApproachQuestName(indexCounter),true)
+		AddTextOption(SLApproachMain.getApproachQuestName(indexCounter), "$SLAppEnabled")
 	endwhile
 
 	AddHeaderOption("$RegisteredQuestsOptions")
@@ -98,12 +98,12 @@ event OnOptionSliderOpen(int option)
 	if (option == cloakFrequencyOID)
 		SetSliderDialogStartValue( SLApproachMain.cloakFrequency)
 		SetSliderDialogDefaultValue( SLApproachMain.cloakFrequency)
-		SetSliderDialogRange(1.0, 120.0)
+		SetSliderDialogRange(1.0, 240.0)
 		SetSliderDialogInterval(1.0)
 	elseif (option == cloakRangeOID )
 		SetSliderDialogStartValue( SLApproachMain.cloakRange)
 		SetSliderDialogDefaultValue( SLApproachMain.cloakRange)
-		SetSliderDialogRange(64.0, 512.0)
+		SetSliderDialogRange(64.0, 1024.0)
 		SetSliderDialogInterval(1.0)
 	elseif (option == baseChanceMultiplierOID )
 		SetSliderDialogStartValue( SLApproachMain.baseChanceMultiplier)
