@@ -93,7 +93,9 @@ Function sexRelationshipUp(Actor akRef, Actor PlayerRef)
 EndFunction
 
 bool Function chanceRoll(Actor akRef, Actor PlayerRef, float baseChanceMultiplier)
-	if (!slappUtil.ValidatePromise(akRef, PlayerRef) || !slappUtil.ValidateShyness(akRef, PlayerRef))
+	if !(akRef.HasLOS(PlayerRef))
+		return false
+	elseif (!slappUtil.ValidatePromise(akRef, PlayerRef) || !slappUtil.ValidateShyness(akRef, PlayerRef))
 		slappUtil.log("Ask to Sex blocked by Promise or Shyness: " + akRef.GetActorBase().GetName())
 		return false
 	elseif (SLApproachAskForSexQuestFollowPlayerScene.isPlaying())
