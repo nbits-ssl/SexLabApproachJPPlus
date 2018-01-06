@@ -4,9 +4,6 @@ Int property index = -1 auto
 Int property maxTime = 60 auto
 bool property approachEnding = false auto
 
-; slapp_util Property slappUtil Auto
-; why None object ?
-
 Function register()
 	;
 EndFunction
@@ -57,7 +54,7 @@ bool Function chanceRoll(Actor akRef,Actor PlayerRef, float baseChanceMultiplier
 EndFunction
 
 Event OnInit()
-    ;register()
+	;register()
 EndEvent
 
 SexLabFramework Property SexLab  Auto  

@@ -2,6 +2,7 @@ Scriptname SLApproachMainScript extends Quest
 
 Actor Property PlayerRef Auto
 Spell Property ApproachCloak Auto
+Spell Property SLApproachCloakAbility Auto
 int Property cloakFrequency = 10 Auto
 float Property baseChanceMultiplier = 1.0 Auto
 int Property totalAwarnessRange = 256 Auto ; no longer used
@@ -50,6 +51,17 @@ Event OnInit()
 	Maintenance()
 EndEvent
 
+Function Maintenance()
+	if (!initilized)
+		initApproachQuestRegister()
+	endif
+	
+	initilized = true
+	PlayerRef.RemoveSpell(SLApproachCloakAbility)
+
+	UnregisterForAllModEvents()
+EndFunction
+
 Function initApproachQuestRegister()
 	registeredQuestsAmount = 0
 
@@ -65,19 +77,6 @@ Function initApproachQuestRegister()
 	approachQuestNames = new string[8]
 	approachQuestScripts = new SLApproachBaseQuestScript[8]
 EndFunction
-
-Function Maintenance()
-	if (!initilized)
-		initApproachQuestRegister()
-	endif
-	
-	initilized = true
-	PlayerRef.RemoveSpell(SLApproachCloakAbility)
-
-	UnregisterForAllModEvents()
-EndFunction
-
-Spell Property SLApproachCloakAbility  Auto  
 
 bool Function StartInitOfQuestByIndex(int index)
 	if (approachQuestsInitilizationArray[index])
@@ -116,7 +115,7 @@ int Function RegisterQuest(Quest newQuest, SLApproachBaseQuestScript newQuestScr
 	endif
 	
 	int indexCounter = registeredQuestsAmount - 1
-	while(indexCounter >= 0)
+	while (indexCounter >= 0)
 		if (approachQuestNames[indexCounter] == newQuestName)
 			approachQuests[indexCounter] = newQuest
 			approachQuestScripts[indexCounter] = newQuestScript
