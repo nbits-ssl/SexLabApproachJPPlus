@@ -29,30 +29,30 @@ slapp_util Property slappUtil Auto
 int myActorAmountAware = 0
 
 int Property actorAmountAware
-	int function get()
+	int Function get()
 		if (isDuringCloakPulse)
 			return -1
 		endif
 		return myActorAmountAware 
 	EndFunction
-	function set(int value)
+	Function set(int value)
 		myActorAmountAware = value
 	EndFunction
-endProperty
+EndProperty
 
 Actor[] awareActors
 
 int my_cloakRange = 192
 
 int Property cloakRange
-	int function get()
+	int Function get()
 		return my_cloakRange
 	EndFunction
-	function set(int value)
+	Function set(int value)
 		my_cloakRange = value
 		ApproachCloak.SetNthEffectMagnitude(0, value as float)
 	EndFunction
-endProperty
+EndProperty
 
 bool initilized = false
 
