@@ -30,50 +30,51 @@ int myActorAmountAware = 0
 
 int Property actorAmountAware
 	int function get()
-		if(isDuringCloakPulse )
+		if (isDuringCloakPulse)
 			return -1
 		endif
 		return myActorAmountAware 
-	endFunction
+	EndFunction
 	function set(int value)
 		myActorAmountAware = value
-	endFunction
+	EndFunction
 endProperty
 
-actor[] awareActors
+Actor[] awareActors
 
 int my_cloakRange = 192
+
 int Property cloakRange
 	int function get()
 		return my_cloakRange
-	endFunction
+	EndFunction
 	function set(int value)
 		my_cloakRange = value
-		ApproachCloak.SetNthEffectMagnitude(0,value as float)
-	endFunction
+		ApproachCloak.SetNthEffectMagnitude(0, value as float)
+	EndFunction
 endProperty
 
 bool initilized = false
 
 int registeredQuestsAmount
 bool[] approachQuestsInitilizationArray
-quest[] approachQuests
+Quest[] approachQuests
 string[] approachQuestNames
 SLApproachBaseQuestScript[] approachQuestSripts
 
 Event OnInit()
-    Maintenance()
+	Maintenance()
 EndEvent
 
 Function initApproachQuestRegister()
 	registeredQuestsAmount = 0
 
-	approachQuestsInitilizationArray= New bool[8]
+	approachQuestsInitilizationArray = New bool[8]
 	int counter = 8
 
 	while counter
 		counter -= 1
-		approachQuestsInitilizationArray[counter] = false           
+		approachQuestsInitilizationArray[counter] = false
 	endwhile
 
 	approachQuests = New Quest[8]
@@ -82,9 +83,9 @@ Function initApproachQuestRegister()
 EndFunction
 
 Function Maintenance()
-	if(!initilized)
+	if (!initilized)
 		initApproachQuestRegister()
-	awareActors = new actor[64]
+		awareActors = new actor[64]
 	endif
 	
 	initilized = true
@@ -93,10 +94,10 @@ Function Maintenance()
 	UnregisterForAllModEvents()
 EndFunction
 
-SPELL Property SLApproachCloakAbility  Auto  
+Spell Property SLApproachCloakAbility  Auto  
 
 bool Function StartInitOfQuestByIndex(int index)
-	If(approachQuestsInitilizationArray[index])
+	if (approachQuestsInitilizationArray[index])
 		return false
 	else
 		slappUtil.log("START index = " + index + " appQuestInitArray => " + approachQuestsInitilizationArray[index])
@@ -122,7 +123,6 @@ Function clearQuestStatus()
 	int qidx = getregisteredAmount()
 	while (qidx > 0)
 		qidx -= 1
-		;approachQuests[qidx].SetStage(100)
 		approachQuestSripts[qidx].endApproachForce()
 	endwhile
 EndFunction
@@ -131,80 +131,86 @@ int Function RegisterQuest(Quest newQuest, SLApproachBaseQuestScript newQuestScr
 	if(!initilized)
 		return -1
 	endif
+	
 	int indexCounter = registeredQuestsAmount - 1
-	while(indexCounter >=0)
-		if(approachQuestNames[indexCounter] == newQuestName)
+	while(indexCounter >= 0)
+		if (approachQuestNames[indexCounter] == newQuestName)
 			approachQuests[indexCounter] = newQuest
 			approachQuestSripts[indexCounter] = newQuestScript
 			return indexCounter
 		endif
 		indexCounter = indexCounter - 1
 	endwhile
-
-	if (registeredQuestsAmount<8)
+	
+	if (registeredQuestsAmount < 8)
 		int newIndex = registeredQuestsAmount
-		registeredQuestsAmount = registeredQuestsAmount +1
+		registeredQuestsAmount = registeredQuestsAmount + 1
 		
 		approachQuestsInitilizationArray[newIndex] = false
 		approachQuests[newIndex] = newQuest
 		approachQuestSripts[newIndex] = newQuestScript
 		approachQuestNames[newIndex] = newQuestName
 
-		Debug.Notification("Sexlab Approach: Approach named "+newQuestName+" registered.")
+		debug.notification("Sexlab Approach: Approach named "+newQuestName+" registered.")
 
 		if(!newQuest.isRunning())
 			newQuest.Start()
-			debug.notification("SLApp: " + newQuestName + " - Quest Init")
+			debug.notification("SexLab Approach: " + newQuestName + " - Quest Init")
 		endif
 
 		return newIndex
 	endif
-	Debug.Notification("Sexlab Approach: Quest registration failed due to exceeding max approach quest limit.")
+	
+	debug.notification("Sexlab Approach: Quest registration failed due to exceeding max approach quest limit.")
 	return -1
-endfunction
+EndFunction
 
 int Function getregisteredAmount()
 	return registeredQuestsAmount
-endfunction
+EndFunction
 
 quest Function getApproachQuest(int index)
-	if(index < registeredQuestsAmount && index >= 0)
+	if (index < registeredQuestsAmount && index >= 0)
 		return approachQuests[index]
 	endif
-	Debug.Notification("Sexlab Approach: Quest retrival failed - invalid index "+index)
-	Debug.Trace("Sexlab Approach: Quest retrival failed - invalid index "+index)
+	
+	debug.notification("Sexlab Approach: Quest retrival failed - invalid index " + index)
+	debug.trace("Sexlab Approach: Quest retrival failed - invalid index " + index)
 
 	return None
-endfunction
+EndFunction
 
 SLApproachBaseQuestScript Function getApproachQuestScript(int index)
-	if(index < registeredQuestsAmount && index >= 0)
+	if (index < registeredQuestsAmount && index >= 0)
 		return approachQuestSripts[index]
 	endif
-	Debug.Notification("Sexlab Approach: Script retrival failed - invalid index "+index)
-	Debug.Trace("Sexlab Approach: Script retrival failed - invalid index "+index)
+	
+	debug.notification("Sexlab Approach: Script retrival failed - invalid index " + index)
+	debug.trace("Sexlab Approach: Script retrival failed - invalid index " + index)
+	
 	return None
-endfunction
+EndFunction
 
 string Function getApproachQuestName(int index)
-	if(index < registeredQuestsAmount && index >= 0)
+	if (index < registeredQuestsAmount && index >= 0)
 		return approachQuestNames[index]
 	endif
-	Debug.Notification("Sexlab Approach: Quest Name retrival failed - invalid index "+index)
-	Debug.Trace("Sexlab Approach: Quest Name retrival failed - invalid index "+index)
+	
+	debug.notification("Sexlab Approach: Quest Name retrival failed - invalid index " + index)
+	debug.trace("Sexlab Approach: Quest Name retrival failed - invalid index " + index)
 
 	return None
-endfunction
+EndFunction
 
 Function addAwareActor(Actor newAwareActor)
-	if(myActorAmountAware < 64)
-		awareActors[ myActorAmountAware ] = newAwareActor
+	if (myActorAmountAware < 64)
+		awareActors[myActorAmountAware] = newAwareActor
 		myActorAmountAware = myActorAmountAware + 1
 	else
-		Debug.Notification("Sexlab Approach: Cannot add an aware actor. Limit exceeded.")
-		Debug.Trace("Sexlab Approach: Cannot add an aware actor. Limit exceeded.")
+		debug.notification("Sexlab Approach: Cannot add an aware actor. Limit exceeded.")
+		debug.trace("Sexlab Approach: Cannot add an aware actor. Limit exceeded.")
 	endif
-endfunction
+EndFunction
 
 Actor[] Function getAwareActors()
 	return awareActors
@@ -212,9 +218,9 @@ EndFunction
 
 Function addActorEffectStarted()
 	actorsEffectStarted += 1
-Endfunction
+EndFunction
 
 Function addActorEffectFinished()
 	actorsEffectFinished += 1
-Endfunction
+EndFunction
 
