@@ -134,7 +134,7 @@ int Function RegisterQuest(Quest newQuest, SLApproachBaseQuestScript newQuestScr
 		approachQuestSripts[newIndex] = newQuestScript
 		approachQuestNames[newIndex] = newQuestName
 
-		debug.notification("Sexlab Approach: Approach named "+newQuestName+" registered.")
+		debug.notification("Sexlab Approach: Approach named " + newQuestName + " registered.")
 
 		if(!newQuest.isRunning())
 			newQuest.Start()
