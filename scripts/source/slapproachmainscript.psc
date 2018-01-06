@@ -26,22 +26,6 @@ bool Property isSkipUpdateMode = false Auto
 
 slapp_util Property slappUtil Auto
 
-int myActorAmountAware = 0
-
-int Property actorAmountAware
-	int Function get()
-		if (isDuringCloakPulse)
-			return -1
-		endif
-		return myActorAmountAware 
-	EndFunction
-	Function set(int value)
-		myActorAmountAware = value
-	EndFunction
-EndProperty
-
-Actor[] awareActors
-
 int my_cloakRange = 192
 
 int Property cloakRange
@@ -85,7 +69,6 @@ EndFunction
 Function Maintenance()
 	if (!initilized)
 		initApproachQuestRegister()
-		awareActors = new actor[64]
 	endif
 	
 	initilized = true
@@ -200,20 +183,6 @@ string Function getApproachQuestName(int index)
 	debug.trace("Sexlab Approach: Quest Name retrival failed - invalid index " + index)
 
 	return None
-EndFunction
-
-Function addAwareActor(Actor newAwareActor)
-	if (myActorAmountAware < 64)
-		awareActors[myActorAmountAware] = newAwareActor
-		myActorAmountAware = myActorAmountAware + 1
-	else
-		debug.notification("Sexlab Approach: Cannot add an aware actor. Limit exceeded.")
-		debug.trace("Sexlab Approach: Cannot add an aware actor. Limit exceeded.")
-	endif
-EndFunction
-
-Actor[] Function getAwareActors()
-	return awareActors
 EndFunction
 
 Function addActorEffectStarted()

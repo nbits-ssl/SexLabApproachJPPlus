@@ -34,7 +34,6 @@ Event OnUpdate()
 			SLApproachMain.actorsEffectFinished = 0
 			;Debug.Notification("SexLab Approach: Cloak!")
 			SLApproachMain.isDuringCloakPulse = true
-			SLApproachMain.actorAmountAware = 0
 			player.AddSpell(CloakAbility, false)
 			player.RemoveSpell(CloakAbility)
 			SLApproachMain.isDuringCloakPulse = false

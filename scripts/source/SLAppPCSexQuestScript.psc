@@ -19,13 +19,6 @@ Function rollRapeChance(Actor akRef)
 			return
 		endif
 		
-		int amountAware = SLApproachMain.actorAmountAware
-		if(amountAware <= 0)
-			slappUtil.log("Wrong amount of aware actors : " + amountAware)
-			Utility.Wait(0.1)
-			amountAware = 1
-		endif
-
 		int chance = akRef.GetFactionRank(arousalFaction)
 		chance += slappUtil.LightLevelCalc(akRef)
 		chance += slappUtil.TimeCalc()

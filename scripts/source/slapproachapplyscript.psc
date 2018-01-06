@@ -6,7 +6,6 @@ Event OnEffectStart(Actor akTarget, Actor playerActor)
 	SLApproachMain.addActorEffectStarted()
 	
 	if (!akTarget.IsDead())
-		SLApproachMain.actorAmountAware += 1
 		bool init
 		int indexCounter = SLApproachMain.getRegisteredAmount()
 		
