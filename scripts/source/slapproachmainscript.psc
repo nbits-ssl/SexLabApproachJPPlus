@@ -44,7 +44,7 @@ int registeredQuestsAmount
 bool[] approachQuestsInitilizationArray
 Quest[] approachQuests
 string[] approachQuestNames
-SLApproachBaseQuestScript[] approachQuestSripts
+SLApproachBaseQuestScript[] approachQuestScripts
 
 Event OnInit()
 	Maintenance()
@@ -63,7 +63,7 @@ Function initApproachQuestRegister()
 
 	approachQuests = New Quest[8]
 	approachQuestNames = new string[8]
-	approachQuestSripts = new SLApproachBaseQuestScript[8]
+	approachQuestScripts = new SLApproachBaseQuestScript[8]
 EndFunction
 
 Function Maintenance()
@@ -106,7 +106,7 @@ Function clearQuestStatus()
 	int qidx = getregisteredAmount()
 	while (qidx > 0)
 		qidx -= 1
-		approachQuestSripts[qidx].endApproachForce()
+		approachQuestScripts[qidx].endApproachForce()
 	endwhile
 EndFunction
 
@@ -119,7 +119,7 @@ int Function RegisterQuest(Quest newQuest, SLApproachBaseQuestScript newQuestScr
 	while(indexCounter >= 0)
 		if (approachQuestNames[indexCounter] == newQuestName)
 			approachQuests[indexCounter] = newQuest
-			approachQuestSripts[indexCounter] = newQuestScript
+			approachQuestScripts[indexCounter] = newQuestScript
 			return indexCounter
 		endif
 		indexCounter = indexCounter - 1
@@ -131,7 +131,7 @@ int Function RegisterQuest(Quest newQuest, SLApproachBaseQuestScript newQuestScr
 		
 		approachQuestsInitilizationArray[newIndex] = false
 		approachQuests[newIndex] = newQuest
-		approachQuestSripts[newIndex] = newQuestScript
+		approachQuestScripts[newIndex] = newQuestScript
 		approachQuestNames[newIndex] = newQuestName
 
 		debug.notification("Sexlab Approach: Approach named " + newQuestName + " registered.")
@@ -165,7 +165,7 @@ EndFunction
 
 SLApproachBaseQuestScript Function getApproachQuestScript(int index)
 	if (index < registeredQuestsAmount && index >= 0)
-		return approachQuestSripts[index]
+		return approachQuestScripts[index]
 	endif
 	
 	debug.notification("Sexlab Approach: Script retrival failed - invalid index " + index)
