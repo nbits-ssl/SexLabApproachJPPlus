@@ -1,11 +1,16 @@
 Scriptname SLApproachBaseQuestScript extends Quest
 
-Int property index = -1 auto
-Int property maxTime = 60 auto
-bool property approachEnding = false auto
+Int Property index = -1 Auto
+Int Property maxTime = 60 Auto
+bool Property approachEnding = false Auto
+bool Property isSkipMode = false Auto
 
 Function register()
-	;
+	index = -1
+	while(index == -1)
+		Utility.Wait(1.0)
+		index = SLApproachMain.RegisterQuest(ApproachQuest, self, ApproachName)
+	endwhile
 EndFunction
 
 Event OnUpdate()
@@ -17,7 +22,7 @@ Function startApproach(Actor akRef)
 EndFunction
 
 Bool Function isSituationValid(Actor akRef, Actor player)
-	if (!player.IsInCombat()  && !akRef.IsInCombat() && !akRef.IsWeaponDrawn() && \
+	if (!isSkipMode && !player.IsInCombat()  && !akRef.IsInCombat() && !akRef.IsWeaponDrawn() && \
 		SexLab.IsValidActor(akRef) && !player.IsBleedingOut() && !akRef.IsBleedingOut() && \
 		!player.IsOnMount() && !player.IsSwimming() && !player.IsSneaking())
 
@@ -49,17 +54,18 @@ EndFunction
 Function endApproachForce()
 EndFunction
 
-bool Function chanceRoll(Actor akRef,Actor PlayerRef, float baseChanceMultiplier)
+bool Function chanceRoll(Actor akRef, Actor PlayerRef, float baseChanceMultiplier)
 	return false
 EndFunction
 
-Event OnInit()
+Event OnInit() ; by SLApproachQuestAliasScript attached to Player
 	;register()
 EndEvent
 
 SexLabFramework Property SexLab  Auto  
 SLApproachMainScript Property SLApproachMain auto
 Quest Property ApproachQuest  Auto  ; overwrite by real approach quests
+string Property ApproachName Auto  ; overwrite by real approach quests
 Race Property ElderRace  Auto  
 Race Property HorseRace  Auto  
 Race Property ManakinRace  Auto  

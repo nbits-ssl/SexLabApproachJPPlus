@@ -17,6 +17,8 @@ int userAddingPointNpcOID
 int userAddingRapePointPcOID
 int userAddingRapePointNpcOID
 
+int[] SLAppQuestScriptsOIDS
+
 SLApproachMainScript Property SLApproachMain Auto
 
 event OnPageReset(string page)
@@ -28,10 +30,8 @@ event OnPageReset(string page)
 	cloakFrequencyOID =  AddSliderOption("$CloakFrequency", SLApproachMain.cloakFrequency,"$per0sec")
 	cloakRangeOID =  AddSliderOption("$CloakRange", SLApproachMain.cloakRange)
 	baseChanceMultiplierOID =  AddSliderOption("$BaseChanceMultiplier", SLApproachMain.baseChanceMultiplier, "{1}")
-	; totalAwarnessRangeOID = AddSliderOption("$TotalAwarnessRange", SLApproachMain.totalAwarnessRange)
 	enablePromiseFlagOID = AddToggleOption("$EnablePromiseRing", SLApproachMain.enablePromiseFlag)
 	enableRapeFlagOID = AddToggleOption("$EnableRape", SLApproachMain.enableRapeFlag)
-	enableRelationChangeFlagOID = AddToggleOption("$EnableChangeRelationshipRank", SLApproachMain.enableRelationChangeFlag)
 	enableElderRaceFlagOID = AddToggleOption("$EnableElderRace", SLApproachMain.enableElderRaceFlag)
 	debugLogFlagOID = AddToggleOption("$OutputPapyrusLog", SLApproachMain.debugLogFlag)
 
@@ -39,11 +39,14 @@ event OnPageReset(string page)
 
 	AddHeaderOption("$RegisteredApproachQuests")
 	
-	int indexCounter = SLApproachMain.getRegisteredAmount()
+	int indexCounter = 0
+	int amount = SLApproachMain.getRegisteredAmount()
+	SLAppQuestScriptsOIDS = new int[8]
 	
-	while(indexCounter > 0)
-		indexCounter = indexCounter - 1
-		AddTextOption(SLApproachMain.getApproachQuestName(indexCounter), "$SLAppEnabled")
+	while (indexCounter != amount)
+		SLApproachBaseQuestScript xscript = SLApproachMain.getApproachQuestScript(indexCounter)
+		SLAppQuestScriptsOIDS[indexCounter] = AddToggleOption(xscript.ApproachName, !xscript.isSkipMode)
+		indexCounter += 1
 	endwhile
 
 	AddHeaderOption("$RegisteredQuestsOptions")
@@ -58,8 +61,6 @@ endevent
 Event OnOptionHighlight(int option)
 	if (option == baseChanceMultiplierOID)
 		SetInfoText("$BaseChanceMultiplierInfo")
-	elseif (option == enableRelationChangeFlagOID)
-		SetInfoText("$EnableChangeRelationshipRankInfo")
 	elseif (option == enableRapeFlagOID)
 		SetInfoText("$EnableRapeInfo")
 	elseif (option == enablePromiseFlagOID)
@@ -85,12 +86,16 @@ event OnOptionSelect(int option)
 	elseif(option == enableRapeFlagOID)
 		SLApproachMain.enableRapeFlag = !SLApproachMain.enableRapeFlag
 		SetToggleOptionValue(enableRapeFlagOID, SLApproachMain.enableRapeFlag)
-	elseif(option == enableRelationChangeFlagOID)
-		SLApproachMain.enableRelationChangeFlag = !SLApproachMain.enableRelationChangeFlag
-		SetToggleOptionValue(enableRelationChangeFlagOID, SLApproachMain.enableRelationChangeFlag)
 	elseif(option == enableElderRaceFlagOID)
 		SLApproachMain.enableElderRaceFlag = !SLApproachMain.enableElderRaceFlag
 		SetToggleOptionValue(enableElderRaceFlagOID, SLApproachMain.enableElderRaceFlag)
+	
+	elseif (SLAppQuestScriptsOIDS.Find(option) > -1)
+		int idx = SLAppQuestScriptsOIDS.Find(option)
+		SLApproachBaseQuestScript xscript = SLApproachMain.getApproachQuestScript(idx)
+		bool opt = xscript.isSkipMode
+		xscript.isSkipMode = !opt
+		SetToggleOptionValue(option, opt)
 	endif
 endevent
 
@@ -100,21 +105,16 @@ event OnOptionSliderOpen(int option)
 		SetSliderDialogDefaultValue( SLApproachMain.cloakFrequency)
 		SetSliderDialogRange(1.0, 240.0)
 		SetSliderDialogInterval(1.0)
-	elseif (option == cloakRangeOID )
+	elseif (option == cloakRangeOID)
 		SetSliderDialogStartValue( SLApproachMain.cloakRange)
 		SetSliderDialogDefaultValue( SLApproachMain.cloakRange)
 		SetSliderDialogRange(64.0, 1024.0)
 		SetSliderDialogInterval(1.0)
-	elseif (option == baseChanceMultiplierOID )
+	elseif (option == baseChanceMultiplierOID)
 		SetSliderDialogStartValue( SLApproachMain.baseChanceMultiplier)
 		SetSliderDialogDefaultValue( SLApproachMain.baseChanceMultiplier)
 		SetSliderDialogRange(0.0, 10.0)
 		SetSliderDialogInterval(0.1)
-	elseif (option == totalAwarnessRangeOID )
-		SetSliderDialogStartValue( SLApproachMain.totalAwarnessRange)
-		SetSliderDialogDefaultValue( SLApproachMain.totalAwarnessRange)
-		SetSliderDialogRange(0, 1024.0)
-		SetSliderDialogInterval(1.0)
 	elseif (option == userAddingPointPcOID)
 		SetSliderDialogStartValue(SLApproachMain.userAddingPointPc)
 		SetSliderDialogDefaultValue(SLApproachMain.userAddingPointPc)
@@ -148,9 +148,6 @@ event OnOptionSliderAccept(int option, float value)
 	elseif (option == baseChanceMultiplierOID )
 		SLApproachMain.baseChanceMultiplier= value
 		SetSliderOptionValue(baseChanceMultiplierOID , SLApproachMain.baseChanceMultiplier, "{1}")
-	elseif (option == totalAwarnessRangeOID )
-		SLApproachMain.totalAwarnessRange= value as Int
-		SetSliderOptionValue(totalAwarnessRangeOID , SLApproachMain.totalAwarnessRange)
 	elseif (option == userAddingPointPcOID)
 		SLApproachMain.userAddingPointPc = value as Int
 		SetSliderOptionValue(userAddingPointPcOID , SLApproachMain.userAddingPointPc)

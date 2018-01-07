@@ -109,7 +109,7 @@ Function clearQuestStatus()
 	endwhile
 EndFunction
 
-int Function RegisterQuest(Quest newQuest, SLApproachBaseQuestScript newQuestScript, string newQuestName, int type = 1)
+int Function RegisterQuest(Quest newQuest, SLApproachBaseQuestScript newQuestScript, string newQuestName)
 	if(!initilized)
 		return -1
 	endif
@@ -119,6 +119,7 @@ int Function RegisterQuest(Quest newQuest, SLApproachBaseQuestScript newQuestScr
 		if (approachQuestNames[indexCounter] == newQuestName)
 			approachQuests[indexCounter] = newQuest
 			approachQuestScripts[indexCounter] = newQuestScript
+			; debug.notification("Sexlab Approach: Approach named " + newQuestName + " is running.")
 			return indexCounter
 		endif
 		indexCounter = indexCounter - 1
@@ -128,11 +129,9 @@ int Function RegisterQuest(Quest newQuest, SLApproachBaseQuestScript newQuestScr
 		int newIndex = registeredQuestsAmount
 		registeredQuestsAmount = registeredQuestsAmount + 1
 		
-		approachQuestsInitilizationArray[newIndex] = false
 		approachQuests[newIndex] = newQuest
 		approachQuestScripts[newIndex] = newQuestScript
 		approachQuestNames[newIndex] = newQuestName
-
 		debug.notification("Sexlab Approach: Approach named " + newQuestName + " registered.")
 
 		if(!newQuest.isRunning())

@@ -1,11 +1,11 @@
 Scriptname SLAppInit extends Quest  
 
-Event oninit()
-	Actor player = game.getplayer()
-	if (!player.hasspell(SLApproachToggle))
-		player.addspell(SLApproachToggle)
+Event OnInit()
+	Actor player = Game.GetPlayer()
+	if (!player.HasSpell(SLApproachToggle))
+		player.AddSpell(SLApproachToggle)
 	endif
-	self.stop()
+	self.Stop()
 EndEvent 
 
 SPELL Property SLApproachToggle  Auto  

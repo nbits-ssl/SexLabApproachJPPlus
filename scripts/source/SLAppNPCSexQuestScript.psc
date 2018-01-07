@@ -4,10 +4,10 @@ slapp_util Property slappUtil Auto
 
 Function startApproach(Actor akRef)
 	maxTime = 15
-	if(!SSLAppAsk2.isRunning())
+	if (!SSLAppAsk2.isRunning())
 		SSLAppAsk2.Start()
 	endif
-	if(SSLAppAsk2.isRunning())
+	if (SSLAppAsk2.isRunning())
 		Actor target = ansRef.GetActorRef()
 		
 		if (target.IsDead())
@@ -15,9 +15,9 @@ Function startApproach(Actor akRef)
 		endif ; second check
 		
 		int chance
-		if(target.IsInFaction(arousalFaction))
+		if (target.IsInFaction(arousalFaction))
 			chance = target.GetFactionRank(arousalFaction)
-		elseif(akRef.IsInFaction(arousalFaction))
+		elseif (akRef.IsInFaction(arousalFaction))
 			chance = akRef.GetFactionRank(arousalFaction)
 		else
 			return ;  for C-C
@@ -36,26 +36,26 @@ Function startApproach(Actor akRef)
 		int roll = Utility.RandomInt(0, 100)
 		slappUtil.log("Ask to Other chance: ANS by : " + target.GetActorBase().GetName() + " : "  + result + " & " + roll)
 		
-		if(SexLab.IsActorActive(akRef))
+		if (SexLab.IsActorActive(akRef))
 			slappUtil.log("Sex to Other by: pass : akRef Locked by other sex")
 			maxTime = 2
-		elseif(SexLab.IsActorActive(target))
+		elseif (SexLab.IsActorActive(target))
 			slappUtil.log("Sex to Other by: pass : target Locked by other sex")
 			maxTime = 2
 		elseif (target.IsInCombat() || target.IsWeaponDrawn() || target.IsBleedingOut())
 			slappUtil.log("Sex to Other by: pass : target Locked by combat")
 			maxTime = 2
-		elseif(target.IsInDialogueWithPlayer())
+		elseif (target.IsInDialogueWithPlayer())
 			slappUtil.log("Sex to Other by: pass : target Locked by talking")
 			maxTime = 2
-		elseif(!SexLab.IsValidActor(target)) ;third check
+		elseif (!SexLab.IsValidActor(target)) ;third check
 			slappUtil.log("Sex to Other by: pass : target is maybe dead or not loaded or...")
 			maxTime = 2
 		elseif (akRef.IsEquipped(SLAppRingServant) || akRef.IsEquipped(SLAppRingSlave))
 			SSLAppAsk2Scene.Start()
 		elseif (roll < result)
 			SSLAppAsk2Scene.Start()
-		elseif(SLApproachMain.enableRapeFlag)
+		elseif (SLApproachMain.enableRapeFlag)
 			if (akRef.IsEquipped(SLAppRingBeast))
 				SSLAppAsk2SceneRape.Start()
 			else
@@ -85,7 +85,7 @@ EndFunction
 
 int Function calcChance(Actor akRef, Actor target)
 	int chance
-	if(akRef.IsInFaction(arousalFaction))
+	if (akRef.IsInFaction(arousalFaction))
 		chance = akRef.GetFactionRank(arousalFaction)
 	elseif(target.IsInFaction(arousalFaction))
 		chance = target.GetFactionRank(arousalFaction)
@@ -119,12 +119,10 @@ bool Function chanceRoll(Actor akRef, Actor Player, float baseChanceMultiplier)
 	endif
 	
 	Scene aks = akRef.GetCurrentScene()
-	if(aks)
+	if (aks)
 		string akscene = aks.GetOwningQuest().GetId()
-		;if(akscene != "SSLAppAsk2" && akscene != "SLApproachAskForSexQuest")
-			slappUtil.log("Sex to Other blocked by other scene (Ask): " + akRef.GetActorBase().GetName() + " : " + akscene)
-			return false
-		;endif
+		slappUtil.log("Sex to Other blocked by other scene (Ask): " + akRef.GetActorBase().GetName() + " : " + akscene)
+		return false
 	endif
 
 	int gender
@@ -163,10 +161,8 @@ bool Function chanceRoll(Actor akRef, Actor Player, float baseChanceMultiplier)
 		Scene ans = target.GetCurrentScene()
 		if(ans)
 			string anscene = ans.GetOwningQuest().GetId()
-			;if(anscene != "SSLAppAsk2" && anscene != "SLApproachAskForSexQuest")
-				slappUtil.log("Sex to Other blocked by other scene (Ans): " + akRef.GetActorBase().GetName() + " : " + anscene)
-				return false
-			;endif
+			slappUtil.log("Sex to Other blocked by other scene (Ans): " + akRef.GetActorBase().GetName() + " : " + anscene)
+			return false
 		endif
 
 		; for HBC
@@ -222,13 +218,6 @@ Function endApproachForce()
 	self.endApproach()
 EndFunction
 
-Function register()
-	index = -1
-	while(index == -1)
-		Utility.Wait(1.0)
-		index = SLApproachMain.RegisterQuest(ApproachQuest, self, "Ask to Other", 1)
-	endwhile
-EndFunction
 
 Quest Property SSLAppAsk2  Auto  
 
@@ -247,9 +236,6 @@ Armor Property SLAppRingServant  Auto
 Armor Property SLAppRingSlave  Auto  
 Armor Property SLAppRingShame  Auto  
 Armor Property SLAppRingBeast  Auto  
-
 Armor Property SLAppRingHomo  Auto  
-
 Armor Property SLAppRingEngagement  Auto  
-
 Armor Property SLAppRingFamily  Auto  

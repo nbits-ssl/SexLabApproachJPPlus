@@ -1,4 +1,4 @@
-Scriptname SLApproachApplyScript extends activemagiceffect  
+Scriptname SLApproachApplyScript extends activemagiceffect
 
 slapp_util Property slappUtil Auto
 
@@ -9,13 +9,13 @@ Event OnEffectStart(Actor akTarget, Actor playerActor)
 		bool init
 		int indexCounter = SLApproachMain.getRegisteredAmount()
 		
-		while(indexCounter > 0)
+		while (indexCounter > 0)
 			indexCounter -= 1
 			SLApproachBaseQuestScript xqscript = SLApproachMain.getApproachQuestScript(indexCounter)
 			
-			if(xqscript.isSituationValid(akTarget,playerActor))
+			if (xqscript.isSituationValid(akTarget,playerActor))
 				init = SLApproachMain.StartInitOfQuestByIndex(indexCounter)
-				if(init)
+				if (init)
 					if(xqscript.chanceRoll(akTarget, playerActor,SLApproachMain.baseChanceMultiplier))
 						Quest xquest = SLApproachMain.getApproachQuest(indexCounter)
 						xquest.Reset()
@@ -38,5 +38,3 @@ SexLabFramework Property SexLab  Auto
 SLApproachMainScript Property SLApproachMain  Auto  
 Faction Property ArousalFaction Auto
 Faction  Property SLApproachMonitorAbility Auto
-
-;SLApproachMainScript Property SLAttractionMain  Auto

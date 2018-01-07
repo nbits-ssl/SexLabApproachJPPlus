@@ -10,10 +10,10 @@ Function startApproach(Actor akRef)
 	parent.startApproach(akRef)
 EndFunction
 
-bool property willRape  Auto Conditional
+bool property willRape Auto Conditional
 
 Function rollRapeChance(Actor akRef)
-	if(SLApproachMain.enableRapeFlag)
+	if (SLApproachMain.enableRapeFlag)
 		if (akRef.IsEquipped(SLAppRingBeast))
 			willRape = true
 			return
@@ -29,59 +29,13 @@ Function rollRapeChance(Actor akRef)
 		chance += SLApproachMain.userAddingRapePointPc
 
 		int roll = Utility.RandomInt(0, 100)
-		if(roll < chance)
+		if (roll < chance)
 			willRape  = true
 		else
 			willRape  = false
 		endif
 	else
 		willRape = false
-	endif
-EndFunction
-
-Function sexRelationshipDown(Actor akRef, Actor PlayerRef, int multiplier = 1)
-	if(SLApproachMain.enableRelationChangeFlag)
-		int relationship = akRef.GetRelationshipRank(PlayerRef)
-		int roll = Utility.RandomInt(0, 100) * multiplier
-
-		if (relationship == 4 && roll<5)
-			relationship = 3
-		elseif (relationship == 3 && roll<10)
-			relationship = 2
-		elseif (relationship == 2 && roll<15)
-			relationship = 1
-		elseif (relationship == 1 && roll<25)
-			relationship = 0
-		elseif (relationship == 0 && roll<50)
-			relationship = -1
-		elseif (relationship == -1)
-			relationship = -2
-		endif
-
-		akRef.SetRelationshipRank(PlayerRef,relationship)
-	endif
-EndFunction
-
-Function sexRelationshipUp(Actor akRef, Actor PlayerRef)
-	if(SLApproachMain.enableRelationChangeFlag)
-		int relationship = akRef.GetRelationshipRank(PlayerRef)
-		int roll = Utility.RandomInt(0, 100)
-
-		if (relationship == -2 || relationship == -3 || relationship == -4)
-			relationship = relationship + 1
-		elseif (relationship == -1 && roll<50)
-			relationship = 0
-		elseif (relationship == 0 && roll<25)
-			relationship = 1
-		elseif (relationship == 1 && roll<15)
-			relationship = 2
-		elseif (relationship == 2 && roll<10)
-			relationship = 3
-		elseif (relationship == 3 && roll<5)
-			relationship = 4
-		endif
-
-		akRef.SetRelationshipRank(PlayerRef,relationship)
 	endif
 EndFunction
 
@@ -108,8 +62,7 @@ bool Function chanceRoll(Actor akRef, Actor PlayerRef, float baseChanceMultiplie
 	int chance = akRef.GetFactionRank(arousalFaction)
 	int relationship =  akRef.GetRelationshipRank(PlayerRef)
 	
-	
-	if(relationship < 0)
+	if (relationship < 0)
 		chance -= 50
 	endif
 	
@@ -126,10 +79,8 @@ bool Function chanceRoll(Actor akRef, Actor PlayerRef, float baseChanceMultiplie
 	Scene aks = akRef.GetCurrentScene()
 	if(aks)
 		string akscene = aks.GetOwningQuest().GetId()
-		;if(akscene != "SSLAppAsk2" && akscene != "SLApproachAskForSexQuest")
-			slappUtil.log("Ask for Sex result: Blocked by another Scene: " + akRef.GetActorBase().GetName() + " : " + akscene)
-			return false
-		;endif
+		slappUtil.log("Ask for Sex result: Blocked by another Scene: " + akRef.GetActorBase().GetName() + " : " + akscene)
+		return false
 	endif
 
 	if(roll < result)
@@ -137,14 +88,6 @@ bool Function chanceRoll(Actor akRef, Actor PlayerRef, float baseChanceMultiplie
 	else
 		return false
 	endif
-EndFunction
-
-Function register()
-	index = -1
-	while(index == -1)
-		Utility.Wait(1.0)
-		index = SLApproachMain.RegisterQuest(ApproachQuest, self, "Ask for sex", 1)
-	endwhile
 EndFunction
 
 Function endApproach()
@@ -188,13 +131,23 @@ Function enjoy(Actor akSpeaker)
 	self.StartSex(PlayerRef, akSpeaker)
 	self.followSceneStop()
 	self.endApproach()
+EndFunction
+
+Function enjoyPlus(Actor akSpeaker)
+	Actor PlayerRef = PlayerReference.GetActorRef()
 	self.sexRelationshipUp(akSpeaker, PlayerRef)
+	self.enjoy(akSpeaker)
 EndFunction
 
 Function disagree(Actor akSpeaker)
 	self.followSceneStop()
 	self.endApproach()
-	self.sexRelationshipDown(akSpeaker, PlayerReference.GetActorRef())
+EndFunction
+
+Function disagreePlus(Actor akSpeaker)
+	Actor PlayerRef = PlayerReference.GetActorRef()
+	self.sexRelationshipDown(akSpeaker, PlayerRef)
+	self.disagree(akSpeaker)
 EndFunction
 
 Function rapedBy(Actor akSpeaker)
@@ -203,12 +156,34 @@ Function rapedBy(Actor akSpeaker)
 	self.StartSex(PlayerRef, akSpeaker, true)
 	self.followSceneStop()
 	self.endApproach()
-	self.sexRelationshipDown(akSpeaker, PlayerRef, 3)
+EndFunction
+
+Function rapedPlusBy(Actor akSpeaker)
+	Actor PlayerRef = PlayerReference.GetActorRef()
+	self.sexRelationshipDown(akSpeaker, PlayerRef)
+	self.rapedBy(akSpeaker)
 EndFunction
 
 Function travelWith(Actor akSpeaker)
 	self.SetStage(15)
 	SLApproachAskForSexQuestFollowPlayerScene.Start()
+EndFunction
+
+Function sexRelationshipDown(Actor akRef, Actor PlayerRef)
+	int relationship = akRef.GetRelationshipRank(PlayerRef) - 1
+	debug.notification("[slapp] " + relationship)
+	if (relationship < -2)
+		relationship = -2
+	endif
+	akRef.SetRelationshipRank(PlayerRef, relationship)
+EndFunction
+
+Function sexRelationshipUp(Actor akRef, Actor PlayerRef)
+	int relationship = akRef.GetRelationshipRank(PlayerRef) + 1
+	if (relationship > 4)
+		relationship = 4
+	endif
+	akRef.SetRelationshipRank(PlayerRef, relationship)
 EndFunction
 
 Function followSceneStop()
