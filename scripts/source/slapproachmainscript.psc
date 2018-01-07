@@ -10,7 +10,8 @@ int Property totalAwarnessRange = 256 Auto ; no longer used
 bool Property debugLogFlag = false Auto
 bool Property enablePromiseFlag = false Auto
 bool Property enableRapeFlag = true Auto
-bool Property enableRelationChangeFlag = false Auto
+bool Property enableForceThirdPersonHug = true Auto
+bool Property enableRelationChangeFlag = false Auto ; no longer used
 bool Property enableElderRaceFlag = false Auto
 
 int Property userAddingPointPc = 0 Auto
@@ -18,6 +19,8 @@ int Property userAddingPointNpc = 0 Auto
 
 int Property userAddingRapePointPc = 0 Auto
 int Property userAddingRapePointNpc = 0 Auto
+
+int Property userAddingHugPointPc = 0 Auto
 
 bool property isDuringCloakPulse = false Auto
 int Property actorsEffectStarted = 0 Auto

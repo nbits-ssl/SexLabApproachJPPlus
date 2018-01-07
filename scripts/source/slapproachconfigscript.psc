@@ -8,7 +8,8 @@ int totalAwarnessRangeOID
 int debugLogFlagOID
 int enablePromiseFlagOID
 int enableRapeFlagOID
-int enableRelationChangeFlagOID
+int enableForceThirdPersonHugOID
+int enableRelationChangeFlagOID ; no longer used
 int enableElderRaceFlagOID
 
 int userAddingPointPcOID
@@ -16,6 +17,8 @@ int userAddingPointNpcOID
 
 int userAddingRapePointPcOID
 int userAddingRapePointNpcOID
+
+int userAddingHugPointPcOID
 
 int[] SLAppQuestScriptsOIDS
 
@@ -27,11 +30,12 @@ event OnPageReset(string page)
 
 	AddHeaderOption("$SLAppGeneral")
 	
-	cloakFrequencyOID =  AddSliderOption("$CloakFrequency", SLApproachMain.cloakFrequency,"$per0sec")
+	cloakFrequencyOID =  AddSliderOption("$CloakFrequency", SLApproachMain.cloakFrequency, "$per0sec")
 	cloakRangeOID =  AddSliderOption("$CloakRange", SLApproachMain.cloakRange)
 	baseChanceMultiplierOID =  AddSliderOption("$BaseChanceMultiplier", SLApproachMain.baseChanceMultiplier, "{1}")
 	enablePromiseFlagOID = AddToggleOption("$EnablePromiseRing", SLApproachMain.enablePromiseFlag)
 	enableRapeFlagOID = AddToggleOption("$EnableRape", SLApproachMain.enableRapeFlag)
+	enableForceThirdPersonHugOID = AddToggleOption("$EnableForceThirdPersonHug", SLApproachMain.enableForceThirdPersonHug)
 	enableElderRaceFlagOID = AddToggleOption("$EnableElderRace", SLApproachMain.enableElderRaceFlag)
 	debugLogFlagOID = AddToggleOption("$OutputPapyrusLog", SLApproachMain.debugLogFlag)
 
@@ -56,6 +60,8 @@ event OnPageReset(string page)
 
 	userAddingRapePointPcOID =  AddSliderOption("$AddingRapePointsNPCPC", SLApproachMain.userAddingRapePointPc, "{0}")
 	userAddingRapePointNpcOID =  AddSliderOption("$AddingRapePointsNPCNPC", SLApproachMain.userAddingRapePointNpc, "{0}")
+	
+	userAddingHugPointPcOID =  AddSliderOption("$AddingHugPointsNPCPC", SLApproachMain.userAddingHugPointPc, "{0}")
 endevent
 
 Event OnOptionHighlight(int option)
@@ -63,6 +69,8 @@ Event OnOptionHighlight(int option)
 		SetInfoText("$BaseChanceMultiplierInfo")
 	elseif (option == enableRapeFlagOID)
 		SetInfoText("$EnableRapeInfo")
+	elseif (option == enableForceThirdPersonHugOID)
+		SetInfoText("$EnableForceThirdPersonHugInfo")
 	elseif (option == enablePromiseFlagOID)
 		SetInfoText("$EnablePromiseRingInfo")
 	elseif (option == userAddingPointPcOID)
@@ -73,6 +81,8 @@ Event OnOptionHighlight(int option)
 		SetInfoText("$AddingRapePointsNPCPCInfo")
 	elseif (option == userAddingRapePointNpcOID)
 		SetInfoText("$AddingRapePointsNPCNPCInfo")
+	elseif (option == userAddingHugPointPcOID)
+		SetInfoText("$AddingHugPointsNPCPCInfo")
 	endif
 EndEvent
 
@@ -86,6 +96,9 @@ event OnOptionSelect(int option)
 	elseif(option == enableRapeFlagOID)
 		SLApproachMain.enableRapeFlag = !SLApproachMain.enableRapeFlag
 		SetToggleOptionValue(enableRapeFlagOID, SLApproachMain.enableRapeFlag)
+	elseif(option == enableForceThirdPersonHugOID)
+		SLApproachMain.enableForceThirdPersonHug = !SLApproachMain.enableForceThirdPersonHug
+		SetToggleOptionValue(option, SLApproachMain.enableForceThirdPersonHug)
 	elseif(option == enableElderRaceFlagOID)
 		SLApproachMain.enableElderRaceFlag = !SLApproachMain.enableElderRaceFlag
 		SetToggleOptionValue(enableElderRaceFlagOID, SLApproachMain.enableElderRaceFlag)
@@ -141,7 +154,7 @@ endevent
 event OnOptionSliderAccept(int option, float value)
 	if (option == cloakFrequencyOID)
 		SLApproachMain.cloakFrequency= value as Int
-		SetSliderOptionValue(cloakFrequencyOID, SLApproachMain.cloakFrequency)
+		SetSliderOptionValue(cloakFrequencyOID, SLApproachMain.cloakFrequency, "$per0sec")
 	elseif (option == cloakRangeOID )
 		SLApproachMain.cloakRange= value as Int
 		SetSliderOptionValue(cloakRangeOID , SLApproachMain.cloakRange)

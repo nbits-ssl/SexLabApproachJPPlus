@@ -1,11 +1,9 @@
 Scriptname SLApproachQuestAliasScript extends ReferenceAlias  
 
 Event OnInit()
-	SLApproachQuestScript.register()
+	(GetOwningQuest() as SLApproachBaseQuestScript).register()
 EndEvent
 
 Event OnPlayerLoadGame()
-	SLApproachQuestScript.register()
+	(GetOwningQuest() as SLApproachBaseQuestScript).register()
 EndEvent
-
-SLApproachBaseQuestScript Property SLApproachQuestScript auto

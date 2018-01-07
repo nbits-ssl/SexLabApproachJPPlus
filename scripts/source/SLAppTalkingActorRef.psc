@@ -1,9 +1,9 @@
 Scriptname SLAppTalkingActorRef extends ReferenceAlias  
 
 Event OnCellDetach()
-	(GetOwningQuest() as SLAppPCSexQuestScript).endApproachForce()
+	(GetOwningQuest() as SLApproachBaseQuestScript).endApproachForce()
 EndEvent
 
 Event OnDetachedFromCell()
-	(GetOwningQuest() as SLAppPCSexQuestScript).endApproachForce()
+	(GetOwningQuest() as SLApproachBaseQuestScript).endApproachForce()
 EndEvent
