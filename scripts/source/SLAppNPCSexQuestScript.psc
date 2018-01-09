@@ -1,7 +1,5 @@
 Scriptname SLAppNPCSexQuestScript extends SLApproachBaseQuestScript  Conditional
 
-slapp_util Property slappUtil Auto
-
 Function startApproach(Actor akRef)
 	maxTime = 15
 	if (!SSLAppAsk2.isRunning())
@@ -111,17 +109,11 @@ bool Function chanceRoll(Actor akRef, Actor Player, float baseChanceMultiplier)
 	elseif (SSLAppAsk2Scene.IsPlaying() || SSLAppAsk2SceneDisagree.IsPlaying() || SSLAppAsk2SceneRape.IsPlaying())
 		slappUtil.log("Sex to Other by: pass : Scene Locked")
 		return false
-	elseif (SexLab.IsActorActive(akRef))
-		slappUtil.log("Sex to Other by: pass : akRef Locked by other sex")
-		return false
-	elseif (akRef.IsEquipped(SLAppRingShame) || akRef.GetItemCount(SLAppRingFamily) || akRef.GetItemCount(SLAppRingEngagement))
+	elseif (akRef.GetItemCount(SLAppRingEngagement))
 		return false
 	endif
 	
-	Scene aks = akRef.GetCurrentScene()
-	if (aks)
-		string akscene = aks.GetOwningQuest().GetId()
-		slappUtil.log("Sex to Other blocked by other scene (Ask): " + akRef.GetActorBase().GetName() + " : " + akscene)
+	if !(self.isSceneValid(akRef))
 		return false
 	endif
 
@@ -158,13 +150,10 @@ bool Function chanceRoll(Actor akRef, Actor Player, float baseChanceMultiplier)
 			return false
 		endif
 		
-		Scene ans = target.GetCurrentScene()
-		if(ans)
-			string anscene = ans.GetOwningQuest().GetId()
-			slappUtil.log("Sex to Other blocked by other scene (Ans): " + akRef.GetActorBase().GetName() + " : " + anscene)
+		if !(self.isSceneValid(target))
 			return false
 		endif
-
+		
 		; for HBC
 		if(akRef.GetActorBase().GetName() == "Dummy" || target.GetBaseObject().GetName() == "Dummy")
 			return false
@@ -196,7 +185,7 @@ bool Function chanceRoll(Actor akRef, Actor Player, float baseChanceMultiplier)
 	endif
 endfunction
 
-Function endApproach()
+Function endApproach(bool force = false)
 	slappUtil.log("Sex to Other by: endApproach")
 	approachEnding = true
 	SSLAppAsk2Scene.Stop()
@@ -204,18 +193,6 @@ Function endApproach()
 	SSLAppAsk2SceneDisagree.Stop()
 	SSLAppAsk2.Stop()
 	parent.endApproach()
-EndFunction
-
-Function endApproachForce()
-	slappUtil.log("Ask to Other: endApproachForce() !!")
-	Actor fordebugact = askRef.GetActorRef()
-	if (fordebugact)
-		ActorBase fordebugname = fordebugact.GetActorBase()
-		if (fordebugname)
-			slappUtil.log("Ask to Other Force Stop: " + fordebugname.GetName())
-		endif
-	endif
-	self.endApproach()
 EndFunction
 
 
@@ -234,8 +211,6 @@ Actor Property PlayerRef  Auto
 
 Armor Property SLAppRingServant  Auto  
 Armor Property SLAppRingSlave  Auto  
-Armor Property SLAppRingShame  Auto  
 Armor Property SLAppRingBeast  Auto  
 Armor Property SLAppRingHomo  Auto  
 Armor Property SLAppRingEngagement  Auto  
-Armor Property SLAppRingFamily  Auto  

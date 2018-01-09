@@ -9,6 +9,15 @@ Function Log(String msg)
 	endif
 EndFunction
 
+int Function RelationCalc(Actor akRef, Actor akRef2)
+	int relationship = akRef.GetRelationshipRank(akRef2)
+	
+	if (relationship < 0)
+		return -50
+	endif
+	return 0
+EndFunction
+
 int Function TimeCalc()
 	float Time = Utility.GetCurrentGameTime()
 	Time -= Math.Floor(Time)

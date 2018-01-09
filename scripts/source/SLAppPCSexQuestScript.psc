@@ -1,11 +1,9 @@
 Scriptname SLAppPCSexQuestScript extends SLApproachBaseQuestScript Conditional 
 
-slapp_util Property slappUtil Auto
-
 Function startApproach(Actor akRef)
 	maxTime = 30
 	talkingActor.ForceRefTo(akRef)
-	rollRapeChance(akRef)
+	self.rollRapeChance(akRef)
 	SLApproachAskForSexQuestScene.Start()
 	parent.startApproach(akRef)
 EndFunction
@@ -42,84 +40,52 @@ EndFunction
 bool Function chanceRoll(Actor akRef, Actor PlayerRef, float baseChanceMultiplier)
 	if !(akRef.HasLOS(PlayerRef))
 		return false
-	elseif (!slappUtil.ValidatePromise(akRef, PlayerRef) || !slappUtil.ValidateShyness(akRef, PlayerRef))
-		slappUtil.log("Ask to Sex blocked by Promise or Shyness: " + akRef.GetActorBase().GetName())
-		return false
 	elseif (SLApproachAskForSexQuestFollowPlayerScene.isPlaying())
 		return false
 	elseif (SexLab.IsActorActive(PlayerRef))
 		return false
-	elseif (akRef.IsEquipped(SLAppRingShame))
-		return false
-	elseif (akRef.GetItemCount(SLAppRingFamily))
-		return false
 	elseif ((SexLab.GetGender(akRef) == 2) && (SexLab.GetGender(PlayerRef) == 0)) ; c/m
 		return false
-	elseif !(slappUtil.ValidateGender(PlayerRef, akRef, true))
+	elseif (self.PrecheckRoll(akRef, PlayerRef))
 		return false
 	endif
 	
 	int chance = akRef.GetFactionRank(arousalFaction)
-	int relationship =  akRef.GetRelationshipRank(PlayerRef)
-	
-	if (relationship < 0)
-		chance -= 50
-	endif
-	
+
+	chance += slappUtil.RelationCalc(akRef, PlayerRef)
 	chance += slappUtil.LightLevelCalc(akRef)
 	chance += slappUtil.TimeCalc()
 	chance += slappUtil.NudeCalc(PlayerRef)
 	chance -= 10
 	
-	int result = slappUtil.ValidateChance((chance * baseChanceMultiplier) as Int)
-	result += SLApproachMain.userAddingPointPc
-	int roll = Utility.RandomInt(0, 100)
-	slappUtil.log("Ask for Sex result: " + akRef.GetActorBase().GetName() + " : " + result)
+	int result = self.GetResult(chance, SLApproachMain.userAddingPointPc, baseChanceMultiplier)
+	int roll = self.GetDiceRoll()
+	slappUtil.log(ApproachName + ": " + akRef.GetActorBase().GetName() + " : " + result)
 
-	Scene aks = akRef.GetCurrentScene()
-	if(aks)
-		string akscene = aks.GetOwningQuest().GetId()
-		slappUtil.log("Ask for Sex result: Blocked by another Scene: " + akRef.GetActorBase().GetName() + " : " + akscene)
+	if !(self.isSceneValid(akRef))
 		return false
 	endif
 
-	if(roll < result)
-		return true
-	else
-		return false
-	endif
+	return (roll < result)
 EndFunction
 
-Function endApproach()
+Function endApproach(bool force = false)
 	int retryTime = 30
-	if (SLApproachAskForSexQuestFollowPlayerScene.isPlaying())
-		slappUtil.log("Ask for Sex : Now following scene is playing, retry.")
+	if (!force && SLApproachAskForSexQuestFollowPlayerScene.isPlaying())
+		slappUtil.log(ApproachName + ": Now following scene is playing, retry.")
 		RegisterForSingleUpdate(retryTime)
 	else
-		self._endApproach()
+		approachEnding = true
+		SLApproachAskForSexQuestScene.Stop()
+		SLApproachAskForSexQuestFollowPlayerScene.Stop()
+		parent.endApproach()
 	endif
 EndFunction
 
-Function endApproachForce()
-	slappUtil.log("Ask for Sex : endApproachForce() !!")
-	
-	Actor fordebugact = talkingActor.GetActorRef()
-	if (fordebugact)
-		ActorBase fordebugname = fordebugact.GetActorBase()
-		if (fordebugname)
-			slappUtil.log("Ask to Other Force Stop: " + fordebugname.GetName())
-		endif
-	endif
-	
-	self._endApproach()
+Function endApproachForce(ReferenceAlias akRef = None)
+	parent.endApproachForce(talkingActor)
 EndFunction
 
-Function _endApproach()
-	approachEnding = true
-	SLApproachAskForSexQuestScene.Stop()
-	SLApproachAskForSexQuestFollowPlayerScene.Stop()
-	parent.endApproach()
-EndFunction
 
 Function StartSex(Actor PlayerRef, Actor akSpeaker, bool rape = false)
 	SexUtil.StartSexActors(akSpeaker, PlayerRef, rape)
@@ -171,7 +137,7 @@ EndFunction
 
 Function sexRelationshipDown(Actor akRef, Actor PlayerRef)
 	int relationship = akRef.GetRelationshipRank(PlayerRef) - 1
-	debug.notification("[slapp] " + relationship)
+	; debug.notification("[slapp] " + relationship)
 	if (relationship < -2)
 		relationship = -2
 	endif
@@ -203,6 +169,4 @@ ReferenceAlias Property PlayerReference Auto
 Scene Property SLApproachAskForSexQuestScene  Auto  
 Scene Property SLApproachAskForSexQuestFollowPlayerScene Auto
 
-Armor Property SLAppRingShame  Auto  
 Armor Property SLAppRingBeast  Auto  
-Armor Property SLAppRingFamily  Auto  
