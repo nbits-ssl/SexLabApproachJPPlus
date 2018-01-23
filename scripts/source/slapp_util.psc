@@ -18,7 +18,7 @@ int Function RelationCalc(Actor akRef, Actor akRef2)
 	return 0
 EndFunction
 
-int Function TimeCalc()
+int Function TimeCalc(bool enableMinus = true)
 	float Time = Utility.GetCurrentGameTime()
 	Time -= Math.Floor(Time)
 	Time *= 24
@@ -37,7 +37,7 @@ int Function TimeCalc()
 	return 0
 EndFunction
 
-int Function LightLevelCalc(Actor akRef)
+int Function LightLevelCalc(Actor akRef, bool enableMinus = true)
 	int anslightlevel = akRef.GetLightLevel() as int
 	
 	if(anslightlevel < 50)

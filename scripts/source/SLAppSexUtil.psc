@@ -1,10 +1,10 @@
-Scriptname SLAppSexUtil extends Quest  
+Scriptname SLAppSexUtil extends Quest
 
 Function StartSex(ReferenceAlias askRef, ReferenceAlias ansRef, bool rape = false)
 	Actor askAct = askRef.GetActorRef()
 	Actor ansAct = ansRef.GetActorRef()
 	
-	if (ansAct.IsInDialogueWithPlayer())
+	if (askAct.IsInDialogueWithPlayer() || ansAct.IsInDialogueWithPlayer())
 		return
 	endif
 	
@@ -54,6 +54,62 @@ Function StartSexActors(Actor src, Actor dst, bool rape = false)
 			SexLab.StartSex(sexActors, anims, Victim = dst)
 		endif
 	endif
+EndFunction
+
+Function PlayKiss(Actor src, Actor dst)
+	if (src.IsInDialogueWithPlayer() || dst.IsInDialogueWithPlayer())
+		return
+	endif
+	
+	sslBaseAnimation[] anims
+	anims =  SexLab.GetAnimationsByTags(2, "MF, kissing", "sex")
+	actor[] sexActors = new actor[2]
+	
+	int srcSex = SexLab.GetGender(src)
+	int dstSex = SexLab.GetGender(dst)
+	
+	if((srcSex == 1 && dstsex == 1) || (srcSex == 0 && srcSex == 0)) ; same sex
+		sexActors[0] = dst
+		sexActors[1] = src
+	elseif (srcSex == 1)
+		sexActors[0] = src
+		sexActors[1] = dst
+	else
+		sexActors[0] = dst
+		sexActors[1] = src
+	endif
+	
+	if (src.Is3DLoaded())
+		self._quickSex(sexActors, anims)
+	endif
+EndFunction
+
+; from sexlab startsex, for playkiss
+int Function _quickSex(Actor[] Positions, sslBaseAnimation[] Anims, Actor Victim = None, Actor CenterOn = None)
+	bool[] stripoverwrite = new bool[33]
+	int i = 0
+	while (i != 33)
+		stripoverwrite[i] = false
+		i += 1
+	endwhile
+
+	sslThreadModel Thread = SexLab.NewThread()
+	if !Thread
+		return -1
+	elseIf !Thread.AddActors(Positions, Victim)
+		return -1
+	endIf
+	Thread.SetAnimations(Anims)
+	Thread.DisableBedUse(true)
+	Thread.DisableLeadIn()
+	Thread.CenterOnObject(CenterOn)
+	Thread.SetStrip(Positions[0], stripoverwrite)
+	Thread.SetStrip(Positions[1], stripoverwrite)
+	
+	if Thread.StartThread()
+		return Thread.tid
+	endIf
+	return -1
 EndFunction
 
 SexLabFramework Property SexLab  Auto  

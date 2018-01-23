@@ -21,6 +21,7 @@ int Property userAddingRapePointPc = 0 Auto
 int Property userAddingRapePointNpc = 0 Auto
 
 int Property userAddingHugPointPc = 0 Auto
+int Property userAddingKissPointPc = 0 Auto
 
 bool property isDuringCloakPulse = false Auto
 int Property actorsEffectStarted = 0 Auto

@@ -53,11 +53,12 @@ bool Function chanceRoll(Actor akRef, Actor PlayerRef, float baseChanceMultiplie
 	return false
 EndFunction
 
-bool Function PrecheckRoll(Actor akRef, Actor akRef2)
+bool Function isPrecheckValid(Actor akRef, Actor akRef2) ; akRef must be player when hasplayer, ##FIXME##
 	if (!slappUtil.ValidatePromise(akRef, akRef2) || !slappUtil.ValidateShyness(akRef, akRef2))
 		slappUtil.log(ApproachName + " blocked by Promise or Shyness: " + akRef.GetActorBase().GetName())
 		return false
 	elseif !(slappUtil.ValidateGender(akRef, akRef2, true))
+		slappUtil.log(ApproachName + " blocked by Gender check: " + akRef.GetActorBase().GetName())
 		return false
 	endif
 	
@@ -69,7 +70,7 @@ bool Function isSceneValid(Actor akRef)
 	
 	if (aks)
 		string akscene = aks.GetOwningQuest().GetId()
-		string log = ApproachName + ": Blocked by another Scene: "
+		string log = ApproachName + ": blocked by another Scene: "
 		slappUtil.log(log + akRef.GetActorBase().GetName() + " : " + akscene)
 		return false
 	endif

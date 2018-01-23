@@ -1,9 +1,9 @@
-Scriptname SLAppPCHugQuestScript extends SLApproachBaseQuestScript Conditional 
+Scriptname SLAppPCKissQuestScript extends SLApproachBaseQuestScript  Conditional
 
 Function startApproach(Actor akRef)
 	maxTime = 30
 	talkingActor.ForceRefTo(akRef)
-	SLAppHugToPCScene.Start()
+	SLAppKissToPCScene.Start()
 	parent.startApproach(akRef)
 EndFunction
 
@@ -25,7 +25,7 @@ bool Function chanceRoll(Actor akRef, Actor PlayerRef, float baseChanceMultiplie
 	chance += slappUtil.TimeCalc(false) ; disableMinus
 	chance += 10
 	
-	int result = self.GetResult(chance, SLApproachMain.userAddingHugPointPc, baseChanceMultiplier)
+	int result = self.GetResult(chance, SLApproachMain.userAddingKissPointPc, baseChanceMultiplier)
 	int roll = self.GetDiceRoll()
 	slappUtil.log(ApproachName + " result: " + akRef.GetActorBase().GetName() + " : " + result)
 
@@ -38,42 +38,17 @@ EndFunction
 
 Function endApproach(bool force = false)
 	approachEnding = true
-	SLAppHugToPCScene.Stop()
+	SLAppKissToPCScene.Stop()
 	parent.endApproach()
 EndFunction
 
-Function playHug(Actor akRef)
+Function playKiss(Actor akRef)
 	Actor player = Game.GetPlayer()
-	bool _isEssential = true
-	
-	if (!akRef.IsEssential())
-		_isEssential = false
-		akRef.GetActorBase().SetEssential(true)
-	endif
-	
-	if (player.IsWeaponDrawn())
-		player.SheatheWeapon()
-	endif
-	if (akRef.IsWeaponDrawn())
-		akRef.SheatheWeapon()
-	endif
-	
-	if (SLApproachMain.enableForceThirdPersonHug)
-		Game.ForceThirdPerson()
-	endif
-	player.PlayIdleWithTarget(HugIdle, akRef)
-	Utility.Wait(3.0)
-	
-	if (!_isEssential)
-		akRef.GetActorBase().SetEssential(false)
-	endif
+	SexUtil.PlayKiss(akRef, player)
 EndFunction
 
 
 SLAppSexUtil Property SexUtil Auto
-
 Faction Property ArousalFaction  Auto
-
 ReferenceAlias Property talkingActor  Auto
-Scene Property SLAppHugToPCScene  Auto  
-Idle Property HugIdle  Auto  
+Scene Property SLAppKissToPCScene  Auto  

@@ -19,6 +19,7 @@ int userAddingRapePointPcOID
 int userAddingRapePointNpcOID
 
 int userAddingHugPointPcOID
+int userAddingKissPointPcOID
 
 int[] SLAppQuestScriptsOIDS
 
@@ -62,6 +63,7 @@ event OnPageReset(string page)
 	userAddingRapePointNpcOID =  AddSliderOption("$AddingRapePointsNPCNPC", SLApproachMain.userAddingRapePointNpc, "{0}")
 	
 	userAddingHugPointPcOID =  AddSliderOption("$AddingHugPointsNPCPC", SLApproachMain.userAddingHugPointPc, "{0}")
+	userAddingKissPointPcOID =  AddSliderOption("$AddingKissPointsNPCPC", SLApproachMain.userAddingKissPointPc, "{0}")
 endevent
 
 Event OnOptionHighlight(int option)
@@ -83,6 +85,8 @@ Event OnOptionHighlight(int option)
 		SetInfoText("$AddingRapePointsNPCNPCInfo")
 	elseif (option == userAddingHugPointPcOID)
 		SetInfoText("$AddingHugPointsNPCPCInfo")
+	elseif (option == userAddingKissPointPcOID)
+		SetInfoText("$AddingKissPointsNPCPCInfo")
 	endif
 EndEvent
 
@@ -116,7 +120,7 @@ event OnOptionSliderOpen(int option)
 	if (option == cloakFrequencyOID)
 		SetSliderDialogStartValue( SLApproachMain.cloakFrequency)
 		SetSliderDialogDefaultValue( SLApproachMain.cloakFrequency)
-		SetSliderDialogRange(1.0, 240.0)
+		SetSliderDialogRange(10.0, 240.0)
 		SetSliderDialogInterval(1.0)
 	elseif (option == cloakRangeOID)
 		SetSliderDialogStartValue( SLApproachMain.cloakRange)
@@ -128,6 +132,7 @@ event OnOptionSliderOpen(int option)
 		SetSliderDialogDefaultValue( SLApproachMain.baseChanceMultiplier)
 		SetSliderDialogRange(0.0, 10.0)
 		SetSliderDialogInterval(0.1)
+		
 	elseif (option == userAddingPointPcOID)
 		SetSliderDialogStartValue(SLApproachMain.userAddingPointPc)
 		SetSliderDialogDefaultValue(SLApproachMain.userAddingPointPc)
@@ -138,6 +143,7 @@ event OnOptionSliderOpen(int option)
 		SetSliderDialogDefaultValue(SLApproachMain.userAddingPointNpc)
 		SetSliderDialogRange(-100.0, 100.0)
 		SetSliderDialogInterval(1.0)
+		
 	elseif (option == userAddingRapePointPcOID)
 		SetSliderDialogStartValue(SLApproachMain.userAddingRapePointPc)
 		SetSliderDialogDefaultValue(SLApproachMain.userAddingRapePointPc)
@@ -148,6 +154,18 @@ event OnOptionSliderOpen(int option)
 		SetSliderDialogDefaultValue(SLApproachMain.userAddingRapePointNpc)
 		SetSliderDialogRange(-100.0, 100.0)
 		SetSliderDialogInterval(1.0)
+
+	elseif (option == userAddingHugPointPcOID)
+		SetSliderDialogStartValue(SLApproachMain.userAddingHugPointPc)
+		SetSliderDialogDefaultValue(SLApproachMain.userAddingHugPointPc)
+		SetSliderDialogRange(-100.0, 100.0)
+		SetSliderDialogInterval(1.0)
+	elseif (option == userAddingKissPointPcOID)
+		SetSliderDialogStartValue(SLApproachMain.userAddingKissPointPc)
+		SetSliderDialogDefaultValue(SLApproachMain.userAddingKissPointPc)
+		SetSliderDialogRange(-100.0, 100.0)
+		SetSliderDialogInterval(1.0)
+
 	endif
 endevent
 
@@ -161,17 +179,27 @@ event OnOptionSliderAccept(int option, float value)
 	elseif (option == baseChanceMultiplierOID )
 		SLApproachMain.baseChanceMultiplier= value
 		SetSliderOptionValue(baseChanceMultiplierOID , SLApproachMain.baseChanceMultiplier, "{1}")
+		
 	elseif (option == userAddingPointPcOID)
 		SLApproachMain.userAddingPointPc = value as Int
 		SetSliderOptionValue(userAddingPointPcOID , SLApproachMain.userAddingPointPc)
 	elseif (option == userAddingPointNpcOID)
 		SLApproachMain.userAddingPointNpc = value as Int
 		SetSliderOptionValue(userAddingPointNpcOID , SLApproachMain.userAddingPointNpc)
+		
 	elseif (option == userAddingRapePointPcOID)
 		SLApproachMain.userAddingRapePointPc = value as Int
 		SetSliderOptionValue(userAddingRapePointPcOID , SLApproachMain.userAddingRapePointPc)
 	elseif (option == userAddingRapePointNpcOID)
 		SLApproachMain.userAddingRapePointNpc = value as Int
 		SetSliderOptionValue(userAddingRapePointNpcOID , SLApproachMain.userAddingRapePointNpc)
+		
+	elseif (option == userAddingHugPointPcOID)
+		SLApproachMain.userAddingHugPointPc = value as Int
+		SetSliderOptionValue(userAddingHugPointPcOID, SLApproachMain.userAddingHugPointPc)
+	elseif (option == userAddingKissPointPcOID)
+		SLApproachMain.userAddingKissPointPc = value as Int
+		SetSliderOptionValue(userAddingKissPointPcOID, SLApproachMain.userAddingKissPointPc)
+		
 	endif
 endevent
