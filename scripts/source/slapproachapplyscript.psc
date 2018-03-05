@@ -18,7 +18,7 @@ Event OnEffectStart(Actor akTarget, Actor playerActor)
 				if (init)
 					if (xqscript.chanceRoll(akTarget, playerActor, SLApproachMain.baseChanceMultiplier))
 						xqscript.ready()
-						slappUtil.log("INIT: " + indexCounter + " - ")
+						slappUtil.log("INIT: " + indexCounter)
 						
 						indexCounter = 0 ; break while loop
 						xqscript.startApproach(akTarget)

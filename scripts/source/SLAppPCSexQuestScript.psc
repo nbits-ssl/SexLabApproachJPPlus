@@ -55,7 +55,8 @@ bool Function chanceRoll(Actor akRef, Actor PlayerRef, float baseChanceMultiplie
 		return false
 	endif
 	
-	int roll = self.GetDiceRoll()
+	int roll
+	int result
 	int pt_gll = slappUtil.LightLevelCalc(akRef)
 	int pt_time = slappUtil.TimeCalc()
 	int pt_nude = slappUtil.NudeCalc(PlayerRef)
@@ -70,8 +71,9 @@ bool Function chanceRoll(Actor akRef, Actor PlayerRef, float baseChanceMultiplie
 	chance += pt_bed
 	chance -= 10
 	
-	int result = self.GetResult(chance, SLApproachMain.userAddingPointPc, baseChanceMultiplier)
-	slappUtil.log(ApproachName + ": " + akRef.GetActorBase().GetName() + " :Sex: " + result)
+	roll = self.GetDiceRoll()
+	result = self.GetResult(chance, SLApproachMain.userAddingPointPc, baseChanceMultiplier)
+	slappUtil.log(ApproachName + ": " + akRef.GetActorBase().GetName() + " :Sex: res " + result + ", dice " + roll)
 
 	if !(self.isSceneValid(akRef))
 		return false
@@ -83,8 +85,9 @@ bool Function chanceRoll(Actor akRef, Actor PlayerRef, float baseChanceMultiplie
 	; for kiss ---------------------------------
 	chance -= pt_bed
 
+	roll = self.GetDiceRoll()
 	result = self.GetResult(chance, SLApproachMain.userAddingKissPointPc, baseChanceMultiplier)
-	slappUtil.log(ApproachName + ": " + akRef.GetActorBase().GetName() + " :Kiss: " + result)
+	slappUtil.log(ApproachName + ": " + akRef.GetActorBase().GetName() + " :Kiss: res " + result + ", dice " + roll)
 
 	if !(self.isSceneValid(akRef))
 		return false
@@ -96,8 +99,9 @@ bool Function chanceRoll(Actor akRef, Actor PlayerRef, float baseChanceMultiplie
 	; for hug ---------------------------------
 	chance -= pt_time
 
+	roll = self.GetDiceRoll()
 	result = self.GetResult(chance, SLApproachMain.userAddingHugPointPc, baseChanceMultiplier)
-	slappUtil.log(ApproachName + ": " + akRef.GetActorBase().GetName() + " :Hug: " + result)
+	slappUtil.log(ApproachName + ": " + akRef.GetActorBase().GetName() + " :Hug: res " + result + ", dice " + roll)
 
 	if !(self.isSceneValid(akRef))
 		return false
@@ -105,6 +109,8 @@ bool Function chanceRoll(Actor akRef, Actor PlayerRef, float baseChanceMultiplie
 		selectedScene = SLAppHugToPCScene
 		return true ; for hug
 	endif
+	
+	return false
 EndFunction
 
 Function endApproach(bool force = false)
