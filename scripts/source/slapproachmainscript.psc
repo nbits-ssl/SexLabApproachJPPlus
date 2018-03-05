@@ -154,16 +154,16 @@ int Function getregisteredAmount()
 	return registeredQuestsAmount
 EndFunction
 
-quest Function getApproachQuest(int index)
-	if (index < registeredQuestsAmount && index >= 0)
-		return approachQuests[index]
-	endif
-	
-	debug.notification("Sexlab Approach: Quest retrival failed - invalid index " + index)
-	debug.trace("Sexlab Approach: Quest retrival failed - invalid index " + index)
-
-	return None
-EndFunction
+;quest Function getApproachQuest(int index)
+;	if (index < registeredQuestsAmount && index >= 0)
+;		return approachQuests[index]
+;	endif
+;	
+;	debug.notification("Sexlab Approach: Quest retrival failed - invalid index " + index)
+;	debug.trace("Sexlab Approach: Quest retrival failed - invalid index " + index)
+;
+;	return None
+;EndFunction
 
 SLApproachBaseQuestScript Function getApproachQuestScript(int index)
 	if (index < registeredQuestsAmount && index >= 0)

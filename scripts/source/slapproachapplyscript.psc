@@ -10,32 +10,31 @@ Event OnEffectStart(Actor akTarget, Actor playerActor)
 		bool init
 		int indexCounter = SLApproachMain.getRegisteredAmount()
 		
-		;while (indexCounter > 0)
+		while (indexCounter > 0)
 			;interval = Utility.RandomFloat()
 			;Utility.wait(interval)
 			;
 			; it's too more slow
 			
-			indexCounter = Utility.RandomInt(0, indexCounter - 1)
-			;indexCounter -= 1
+			;indexCounter = Utility.RandomInt(0, indexCounter - 1)
+			indexCounter -= 1
 			SLApproachBaseQuestScript xqscript = SLApproachMain.getApproachQuestScript(indexCounter)
 			
-			if (xqscript.isSituationValid(akTarget,playerActor))
+			if (xqscript.isSituationValid(akTarget, playerActor))
 				init = SLApproachMain.StartInitOfQuestByIndex(indexCounter)
 				if (init)
-					if(xqscript.chanceRoll(akTarget, playerActor,SLApproachMain.baseChanceMultiplier))
-						Quest xquest = SLApproachMain.getApproachQuest(indexCounter)
-						xquest.Reset()
-						xquest.SetStage(10)
-						slappUtil.log("INIT: " + indexCounter + " - " + xquest.getstage()+ " - " + xquest.isrunning())
+					if (xqscript.chanceRoll(akTarget, playerActor, SLApproachMain.baseChanceMultiplier))
+						xqscript.ready()
+						slappUtil.log("INIT: " + indexCounter + " - ")
 						
+						indexCounter = 0 ; break while loop
 						xqscript.startApproach(akTarget)
 					else
 						SLApproachMain.EndtInitOfQuestByIndex(indexCounter)
 					endif
 				endif
 			endif
-		;endwhile
+		endwhile
 	endif
 	
 	SLApproachMain.addActorEffectFinished()

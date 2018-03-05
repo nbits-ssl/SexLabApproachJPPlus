@@ -19,6 +19,11 @@ Event OnUpdate()
 	endApproach()
 endEvent
 
+Function ready()
+	self.Reset()
+	self.SetStage(10)
+EndFunction
+
 Function startApproach(Actor akRef)
 	RegisterForSingleUpdate(maxTime)
 EndFunction
