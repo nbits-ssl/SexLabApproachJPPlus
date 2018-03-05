@@ -1,10 +1,15 @@
 Scriptname SLAppPCSexQuestScript extends SLApproachBaseQuestScript Conditional 
 
+Scene selectedScene
+
 Function startApproach(Actor akRef)
 	maxTime = 30
 	talkingActor.ForceRefTo(akRef)
-	self.rollRapeChance(akRef)
-	SLApproachAskForSexQuestScene.Start()
+	if (selectedScene == SLApproachAskForSexQuestScene)
+		slappUtil.log("Selected scene is sex to pc, roll rape chance.")
+		self.rollRapeChance(akRef)
+	endif
+	selectedScene.Start()
 	parent.startApproach(akRef)
 EndFunction
 
@@ -50,23 +55,56 @@ bool Function chanceRoll(Actor akRef, Actor PlayerRef, float baseChanceMultiplie
 		return false
 	endif
 	
-	int chance = akRef.GetFactionRank(arousalFaction)
+	int roll = self.GetDiceRoll()
+	int pt_gll = slappUtil.LightLevelCalc(akRef)
+	int pt_time = slappUtil.TimeCalc()
+	int pt_nude = slappUtil.NudeCalc(PlayerRef)
+	int pt_bed = slappUtil.BedCalc(PlayerRef) / 2
 
+	; for sex ---------------------------------
+	int chance = akRef.GetFactionRank(arousalFaction)
 	chance += slappUtil.RelationCalc(akRef, PlayerRef)
-	chance += slappUtil.LightLevelCalc(akRef)
-	chance += slappUtil.TimeCalc()
-	chance += slappUtil.NudeCalc(PlayerRef)
+	chance += pt_gll
+	chance += pt_time
+	chance += pt_nude
+	chance += pt_bed
 	chance -= 10
 	
 	int result = self.GetResult(chance, SLApproachMain.userAddingPointPc, baseChanceMultiplier)
-	int roll = self.GetDiceRoll()
-	slappUtil.log(ApproachName + ": " + akRef.GetActorBase().GetName() + " : " + result)
+	slappUtil.log(ApproachName + ": " + akRef.GetActorBase().GetName() + " :Sex: " + result)
 
 	if !(self.isSceneValid(akRef))
 		return false
+	elseif (roll < result)
+		selectedScene = SLApproachAskForSexQuestScene
+		return true ; for sex
+	endif
+	
+	; for kiss ---------------------------------
+	chance -= pt_bed
+
+	result = self.GetResult(chance, SLApproachMain.userAddingKissPointPc, baseChanceMultiplier)
+	slappUtil.log(ApproachName + ": " + akRef.GetActorBase().GetName() + " :Kiss: " + result)
+
+	if !(self.isSceneValid(akRef))
+		return false
+	elseif (roll < result)
+		selectedScene = SLAppKissToPCScene
+		return true ; for kiss
 	endif
 
-	return (roll < result)
+	; for hug ---------------------------------
+	chance -= pt_time
+
+	result = self.GetResult(chance, SLApproachMain.userAddingHugPointPc, baseChanceMultiplier)
+	slappUtil.log(ApproachName + ": " + akRef.GetActorBase().GetName() + " :Hug: " + result)
+
+	if !(self.isSceneValid(akRef))
+		return false
+	elseif (roll < result)
+		selectedScene = SLAppHugToPCScene
+		return true ; for hug
+	endif
 EndFunction
 
 Function endApproach(bool force = false)
@@ -76,7 +114,7 @@ Function endApproach(bool force = false)
 		RegisterForSingleUpdate(retryTime)
 	else
 		approachEnding = true
-		SLApproachAskForSexQuestScene.Stop()
+		selectedScene.Stop()
 		SLApproachAskForSexQuestFollowPlayerScene.Stop()
 		parent.endApproach()
 	endif
@@ -158,6 +196,16 @@ Function followSceneStop()
 	endif
 EndFunction
 
+Function playKiss(Actor akRef)
+	Actor player = Game.GetPlayer()
+	SexUtil.PlayKiss(akRef, player)
+EndFunction
+
+Function playHug(Actor akRef)
+	Actor player = Game.GetPlayer()
+	SexUtil.PlayHug(akRef, player, SLApproachMain.enableForceThirdPersonHug)
+EndFunction
+
 
 SLAppSexUtil Property SexUtil Auto
 
@@ -168,5 +216,7 @@ ReferenceAlias Property PlayerReference Auto
 
 Scene Property SLApproachAskForSexQuestScene  Auto  
 Scene Property SLApproachAskForSexQuestFollowPlayerScene Auto
+Scene Property SLAppHugToPCScene  Auto
+Scene Property SLAppKissToPCScene  Auto  
 
 Armor Property SLAppRingBeast  Auto  

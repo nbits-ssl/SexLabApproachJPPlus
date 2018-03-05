@@ -6,7 +6,7 @@ Scriptname SLApp_TIF__04029EC4 Extends TopicInfo Hidden
 Function Fragment_0(ObjectReference akSpeakerRef)
 Actor akSpeaker = akSpeakerRef as Actor
 ;BEGIN CODE
-(GetOwningQuest() as SLAppPCHugQuestScript).playHug(akSpeaker)
+(GetOwningQuest() as SLAppPCSexQuestScript).playHug(akSpeaker)
 ;END CODE
 EndFunction
 ;END FRAGMENT

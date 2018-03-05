@@ -112,4 +112,39 @@ int Function _quickSex(Actor[] Positions, sslBaseAnimation[] Anims, Actor Victim
 	return -1
 EndFunction
 
-SexLabFramework Property SexLab  Auto  
+Function PlayHug(Actor src, Actor dst, bool thirdpersonmode)
+	bool _isEssentialsrc = true
+	bool _isEssentialdst = true
+	
+	if (!src.IsEssential())
+		_isEssentialsrc = false
+		src.GetActorBase().SetEssential(true)
+	endif
+	if (!dst.IsEssential())
+		_isEssentialdst = false
+		dst.GetActorBase().SetEssential(true)
+	endif
+	
+	if (dst.IsWeaponDrawn())
+		dst.SheatheWeapon()
+	endif
+	if (src.IsWeaponDrawn())
+		src.SheatheWeapon()
+	endif
+	
+	if (thirdpersonmode)
+		Game.ForceThirdPerson()
+	endif
+	dst.PlayIdleWithTarget(HugIdle, src)
+	Utility.Wait(3.0)
+	
+	if (!_isEssentialsrc)
+		src.GetActorBase().SetEssential(false)
+	endif
+	if (!_isEssentialdst)
+		dst.GetActorBase().SetEssential(false)
+	endif
+EndFunction
+
+SexLabFramework Property SexLab  Auto
+Idle Property HugIdle  Auto  

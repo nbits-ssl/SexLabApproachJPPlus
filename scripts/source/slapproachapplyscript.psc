@@ -4,19 +4,12 @@ slapp_util Property slappUtil Auto
 
 Event OnEffectStart(Actor akTarget, Actor playerActor)
 	SLApproachMain.addActorEffectStarted()
-	; float interval
 	
 	if (!akTarget.IsDead())
 		bool init
 		int indexCounter = SLApproachMain.getRegisteredAmount()
 		
 		while (indexCounter > 0)
-			;interval = Utility.RandomFloat()
-			;Utility.wait(interval)
-			;
-			; it's too more slow
-			
-			;indexCounter = Utility.RandomInt(0, indexCounter - 1)
 			indexCounter -= 1
 			SLApproachBaseQuestScript xqscript = SLApproachMain.getApproachQuestScript(indexCounter)
 			
