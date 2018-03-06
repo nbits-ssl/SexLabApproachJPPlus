@@ -168,6 +168,17 @@ bool Function ValidateGender(Actor akRef, Actor target, bool isplayer = false)
 	return true
 EndFunction
 
+int Function GetTargetGender(Actor akRef)
+	int srcgender = SexLab.GetGender(akRef)
+	if (akRef.IsEquipped(SLAppRingHomo))
+		return -1 ; any
+	elseif (srcgender != 1 && srcgender != 3) ; not female and female creature
+		return 1
+	else
+		return 0
+	endif
+EndFunction
+
 int Function ValidateChance(int x)
 	if (x < 0)
 		return 0

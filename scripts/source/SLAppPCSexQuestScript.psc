@@ -51,7 +51,7 @@ bool Function chanceRoll(Actor akRef, Actor PlayerRef, float baseChanceMultiplie
 		return false
 	elseif ((SexLab.GetGender(akRef) == 2) && (SexLab.GetGender(PlayerRef) == 0)) ; c/m
 		return false
-	elseif !(self.isPrecheckValid(PlayerRef, akRef))
+	elseif !(self.isPrecheckValid(PlayerRef, akRef, true))
 		return false
 	endif
 	
