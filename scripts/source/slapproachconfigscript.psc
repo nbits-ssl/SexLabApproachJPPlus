@@ -19,7 +19,10 @@ int userAddingRapePointPcOID
 int userAddingRapePointNpcOID
 
 int userAddingHugPointPcOID
+int userAddingHugPointNpcOID
+
 int userAddingKissPointPcOID
+int userAddingKissPointNpcOID
 
 int[] SLAppQuestScriptsOIDS
 
@@ -63,7 +66,10 @@ event OnPageReset(string page)
 	userAddingRapePointNpcOID =  AddSliderOption("$AddingRapePointsNPCNPC", SLApproachMain.userAddingRapePointNpc, "{0}")
 	
 	userAddingHugPointPcOID =  AddSliderOption("$AddingHugPointsNPCPC", SLApproachMain.userAddingHugPointPc, "{0}")
+	userAddingHugPointNpcOID =  AddSliderOption("$AddingHugPointsNPCNPC", SLApproachMain.userAddingHugPointNpc, "{0}")
+	
 	userAddingKissPointPcOID =  AddSliderOption("$AddingKissPointsNPCPC", SLApproachMain.userAddingKissPointPc, "{0}")
+	userAddingKissPointNpcOID =  AddSliderOption("$AddingKissPointsNPCNPC", SLApproachMain.userAddingKissPointNpc, "{0}")
 endevent
 
 Event OnOptionHighlight(int option)
@@ -85,8 +91,12 @@ Event OnOptionHighlight(int option)
 		SetInfoText("$AddingRapePointsNPCNPCInfo")
 	elseif (option == userAddingHugPointPcOID)
 		SetInfoText("$AddingHugPointsNPCPCInfo")
+	elseif (option == userAddingHugPointNpcOID)
+		SetInfoText("$AddingHugPointsNPCNPCInfo")
 	elseif (option == userAddingKissPointPcOID)
 		SetInfoText("$AddingKissPointsNPCPCInfo")
+	elseif (option == userAddingKissPointNpcOID)
+		SetInfoText("$AddingKissPointsNPCNPCInfo")
 	endif
 EndEvent
 
@@ -160,9 +170,20 @@ event OnOptionSliderOpen(int option)
 		SetSliderDialogDefaultValue(SLApproachMain.userAddingHugPointPc)
 		SetSliderDialogRange(-100.0, 100.0)
 		SetSliderDialogInterval(1.0)
+	elseif (option == userAddingHugPointNpcOID)
+		SetSliderDialogStartValue(SLApproachMain.userAddingHugPointNpc)
+		SetSliderDialogDefaultValue(SLApproachMain.userAddingHugPointNpc)
+		SetSliderDialogRange(-100.0, 100.0)
+		SetSliderDialogInterval(1.0)
+
 	elseif (option == userAddingKissPointPcOID)
 		SetSliderDialogStartValue(SLApproachMain.userAddingKissPointPc)
 		SetSliderDialogDefaultValue(SLApproachMain.userAddingKissPointPc)
+		SetSliderDialogRange(-100.0, 100.0)
+		SetSliderDialogInterval(1.0)
+	elseif (option == userAddingKissPointNpcOID)
+		SetSliderDialogStartValue(SLApproachMain.userAddingKissPointNpc)
+		SetSliderDialogDefaultValue(SLApproachMain.userAddingKissPointNpc)
 		SetSliderDialogRange(-100.0, 100.0)
 		SetSliderDialogInterval(1.0)
 
@@ -197,9 +218,16 @@ event OnOptionSliderAccept(int option, float value)
 	elseif (option == userAddingHugPointPcOID)
 		SLApproachMain.userAddingHugPointPc = value as Int
 		SetSliderOptionValue(userAddingHugPointPcOID, SLApproachMain.userAddingHugPointPc)
+	elseif (option == userAddingHugPointNpcOID)
+		SLApproachMain.userAddingHugPointNpc = value as Int
+		SetSliderOptionValue(userAddingHugPointNpcOID, SLApproachMain.userAddingHugPointNpc)
+		
 	elseif (option == userAddingKissPointPcOID)
 		SLApproachMain.userAddingKissPointPc = value as Int
 		SetSliderOptionValue(userAddingKissPointPcOID, SLApproachMain.userAddingKissPointPc)
+	elseif (option == userAddingKissPointNpcOID)
+		SLApproachMain.userAddingKissPointNpc = value as Int
+		SetSliderOptionValue(userAddingKissPointNpcOID, SLApproachMain.userAddingKissPointNpc)
 		
 	endif
 endevent

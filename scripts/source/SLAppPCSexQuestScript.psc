@@ -43,6 +43,8 @@ Function rollRapeChance(Actor akRef)
 EndFunction
 
 bool Function chanceRoll(Actor akRef, Actor PlayerRef, float baseChanceMultiplier)
+	string akRefName = akRef.GetActorBase().GetName()
+
 	if !(akRef.HasLOS(PlayerRef))
 		return false
 	elseif (SLApproachAskForSexQuestFollowPlayerScene.isPlaying())
@@ -51,19 +53,19 @@ bool Function chanceRoll(Actor akRef, Actor PlayerRef, float baseChanceMultiplie
 		return false
 	elseif ((SexLab.GetGender(akRef) == 2) && (SexLab.GetGender(PlayerRef) == 0)) ; c/m
 		return false
+	elseif !(self.isSceneValid(akRef))
+		return false
 	elseif !(self.isPrecheckValid(PlayerRef, akRef, true))
 		return false
 	endif
 	
-	int roll
-	int result
 	int pt_gll = slappUtil.LightLevelCalc(akRef)
 	int pt_time = slappUtil.TimeCalc()
 	int pt_nude = slappUtil.NudeCalc(PlayerRef)
 	int pt_bed = slappUtil.BedCalc(PlayerRef) / 2
 
 	; for sex ---------------------------------
-	int chance = akRef.GetFactionRank(arousalFaction)
+	int chance = SexUtil.GetArousal(akRef, PlayerRef)
 	chance += slappUtil.RelationCalc(akRef, PlayerRef)
 	chance += pt_gll
 	chance += pt_time
@@ -71,13 +73,11 @@ bool Function chanceRoll(Actor akRef, Actor PlayerRef, float baseChanceMultiplie
 	chance += pt_bed
 	chance -= 10
 	
-	roll = self.GetDiceRoll()
-	result = self.GetResult(chance, SLApproachMain.userAddingPointPc, baseChanceMultiplier)
-	slappUtil.log(ApproachName + ": " + akRef.GetActorBase().GetName() + " :Sex: res " + result + ", dice " + roll)
+	int roll = self.GetDiceRoll()
+	int result = self.GetResult(chance, SLApproachMain.userAddingPointPc, baseChanceMultiplier)
+	slappUtil.log(ApproachName + ": " + akRefName + " :Sex: " + roll + " < " + result)
 
-	if !(self.isSceneValid(akRef))
-		return false
-	elseif (roll < result)
+	if (roll < result)
 		selectedScene = SLApproachAskForSexQuestScene
 		return true ; for sex
 	endif
@@ -87,11 +87,9 @@ bool Function chanceRoll(Actor akRef, Actor PlayerRef, float baseChanceMultiplie
 
 	roll = self.GetDiceRoll()
 	result = self.GetResult(chance, SLApproachMain.userAddingKissPointPc, baseChanceMultiplier)
-	slappUtil.log(ApproachName + ": " + akRef.GetActorBase().GetName() + " :Kiss: res " + result + ", dice " + roll)
+	slappUtil.log(ApproachName + ": " + akRefName + " :Kiss: " + roll + " < " + result)
 
-	if !(self.isSceneValid(akRef))
-		return false
-	elseif (roll < result)
+	if (roll < result)
 		selectedScene = SLAppKissToPCScene
 		return true ; for kiss
 	endif
@@ -101,11 +99,9 @@ bool Function chanceRoll(Actor akRef, Actor PlayerRef, float baseChanceMultiplie
 
 	roll = self.GetDiceRoll()
 	result = self.GetResult(chance, SLApproachMain.userAddingHugPointPc, baseChanceMultiplier)
-	slappUtil.log(ApproachName + ": " + akRef.GetActorBase().GetName() + " :Hug: res " + result + ", dice " + roll)
+	slappUtil.log(ApproachName + ": " + akRefName + " :Hug: " + roll + " < " + result)
 
-	if !(self.isSceneValid(akRef))
-		return false
-	elseif (roll < result)
+	if (roll < result)
 		selectedScene = SLAppHugToPCScene
 		return true ; for hug
 	endif

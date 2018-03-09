@@ -1,5 +1,7 @@
 Scriptname SLAppNPCSexQuestScript extends SLApproachBaseQuestScript  Conditional
 
+Scene selectedScene
+
 Function startApproach(Actor akRef)
 	maxTime = 15
 	if (!SSLAppAsk2.isRunning())
@@ -7,46 +9,54 @@ Function startApproach(Actor akRef)
 	endif
 	
 	if (SSLAppAsk2.isRunning())
-		Actor target = ansRef.GetActorRef()
-		
-		int chance = self.calcChance(akRef, target)
-		int result = self.GetResult(chance, SLApproachMain.userAddingPointNpc, 1.0)
-		int roll = self.GetDiceRoll()
+		if (selectedScene == SSLAppAsk2Scene) ; sex
+			Actor target = ansRef.GetActorRef()
+			
+			int chance = self.calcChance(akRef, target)
+			chance += slappUtil.BedCalc(target)
+			chance += slappUtil.TimeCalc()
 
-		slappUtil.log("Ask to Other chance: ANS by : " + target.GetActorBase().GetName() + " : "  + result + " & " + roll)
+			int result = self.GetResult(chance, SLApproachMain.userAddingPointNpc, 1.0)
+			int roll = self.GetDiceRoll()
+
+			slappUtil.log(ApproachName + " Ans: " + target.GetActorBase().GetName() + " : " + roll + " < " + result)
 		
-		if (SexLab.IsActorActive(akRef) || SexLab.IsActorActive(target) || \
-			target.IsInCombat() || target.IsWeaponDrawn() || target.IsBleedingOut() || \
-			target.IsInDialogueWithPlayer() || target.IsDead() || !SexLab.IsValidActor(target))
-		
-			slappUtil.log("Sex to Other by: pass : akRef or target has Locked by some reason")
-			maxTime = 2
+			if (SexLab.IsActorActive(akRef) || SexLab.IsActorActive(target) || \
+				target.IsInCombat() || target.IsWeaponDrawn() || target.IsBleedingOut() || \
+				target.IsInDialogueWithPlayer() || target.IsDead() || !SexLab.IsValidActor(target))
 			
-		elseif (akRef.IsEquipped(SLAppRingServant) || akRef.IsEquipped(SLAppRingSlave) || roll < result)
-			SSLAppAsk2Scene.Start()
-		elseif (SLApproachMain.enableRapeFlag)
-			if (akRef.IsEquipped(SLAppRingBeast))
-				SSLAppAsk2SceneRape.Start()
-			else
-				int second_result = slappUtil.ValidateChance(self.calcChance(akRef, target) / 10)
-				int second_extra = SLApproachMain.userAddingRapePointNpc
-				second_result = second_result + second_extra
-				int second_roll = self.GetDiceRoll()
-				slappUtil.log("Ask to Other rape chance: ANS by : "  + akRef.GetActorBase().GetName() + " : " + second_result + " & " + second_roll)
-			
-				if (second_roll < second_result)
+				slappUtil.log(ApproachName + " Pass: akRef or target has Locked by some reason")
+				maxTime = 2
+				
+			elseif (akRef.IsEquipped(SLAppRingServant) || akRef.IsEquipped(SLAppRingSlave) || roll < result)
+				SSLAppAsk2Scene.Start()
+			elseif (SLApproachMain.enableRapeFlag)
+				if (akRef.IsEquipped(SLAppRingBeast))
 					SSLAppAsk2SceneRape.Start()
 				else
-					SSLAppAsk2SceneDisagree.Start()
+					result = slappUtil.ValidateChance(self.calcChance(akRef, target) / 10)
+					result += SLApproachMain.userAddingRapePointNpc
+					roll = self.GetDiceRoll()
+					slappUtil.log(ApproachName + " Rape: " + akRef.GetActorBase().GetName() + " : " + roll + " < " + result)
+				
+					if (roll < result)
+						SSLAppAsk2SceneRape.Start()
+					else
+						SSLAppAsk2SceneDisagree.Start()
+					endif
 				endif
+			else ; disable rape
+				SSLAppAsk2SceneDisagree.Start()
 			endif
-		else ; disable rape
-			SSLAppAsk2SceneDisagree.Start()
+		elseif (selectedScene == SSLAppAsk2Kiss)
+			SSLAppAsk2Kiss.Start()
+		elseif (selectedScene == SSLAppAsk2Hug)
+			SSLAppAsk2Hug.Start()
 		endif
-		
+			
 		askRef.GetActorRef().EvaluatePackage()
 	else
-		slappUtil.log("Sex to Other: SSLAppAsk2 isn't running.")
+		slappUtil.log(ApproachName + " SSLAppAsk2 isn't running.")
 	endif
 	
 	parent.startApproach(akRef)
@@ -58,8 +68,10 @@ bool Function chanceRoll(Actor akRef, Actor Player, float baseChanceMultiplier)
 	int queststage = self.GetStage()
 	if (queststage >= 10 && queststage < 100)
 		return false
-	elseif (SSLAppAsk2Scene.IsPlaying() || SSLAppAsk2SceneDisagree.IsPlaying() || SSLAppAsk2SceneRape.IsPlaying())
-		return false
+	elseif (SSLAppAsk2Scene.IsPlaying() || SSLAppAsk2SceneDisagree.IsPlaying() || SSLAppAsk2SceneRape.IsPlaying() || \
+			SSLAppAsk2Hug.IsPlaying() || SSLAppAsk2Kiss.IsPlaying())
+			return false
+			
 	elseif (akRef.GetItemCount(SLAppRingEngagement))
 		return false
 	elseif !(self.isSceneValid(akRef))
@@ -84,26 +96,65 @@ bool Function chanceRoll(Actor akRef, Actor Player, float baseChanceMultiplier)
 			return false
 		elseif !(self.modSpecificCheck(akRef, target))
 			return false
-		endif
-		
-		slappUtil.log("Sex to Other by: " + akRefName + " - " + target.GetBaseObject().GetName())
-		
-		int chance = self.calcChance(akRef, target)
-		int result = self.GetResult(chance, SLApproachMain.userAddingPointNpc, baseChanceMultiplier)
-		int roll = self.GetDiceRoll()
-		slappUtil.log("Ask to Other chance: ASK by : "  + akRefName + " : " + result + " & " + roll)
-		
-		if (roll < result && ansRef.GetActorRef() != akRef)
-			askRef.ForceRefTo(akRef)
-			ansRef.ForceRefTo(target)
-			return true
-		else
+		elseif (ansRef.GetActorRef() == akRef) ; why check in this time? when wrote?
 			return false
 		endif
+		
+		slappUtil.log(ApproachName + " ChanceRoll: " + akRefName + " - " + target.GetBaseObject().GetName())
+		int pt_bed = slappUtil.BedCalc(target)
+		int pt_time = slappUtil.TimeCalc()
+		
+		; for sex ---------------------------------
+		int chance = self.calcChance(akRef, target)
+		chance += pt_bed
+		chance += pt_time
+		
+		int result = self.GetResult(chance, SLApproachMain.userAddingPointNpc, baseChanceMultiplier)
+		int roll = self.GetDiceRoll()
+		slappUtil.log(ApproachName + ": " + akRefName + " :Sex: " + roll + " < " + result)
+
+		if (roll < result)
+			self.fillAlias(akRef, target)
+			selectedScene = SSLAppAsk2Scene
+			return true
+		endif
+		
+		; for kiss ---------------------------------
+		chance -= pt_bed
+		
+		result = self.GetResult(chance, SLApproachMain.userAddingKissPointNpc, baseChanceMultiplier)
+		roll = self.GetDiceRoll()
+		slappUtil.log(ApproachName + ": " + akRefName + " :Kiss: " + roll + " < " + result)
+
+		if (roll < result)
+			self.fillAlias(akRef, target)
+			selectedScene = SSLAppAsk2Kiss
+			return true
+		endif
+		
+		; for hug ---------------------------------
+		chance -= pt_time
+		
+		result = self.GetResult(chance, SLApproachMain.userAddingHugPointNpc, baseChanceMultiplier)
+		roll = self.GetDiceRoll()
+		slappUtil.log(ApproachName + ": " + akRefName + " :Hug: " + roll + " < " + result)
+
+		if (roll < result)
+			self.fillAlias(akRef, target)
+			selectedScene = SSLAppAsk2Hug
+			return true
+		endif
+		
+		return false
 	else
-		slappUtil.log("Ask to Other, None target :"  + akRefName)
+		slappUtil.log(ApproachName + " None target: " + akRefName)
 		return false
 	endif
+EndFunction
+
+Function fillAlias(Actor akRef, Actor target)
+	askRef.ForceRefTo(akRef)
+	ansRef.ForceRefTo(target)
 EndFunction
 
 bool Function modSpecificCheck(Actor akRef, Actor target)
@@ -116,18 +167,9 @@ bool Function modSpecificCheck(Actor akRef, Actor target)
 EndFunction
 
 int Function calcChance(Actor akRef, Actor target)
-	int chance
-	if (akRef.IsInFaction(arousalFaction))
-		chance = akRef.GetFactionRank(arousalFaction)
-	elseif(target.IsInFaction(arousalFaction))
-		chance = target.GetFactionRank(arousalFaction)
-	else
-		return 0 ;  for C/C
-	endif
+	int chance = SexUtil.GetArousal(akRef, target)
 
-	chance += slappUtil.BedCalc(target)
 	chance += slappUtil.LightLevelCalc(target)
-	chance += slappUtil.TimeCalc()
 	chance += slappUtil.NudeCalc(target)
 	chance += slappUtil.SexAnimActiveCalc(PlayerRef)
 	chance += slappUtil.TeammateCalc(akRef, target)
@@ -138,13 +180,23 @@ EndFunction
 Function endApproach(bool force = false)
 	slappUtil.log("Sex to Other by: endApproach")
 	approachEnding = true
-	SSLAppAsk2Scene.Stop()
-	SSLAppAsk2SceneRape.Stop()
-	SSLAppAsk2SceneDisagree.Stop()
+	
+	if (selectedScene == SSLAppAsk2Scene)
+		SSLAppAsk2Scene.Stop()
+		SSLAppAsk2SceneRape.Stop()
+		SSLAppAsk2SceneDisagree.Stop()
+	elseif (selectedScene == SSLAppAsk2Kiss)
+		SSLAppAsk2Kiss.Stop()
+	else
+		SSLAppAsk2Hug.Stop()
+	endif
+		
 	SSLAppAsk2.Stop()
 	parent.endApproach()
 EndFunction
 
+
+SLAppSexUtil Property SexUtil  Auto  
 
 Quest Property SSLAppAsk2  Auto  
 
@@ -156,6 +208,9 @@ Faction Property ArousalFaction  Auto
 Scene Property SSLAppAsk2Scene  Auto  
 Scene Property SSLAppAsk2SceneDisagree  Auto  
 Scene Property SSLAppAsk2SceneRape  Auto  
+
+Scene Property SSLAppAsk2Kiss  Auto  
+Scene Property SSLAppAsk2Hug  Auto  
 
 Actor Property PlayerRef  Auto  
 

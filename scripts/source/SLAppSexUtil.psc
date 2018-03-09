@@ -1,5 +1,15 @@
 Scriptname SLAppSexUtil extends Quest
 
+int Function GetArousal(Actor src, Actor target) ; because for pet
+	if (src.IsInFaction(arousalFaction))
+		return src.GetFactionRank(arousalFaction)
+	elseif (target.IsInFaction(arousalFaction))
+		return target.GetFactionRank(arousalFaction)
+	else
+		return 0 ;  for C/C
+	endif
+EndFunction
+
 Function StartSex(ReferenceAlias askRef, ReferenceAlias ansRef, bool rape = false)
 	Actor askAct = askRef.GetActorRef()
 	Actor ansAct = ansRef.GetActorRef()
@@ -147,4 +157,5 @@ Function PlayHug(Actor src, Actor dst, bool thirdpersonmode)
 EndFunction
 
 SexLabFramework Property SexLab  Auto
+Faction Property ArousalFaction  Auto  
 Idle Property HugIdle  Auto  
