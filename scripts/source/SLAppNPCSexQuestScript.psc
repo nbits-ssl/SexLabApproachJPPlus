@@ -119,6 +119,10 @@ bool Function chanceRoll(Actor akRef, Actor Player, float baseChanceMultiplier)
 			return true
 		endif
 		
+		if !(akRef.HasKeyword(ActorTypeNPC))
+			return false
+		endif
+		
 		; for kiss ---------------------------------
 		chance -= pt_bed
 		
@@ -219,3 +223,5 @@ Armor Property SLAppRingSlave  Auto
 Armor Property SLAppRingBeast  Auto  
 Armor Property SLAppRingHomo  Auto  
 Armor Property SLAppRingEngagement  Auto  
+
+Keyword Property ActorTypeNPC  Auto  
