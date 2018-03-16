@@ -12,6 +12,9 @@ int enableForceThirdPersonHugOID
 int enableRelationChangeFlagOID ; no longer used
 int enableElderRaceFlagOID
 
+int lowestArousalPCOID
+int lowestArousalNPCOID
+
 int userAddingPointPcOID
 int userAddingPointNpcOID
 
@@ -42,6 +45,9 @@ event OnPageReset(string page)
 	enableForceThirdPersonHugOID = AddToggleOption("$EnableForceThirdPersonHug", SLApproachMain.enableForceThirdPersonHug)
 	enableElderRaceFlagOID = AddToggleOption("$EnableElderRace", SLApproachMain.enableElderRaceFlag)
 	debugLogFlagOID = AddToggleOption("$OutputPapyrusLog", SLApproachMain.debugLogFlag)
+	
+	lowestArousalPCOID = AddSliderOption("$LowestArousalPC", SLApproachMain.lowestArousalPC)
+	lowestArousalNPCOID = AddSliderOption("$LowestArousalNPC", SLApproachMain.lowestArousalNPC)
 
 	SetCursorPosition(1)
 
@@ -97,6 +103,10 @@ Event OnOptionHighlight(int option)
 		SetInfoText("$AddingKissPointsNPCPCInfo")
 	elseif (option == userAddingKissPointNpcOID)
 		SetInfoText("$AddingKissPointsNPCNPCInfo")
+	elseif (option == lowestArousalPCOID)
+		SetInfoText("$LowestArousalPCInfo")
+	elseif (option == lowestArousalNPCOID)
+		SetInfoText("$LowestArousalNPCInfo")
 	endif
 EndEvent
 
@@ -187,6 +197,16 @@ event OnOptionSliderOpen(int option)
 		SetSliderDialogRange(-100.0, 100.0)
 		SetSliderDialogInterval(1.0)
 
+	elseif (option == lowestArousalPCOID)
+		SetSliderDialogStartValue(SLApproachMain.lowestArousalPC)
+		SetSliderDialogDefaultValue(SLApproachMain.lowestArousalPC)
+		SetSliderDialogRange(0, 100)
+		SetSliderDialogInterval(1)
+	elseif (option == lowestArousalNPCOID)
+		SetSliderDialogStartValue(SLApproachMain.lowestArousalNPC)
+		SetSliderDialogDefaultValue(SLApproachMain.lowestArousalNPC)
+		SetSliderDialogRange(0, 100)
+		SetSliderDialogInterval(1)
 	endif
 endevent
 
@@ -229,5 +249,12 @@ event OnOptionSliderAccept(int option, float value)
 		SLApproachMain.userAddingKissPointNpc = value as Int
 		SetSliderOptionValue(userAddingKissPointNpcOID, SLApproachMain.userAddingKissPointNpc)
 		
+	elseif (option == lowestArousalPCOID)
+		SLApproachMain.lowestArousalPC = value as Int
+		SetSliderOptionValue(lowestArousalPCOID, SLApproachMain.lowestArousalPC)
+	elseif (option == lowestArousalNPCOID)
+		SLApproachMain.lowestArousalNPC = value as Int
+		SetSliderOptionValue(lowestArousalNPCOID, SLApproachMain.lowestArousalNPC)
+
 	endif
 endevent

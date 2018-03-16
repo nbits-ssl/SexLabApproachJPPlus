@@ -156,7 +156,9 @@ EndFunction
 
 bool Function ValidateGender(Actor akRef, Actor target, bool isplayer = false)
 	if (isplayer)
-		if (SexLab.GetGender(akRef) == SexLab.GetGender(target) && !akRef.IsEquipped(SLAppRingHomo))
+		if (SexLab.GetGender(akRef) != SexLab.GetGender(target) && akRef.IsEquipped(SLAppRingHomoStrong))
+			return false
+		elseif (SexLab.GetGender(akRef) == SexLab.GetGender(target) && !akRef.IsEquipped(SLAppRingHomo))
 			return false
 		endif
 	elseif (SexLab.GetGender(akRef) == SexLab.GetGender(target))
@@ -204,6 +206,7 @@ Armor Property SLAppRing05  Auto
 Armor Property SLAppRingLove  Auto  
 Armor Property SLAppRingShyness  Auto  
 Armor Property SLAppRingHomo  Auto  
+Armor Property SLAppRingHomoStrong  Auto  
 Armor Property SLAppRingAgreement  Auto  
 
 ReferenceAlias Property PlayerRef  Auto  

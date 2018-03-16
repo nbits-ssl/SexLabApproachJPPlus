@@ -58,6 +58,15 @@ bool Function chanceRoll(Actor akRef, Actor PlayerRef, float baseChanceMultiplie
 	elseif !(self.isPrecheckValid(PlayerRef, akRef, true))
 		return false
 	endif
+
+	int chance = SexUtil.GetArousal(akRef, PlayerRef)
+	if (chance < SLApproachMain.lowestArousalNPC)
+		slappUtil.log(ApproachName + ": " + akRefName + " :Canceled by NPC's Arousal: " + chance)
+		return false
+	elseif (SexUtil.GetArousal(PlayerRef, akRef) < SLApproachMain.lowestArousalPC)
+		slappUtil.log(ApproachName + ": " + akRefName + " :Canceled by PC's Arousal: ---")
+		return false
+	endif
 	
 	int pt_gll = slappUtil.LightLevelCalc(akRef)
 	int pt_time = slappUtil.TimeCalc()
@@ -65,7 +74,6 @@ bool Function chanceRoll(Actor akRef, Actor PlayerRef, float baseChanceMultiplie
 	int pt_bed = slappUtil.BedCalc(PlayerRef) / 2
 
 	; for sex ---------------------------------
-	int chance = SexUtil.GetArousal(akRef, PlayerRef)
 	chance += slappUtil.RelationCalc(akRef, PlayerRef)
 	chance += pt_gll
 	chance += pt_time

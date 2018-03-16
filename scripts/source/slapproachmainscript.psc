@@ -14,6 +14,9 @@ bool Property enableForceThirdPersonHug = true Auto
 bool Property enableRelationChangeFlag = false Auto ; no longer used
 bool Property enableElderRaceFlag = false Auto
 
+int Property lowestArousalPC = 0 Auto
+int Property lowestArousalNPC = 10 Auto
+
 int Property userAddingPointPc = 0 Auto
 int Property userAddingPointNpc = 0 Auto
 

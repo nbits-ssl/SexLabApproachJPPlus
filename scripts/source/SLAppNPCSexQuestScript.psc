@@ -99,13 +99,19 @@ bool Function chanceRoll(Actor akRef, Actor Player, float baseChanceMultiplier)
 		elseif (ansRef.GetActorRef() == akRef) ; why check in this time? when wrote?
 			return false
 		endif
+
+		int chance = SexUtil.GetArousal(akRef, target)
+		if (chance < SLApproachMain.lowestArousalNPC)
+			slappUtil.log(ApproachName + ": " + akRefName + " :Canceled by NPC's Arousal: " + chance)
+			return false
+		endif
 		
 		slappUtil.log(ApproachName + " ChanceRoll: " + akRefName + " - " + target.GetBaseObject().GetName())
 		int pt_bed = slappUtil.BedCalc(target)
 		int pt_time = slappUtil.TimeCalc()
 		
 		; for sex ---------------------------------
-		int chance = self.calcChance(akRef, target)
+		chance = self.calcChance(akRef, target, chance)
 		chance += pt_bed
 		chance += pt_time
 		
@@ -170,8 +176,13 @@ bool Function modSpecificCheck(Actor akRef, Actor target)
 		return true
 EndFunction
 
-int Function calcChance(Actor akRef, Actor target)
-	int chance = SexUtil.GetArousal(akRef, target)
+int Function calcChance(Actor akRef, Actor target, int prechance = 0)
+	int chance
+	if (prechance == 0)
+		chance = SexUtil.GetArousal(akRef, target)
+	else
+		chance = prechance
+	endif
 
 	chance += slappUtil.LightLevelCalc(target)
 	chance += slappUtil.NudeCalc(target)

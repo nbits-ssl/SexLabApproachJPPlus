@@ -115,6 +115,9 @@ int Function _quickSex(Actor[] Positions, sslBaseAnimation[] Anims, Actor Victim
 	Thread.CenterOnObject(CenterOn)
 	Thread.SetStrip(Positions[0], stripoverwrite)
 	Thread.SetStrip(Positions[1], stripoverwrite)
+	Thread.DisableUndressAnimation()
+	Thread.DisableRedress()
+	Thread.DisableRagdollEnd()
 	
 	if Thread.StartThread()
 		return Thread.tid
