@@ -3,8 +3,8 @@ Scriptname SLApproachMainScript extends Quest
 Actor Property PlayerRef Auto
 Spell Property ApproachCloak Auto
 Spell Property SLApproachCloakAbility Auto
-int Property cloakFrequency = 10 Auto
-float Property baseChanceMultiplier = 1.0 Auto
+int Property cloakFrequency = 13 Auto
+float Property baseChanceMultiplier = 0.7 Auto
 int Property totalAwarnessRange = 256 Auto ; no longer used
 
 bool Property debugLogFlag = false Auto
@@ -17,8 +17,8 @@ bool Property enableElderRaceFlag = false Auto
 int Property lowestArousalPC = 0 Auto
 int Property lowestArousalNPC = 10 Auto
 
-int Property userAddingPointPc = 0 Auto
-int Property userAddingPointNpc = 0 Auto
+int Property userAddingPointPc = -20 Auto
+int Property userAddingPointNpc = -10 Auto
 
 int Property userAddingRapePointPc = 0 Auto
 int Property userAddingRapePointNpc = 0 Auto
@@ -26,8 +26,8 @@ int Property userAddingRapePointNpc = 0 Auto
 int Property userAddingHugPointPc = 0 Auto
 int Property userAddingHugPointNpc = 0 Auto
 
-int Property userAddingKissPointPc = 0 Auto
-int Property userAddingKissPointNpc = 0 Auto
+int Property userAddingKissPointPc = -10 Auto
+int Property userAddingKissPointNpc = -10 Auto
 
 bool property isDuringCloakPulse = false Auto
 int Property actorsEffectStarted = 0 Auto
