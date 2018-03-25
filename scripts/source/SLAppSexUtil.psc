@@ -67,9 +67,13 @@ Function StartSexActors(Actor src, Actor dst, bool rape = false)
 EndFunction
 
 Function PlayKiss(Actor src, Actor dst)
-	if (src.IsInDialogueWithPlayer() || dst.IsInDialogueWithPlayer())
-		return
-	endif
+	;if !(src && dst) ; cell change (endapproach force)
+	;	return
+	;elseif (src.IsInDialogueWithPlayer() || dst.IsInDialogueWithPlayer())
+	;if (src.IsInDialogueWithPlayer() || dst.IsInDialogueWithPlayer())
+	;	return
+	;endif
+	; ###FIXME!!### PlaySex for NPCs only, but PlayKiss for PC & NPCs!!
 	
 	sslBaseAnimation[] anims
 	anims =  SexLab.GetAnimationsByTags(2, "MF, kissing", "sex")
@@ -126,6 +130,17 @@ int Function _quickSex(Actor[] Positions, sslBaseAnimation[] Anims, Actor Victim
 EndFunction
 
 Function PlayHug(Actor src, Actor dst, bool thirdpersonmode)
+	if !(src && dst) ; cell change (endapproach force)
+		return
+	endif
+	
+	if (dst.IsWeaponDrawn())
+		dst.SheatheWeapon()
+	endif
+	if (src.IsWeaponDrawn())
+		src.SheatheWeapon()
+	endif
+	
 	bool _isEssentialsrc = true
 	bool _isEssentialdst = true
 	
@@ -136,13 +151,6 @@ Function PlayHug(Actor src, Actor dst, bool thirdpersonmode)
 	if (!dst.IsEssential())
 		_isEssentialdst = false
 		dst.GetActorBase().SetEssential(true)
-	endif
-	
-	if (dst.IsWeaponDrawn())
-		dst.SheatheWeapon()
-	endif
-	if (src.IsWeaponDrawn())
-		src.SheatheWeapon()
 	endif
 	
 	if (thirdpersonmode)
