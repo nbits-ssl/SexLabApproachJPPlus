@@ -57,9 +57,9 @@ EndFunction
 
 int Function BedCalc(Actor akRef)
 	if(SexLab.FindBed(akRef, 1000.0))
-		return 0
+		return 20
 	else
-		return -40
+		return -30
 	endif
 EndFunction
 
