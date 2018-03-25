@@ -90,9 +90,9 @@ bool Function chanceRoll(Actor akRef, Actor PlayerRef, float baseChanceMultiplie
 		return true ; for sex
 	endif
 	
-			if !(akRef.HasKeyword(ActorTypeNPC))
-			return false
-		endif
+	if !(akRef.HasKeyword(ActorTypeNPC))
+		return false
+	endif
 	
 	; for kiss ---------------------------------
 	chance -= pt_bed
