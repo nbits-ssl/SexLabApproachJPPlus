@@ -5,7 +5,7 @@ Scriptname SLApp_SF_Ask2Kiss_0402B9C3 Extends Scene Hidden
 ;BEGIN FRAGMENT Fragment_0
 Function Fragment_0()
 ;BEGIN CODE
-SexUtil.PlayKiss(askRef.GetActorRef(), ansRef.GetActorRef())
+SexUtil.PlayKissNPC(askRef, ansRef)
 ;END CODE
 EndFunction
 ;END FRAGMENT

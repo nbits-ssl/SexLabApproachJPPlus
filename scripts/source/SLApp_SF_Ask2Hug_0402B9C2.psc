@@ -5,7 +5,7 @@ Scriptname SLApp_SF_Ask2Hug_0402B9C2 Extends Scene Hidden
 ;BEGIN FRAGMENT Fragment_0
 Function Fragment_0()
 ;BEGIN CODE
-SexUtil.PlayHug(askRef.GetActorRef(), ansRef.GetActorRef(), false)
+SexUtil.PlayHugNPC(askRef, ansRef)
 ;END CODE
 EndFunction
 ;END FRAGMENT

@@ -213,11 +213,13 @@ EndFunction
 Function playKiss(Actor akRef)
 	Actor player = Game.GetPlayer()
 	SexUtil.PlayKiss(akRef, player)
+	self.endApproach()
 EndFunction
 
 Function playHug(Actor akRef)
 	Actor player = Game.GetPlayer()
 	SexUtil.PlayHug(akRef, player, SLApproachMain.enableForceThirdPersonHug)
+	self.endApproach()
 EndFunction
 
 

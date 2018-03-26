@@ -66,14 +66,21 @@ Function StartSexActors(Actor src, Actor dst, bool rape = false)
 	endif
 EndFunction
 
+Function PlayKissNPC(ReferenceAlias askRef, ReferenceAlias ansRef)
+	Actor askAct = askRef.GetActorRef()
+	Actor ansAct = ansRef.GetActorRef()
+	
+	if (askAct.IsInDialogueWithPlayer() || ansAct.IsInDialogueWithPlayer())
+		return
+	endif
+	
+	self.PlayKiss(askAct, ansAct)
+EndFunction
+
 Function PlayKiss(Actor src, Actor dst)
-	;if !(src && dst) ; cell change (endapproach force)
-	;	return
-	;elseif (src.IsInDialogueWithPlayer() || dst.IsInDialogueWithPlayer())
-	;if (src.IsInDialogueWithPlayer() || dst.IsInDialogueWithPlayer())
-	;	return
-	;endif
-	; ###FIXME!!### PlaySex for NPCs only, but PlayKiss for PC & NPCs!!
+	if !(src && dst) ; cell change (endapproach force)
+		return
+	endif
 	
 	sslBaseAnimation[] anims
 	anims =  SexLab.GetAnimationsByTags(2, "MF, kissing", "sex")
@@ -127,6 +134,17 @@ int Function _quickSex(Actor[] Positions, sslBaseAnimation[] Anims, Actor Victim
 		return Thread.tid
 	endIf
 	return -1
+EndFunction
+
+Function PlayHugNPC(ReferenceAlias askRef, ReferenceAlias ansRef)
+	Actor askAct = askRef.GetActorRef()
+	Actor ansAct = ansRef.GetActorRef()
+	
+	if (askAct.IsInDialogueWithPlayer() || ansAct.IsInDialogueWithPlayer())
+		return
+	endif
+	
+	self.PlayHug(askAct, ansAct, false)
 EndFunction
 
 Function PlayHug(Actor src, Actor dst, bool thirdpersonmode)
