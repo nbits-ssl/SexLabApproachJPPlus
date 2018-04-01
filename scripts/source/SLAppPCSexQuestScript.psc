@@ -55,7 +55,7 @@ bool Function chanceRoll(Actor akRef, Actor PlayerRef, float baseChanceMultiplie
 		return false
 	elseif !(self.isSceneValid(akRef))
 		return false
-	elseif !(self.isPrecheckValid(PlayerRef, akRef, true))
+	elseif !(self.isPrecheckValid(akRef, PlayerRef, true))
 		return false
 	endif
 

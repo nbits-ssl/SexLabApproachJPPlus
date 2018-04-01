@@ -60,10 +60,12 @@ EndFunction
 
 bool Function isPrecheckValid(Actor akRef, Actor akRef2, bool isplayer = false)
 	if (!slappUtil.ValidatePromise(akRef, akRef2) || !slappUtil.ValidateShyness(akRef, akRef2))
-		slappUtil.log(ApproachName + " blocked by Promise or Shyness: " + akRef.GetActorBase().GetName())
+		string debugstr = akRef.GetActorBase().GetName() + " => " + akRef2.GetActorBase().GetName()
+		slappUtil.log(ApproachName + " blocked by Promise or Shyness: " + debugstr)
 		return false
 	elseif !(slappUtil.ValidateGender(akRef, akRef2, isplayer))
-		slappUtil.log(ApproachName + " blocked by Gender check: " + akRef.GetActorBase().GetName())
+		string debugstr = akRef.GetActorBase().GetName() + " => " + akRef2.GetActorBase().GetName()
+		slappUtil.log(ApproachName + " blocked by Gender check: " + debugstr)
 		return false
 	endif
 	
