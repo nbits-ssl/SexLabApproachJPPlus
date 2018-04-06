@@ -70,6 +70,10 @@ Function PlayKissNPC(ReferenceAlias askRef, ReferenceAlias ansRef)
 	Actor askAct = askRef.GetActorRef()
 	Actor ansAct = ansRef.GetActorRef()
 	
+	if !(askAct && ansAct) ; cell change (endapproach force)
+		return
+	endif
+	
 	if (askAct.IsInDialogueWithPlayer() || ansAct.IsInDialogueWithPlayer())
 		return
 	endif
@@ -139,6 +143,10 @@ EndFunction
 Function PlayHugNPC(ReferenceAlias askRef, ReferenceAlias ansRef)
 	Actor askAct = askRef.GetActorRef()
 	Actor ansAct = ansRef.GetActorRef()
+	
+	if !(askAct && ansAct) ; cell change (endapproach force)
+		return
+	endif
 	
 	if (askAct.IsInDialogueWithPlayer() || ansAct.IsInDialogueWithPlayer())
 		return
