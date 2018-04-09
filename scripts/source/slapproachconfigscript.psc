@@ -15,6 +15,8 @@ int enableElderRaceFlagOID
 int lowestArousalPCOID
 int lowestArousalNPCOID
 
+int dialogueArousalOID
+
 int userAddingPointPcOID
 int userAddingPointNpcOID
 
@@ -48,6 +50,8 @@ event OnPageReset(string page)
 	
 	lowestArousalPCOID = AddSliderOption("$LowestArousalPC", SLApproachMain.lowestArousalPC)
 	lowestArousalNPCOID = AddSliderOption("$LowestArousalNPC", SLApproachMain.lowestArousalNPC)
+	
+	dialogueArousalOID = AddSliderOption("$DialogueArousal", SLApproachDialogArousal.GetValue())
 
 	SetCursorPosition(1)
 
@@ -107,6 +111,8 @@ Event OnOptionHighlight(int option)
 		SetInfoText("$LowestArousalPCInfo")
 	elseif (option == lowestArousalNPCOID)
 		SetInfoText("$LowestArousalNPCInfo")
+	elseif (option == dialogueArousalOID)
+		SetInfoText("$DialogueArousalInfo")
 	endif
 EndEvent
 
@@ -207,6 +213,12 @@ event OnOptionSliderOpen(int option)
 		SetSliderDialogDefaultValue(10)
 		SetSliderDialogRange(0, 100)
 		SetSliderDialogInterval(1)
+
+	elseif (option == dialogueArousalOID)
+		SetSliderDialogStartValue(SLApproachDialogArousal.GetValue())
+		SetSliderDialogDefaultValue(70)
+		SetSliderDialogRange(0, 100)
+		SetSliderDialogInterval(1)
 	endif
 endevent
 
@@ -256,5 +268,11 @@ event OnOptionSliderAccept(int option, float value)
 		SLApproachMain.lowestArousalNPC = value as Int
 		SetSliderOptionValue(lowestArousalNPCOID, SLApproachMain.lowestArousalNPC)
 
+	elseif (option == dialogueArousalOID)
+		SLApproachDialogArousal.SetValue(value as Int)
+		SetSliderOptionValue(dialogueArousalOID, SLApproachDialogArousal.GetValue())
+
 	endif
 endevent
+
+GlobalVariable Property SLApproachDialogArousal auto
