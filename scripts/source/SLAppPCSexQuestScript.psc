@@ -135,6 +135,7 @@ Function endApproach(bool force = false)
 		approachEnding = true
 		selectedScene.Stop()
 		SLApproachAskForSexQuestFollowPlayerScene.Stop()
+		HelperQuest.Stop()
 		parent.endApproach()
 	endif
 EndFunction
@@ -148,8 +149,8 @@ Function StartSex(Actor PlayerRef, Actor akSpeaker, bool rape = false)
 	SexUtil.StartSexActors(akSpeaker, PlayerRef, rape)
 EndFunction
 
-Function StartSexMulti(Actor PlayerRef, Actor akSpeaker)
-	SexUtil.StartSexMultiActors(talkingActor.GetActorRef(), PlayerRef, akSpeaker)
+Function StartSexMulti(Actor PlayerRef, Actor akSpeaker, Actor Helper, bool rape = false)
+	SexUtil.StartSexMultiActors(akSpeaker, PlayerRef, Helper, rape)
 EndFunction
 
 Function enjoy(Actor akSpeaker)
@@ -168,8 +169,8 @@ EndFunction
 
 Function enjoyMulti(Actor akSpeaker)
 	Actor PlayerRef = PlayerReference.GetActorRef()
-	
-	self.StartSexMulti(PlayerRef, akSpeaker)
+
+	self.StartSexMulti(talkingActor.GetActorRef(), PlayerRef, akSpeaker)
 	self.followSceneStop()
 	self.endApproach()
 EndFunction
@@ -187,8 +188,9 @@ EndFunction
 
 Function rapedBy(Actor akSpeaker)
 	Actor PlayerRef = PlayerReference.GetActorRef()
+	HelperQuest.Start()
 
-	self.StartSex(PlayerRef, akSpeaker, true)
+	self.StartSexMulti(PlayerRef, akSpeaker, HelpRaperRef.GetActorRef(), true)
 	self.followSceneStop()
 	self.endApproach()
 EndFunction

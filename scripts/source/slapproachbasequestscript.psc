@@ -124,8 +124,13 @@ EndEvent
 SexLabFramework Property SexLab  Auto  
 SLApproachMainScript Property SLApproachMain auto
 
-Quest Property ApproachQuest  Auto  ; overwrite by real approach quests
-string Property ApproachName Auto  ; overwrite by real approach quests
+; overwrite by real approach quests
+Quest Property ApproachQuest  Auto
+string Property ApproachName Auto
+Quest Property HelperQuest  Auto  
+ReferenceAlias Property HelperRef  Auto  
+ReferenceAlias Property HelpRaperRef  Auto  
+;------
 
 Race Property ElderRace  Auto  
 Race Property HorseRace  Auto  
@@ -133,3 +138,4 @@ Race Property ManakinRace  Auto
 
 Armor Property SLAppRingShame  Auto  
 Armor Property SLAppRingFamily  Auto  
+

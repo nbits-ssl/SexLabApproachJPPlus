@@ -10,15 +10,23 @@ int Function GetArousal(Actor src, Actor target) ; because for pet
 	endif
 EndFunction
 
-Function StartSex(ReferenceAlias askRef, ReferenceAlias ansRef, bool rape = false)
+Function StartSexNPC(ReferenceAlias askRef, ReferenceAlias ansRef, ReferenceAlias helper, bool rape = false)
 	Actor askAct = askRef.GetActorRef()
 	Actor ansAct = ansRef.GetActorRef()
+	Actor helperAct = helper.GetActorRef()
 	
 	if (askAct.IsInDialogueWithPlayer() || ansAct.IsInDialogueWithPlayer())
 		return
 	endif
+	if (helperAct && helperAct.IsInDialogueWithPlayer())
+		helperAct = none
+	endif
 	
-	self.StartSexActors(askAct, ansAct, rape)
+	if (helperAct)
+		self.StartSexMultiActors(askAct, ansAct, helperAct, rape)
+	else
+		self.StartSexActors(askAct, ansAct, rape)
+	endif
 EndFunction
 
 Function StartSexActors(Actor src, Actor dst, bool rape = false)
@@ -28,12 +36,25 @@ Function StartSexActors(Actor src, Actor dst, bool rape = false)
 	self._startSexActors(sexActors, src, dst, rape)
 EndFunction
 
-Function StartSexMultiActors(Actor src, Actor dst, Actor helper)
-	Actor[] sexActors = new actor[3]
+Function StartSexMultiActors(Actor src, Actor dst, Actor helper, bool rape = false)
+	Actor[] sexActors
+
+	if (helper && SexLab.IsValidActor(helper))
+		sexActors = new actor[3]
+		slappUtil.log("SLAppSexUtil.StartSexMultiActors(): Helper is " + helper.GetActorBase().GetName())
+	else
+		sexActors = new actor[2]
+		slappUtil.log("SLAppSexUtil.StartSexMultiActors(): Helper is none")
+		helper = none
+	endif
+
 	sexActors[0] = dst
 	sexActors[1] = src
-	sexActors[2] = helper
-	self._startSexActors(sexActors, src, dst)
+	
+	if (helper)
+		sexActors[2] = helper
+	endif
+	self._startSexActors(sexActors, src, dst, rape)
 EndFunction
 
 Function _startSexActors(Actor[] actors, Actor caller, Actor target, bool rape = false)
@@ -45,7 +66,7 @@ Function _startSexActors(Actor[] actors, Actor caller, Actor target, bool rape =
 		victim = target
 	endif
 	
-	if (caller.Is3DLoaded() && target.Is3DLoaded())
+	if (SexLab.IsValidActor(caller) && SexLab.IsValidActor(target))
 		SexLab.StartSex(actors, anims, Victim = victim)
 	endif
 EndFunction
@@ -72,8 +93,10 @@ sslBaseAnimation[] Function _buildAnimation(Actor[] actors, Actor caller, bool r
 			tag += ",aggressive"
 			tagsuppress = "cowgirl"
 		endif ; creature is none settings
+	elseif (actors.Length == 3 && rape)
+		tag += ",aggressive"
 	endif
-	; debug.trace("[slapp] ############## " + tag)
+	slappUtil.log("SLAppSexUtil._buildAnimation(): " + tag)
 	
 	return SexLab.GetAnimationsByTags(actors.Length, tag, tagsuppress, requireall)
 EndFunction
@@ -204,6 +227,8 @@ Function PlayHug(Actor src, Actor dst, bool thirdpersonmode)
 		dst.GetActorBase().SetEssential(false)
 	endif
 EndFunction
+
+slapp_util Property slappUtil Auto
 
 SexLabFramework Property SexLab  Auto
 Faction Property ArousalFaction  Auto  

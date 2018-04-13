@@ -5,7 +5,7 @@ Scriptname SLApp_SF_Ask2Scene_04015618 Extends Scene Hidden
 ;BEGIN FRAGMENT Fragment_1
 Function Fragment_1()
 ;BEGIN CODE
-SexUtil.StartSex(askRef, ansRef)
+SexUtil.StartSexNPC(askRef, ansRef, helperRef)
 ;END CODE
 EndFunction
 ;END FRAGMENT
@@ -14,5 +14,6 @@ EndFunction
 
 ReferenceAlias Property askRef  Auto  
 ReferenceAlias Property ansRef  Auto  
-SexLabFramework Property SexLab  Auto  
 SLAppSexUtil Property SexUtil Auto
+
+ReferenceAlias Property HelperRef  Auto  
