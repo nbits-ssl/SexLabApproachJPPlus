@@ -143,6 +143,10 @@ Function StartSex(Actor PlayerRef, Actor akSpeaker, bool rape = false)
 	SexUtil.StartSexActors(akSpeaker, PlayerRef, rape)
 EndFunction
 
+Function StartSexMulti(Actor PlayerRef, Actor akSpeaker)
+	SexUtil.StartSexMultiActors(talkingActor.GetActorRef(), PlayerRef, akSpeaker)
+EndFunction
+
 Function enjoy(Actor akSpeaker)
 	Actor PlayerRef = PlayerReference.GetActorRef()
 	
@@ -155,6 +159,14 @@ Function enjoyPlus(Actor akSpeaker)
 	Actor PlayerRef = PlayerReference.GetActorRef()
 	self.sexRelationshipUp(akSpeaker, PlayerRef)
 	self.enjoy(akSpeaker)
+EndFunction
+
+Function enjoyMulti(Actor akSpeaker)
+	Actor PlayerRef = PlayerReference.GetActorRef()
+	
+	self.StartSexMulti(PlayerRef, akSpeaker)
+	self.followSceneStop()
+	self.endApproach()
 EndFunction
 
 Function disagree(Actor akSpeaker)
@@ -184,6 +196,11 @@ EndFunction
 
 Function travelWith(Actor akSpeaker)
 	self.SetStage(15)
+	SLApproachAskForSexQuestFollowPlayerScene.Start()
+EndFunction
+
+Function travelWithForMulti(Actor akSpeaker)
+	self.SetStage(20)
 	SLApproachAskForSexQuestFollowPlayerScene.Start()
 EndFunction
 

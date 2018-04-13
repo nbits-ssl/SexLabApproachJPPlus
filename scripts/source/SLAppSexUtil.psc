@@ -22,48 +22,60 @@ Function StartSex(ReferenceAlias askRef, ReferenceAlias ansRef, bool rape = fals
 EndFunction
 
 Function StartSexActors(Actor src, Actor dst, bool rape = false)
-	sslBaseAnimation[] anims
-	actor[] sexActors = new actor[2]
+	Actor[] sexActors = new actor[2]
+	sexActors[0] = dst
+	sexActors[1] = src
+	self._startSexActors(sexActors, src, dst, rape)
+EndFunction
+
+Function StartSexMultiActors(Actor src, Actor dst, Actor helper)
+	Actor[] sexActors = new actor[3]
+	sexActors[0] = dst
+	sexActors[1] = src
+	sexActors[2] = helper
+	self._startSexActors(sexActors, src, dst)
+EndFunction
+
+Function _startSexActors(Actor[] actors, Actor caller, Actor target, bool rape = false)
+	Actor victim
+	actors = SexLab.SortActors(actors)
+	sslBaseAnimation[] anims = self._buildAnimation(actors, caller, rape)
 	
-	int srcSex = SexLab.GetGender(src)
-	int dstSex = SexLab.GetGender(dst)
+	if (rape)
+		victim = target
+	endif
+	
+	if (caller.Is3DLoaded() && target.Is3DLoaded())
+		SexLab.StartSex(actors, anims, Victim = victim)
+	endif
+EndFunction
+
+sslBaseAnimation[] Function _buildAnimation(Actor[] actors, Actor caller, bool rape = false)
+	sslBaseAnimation[] anims
+	string tag = SexLab.MakeAnimationGenderTag(actors)
+	string tagsuppress = ""
+	bool requireall = true
 	
 	if (!rape)
-		; anims =  SexLab.GetAnimationsByTags(2, "MF", "aggressive")
-		
-		if((srcSex == 1 && dstsex == 1) || (srcSex == 0 && srcSex == 0)) ; same sex
-			sexActors[0] = dst
-			sexActors[1] = src
-		elseif (srcSex == 1)
-			sexActors[0] = src
-			sexActors[1] = dst
-		else
-			sexActors[0] = dst
-			sexActors[1] = src
+		if (tag == "MM" || tag == "FF")
+			tag += ",FM"
+			requireall = false
 		endif
+		tagsuppress = "aggressive"
+	elseif (actors.Length == 2)
+		int srcSex = SexLab.GetGender(caller)
+		tag = "FM" ; workaround
 		
-		if (src.Is3DLoaded())
-			SexLab.StartSex(sexActors, anims)
-		endif
-	else
 		if (srcSex == 1) ; female
-			anims =  SexLab.GetAnimationsByTags(2, "fm,cowgirl")
-			sexActors[0] = src
-			sexActors[1] = dst
+			tag += ",cowgirl"
 		elseif (srcSex == 0) ; male
-			anims =  SexLab.GetAnimationsByTags(2, "aggressive", "cowgirl")
-			sexActors[0] = dst
-			sexActors[1] = src
-		else ; creature
-			anims =  SexLab.GetAnimationsByTags(2, "cf")
-			sexActors[0] = dst
-			sexActors[1] = src
-		endif
-		
-		if (src.Is3DLoaded())
-			SexLab.StartSex(sexActors, anims, Victim = dst)
-		endif
+			tag += ",aggressive"
+			tagsuppress = "cowgirl"
+		endif ; creature is none settings
 	endif
+	; debug.trace("[slapp] ############## " + tag)
+	
+	return SexLab.GetAnimationsByTags(actors.Length, tag, tagsuppress, requireall)
 EndFunction
 
 Function PlayKissNPC(ReferenceAlias askRef, ReferenceAlias ansRef)
