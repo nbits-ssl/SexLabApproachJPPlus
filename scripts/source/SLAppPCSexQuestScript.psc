@@ -123,8 +123,13 @@ EndFunction
 
 Function endApproach(bool force = false)
 	int retryTime = 30
+	Actor akRef = talkingActor.GetActorRef()
+	
 	if (!force && SLApproachAskForSexQuestFollowPlayerScene.isPlaying())
 		slappUtil.log(ApproachName + ": Now following scene is playing, retry.")
+		RegisterForSingleUpdate(retryTime)
+	elseif (!force && akRef && akRef.IsInDialogueWithPlayer())
+		slappUtil.log(ApproachName + ": Now IsInDialogueWithPlayer, retry.")
 		RegisterForSingleUpdate(retryTime)
 	else
 		approachEnding = true
