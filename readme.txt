@@ -85,9 +85,10 @@ AddItemMenuからとりあえず全部入手して、PCにshowinventoryするの
 ・試験的にNPC間の3P実装
 　・MCMの設定は色々効きません
 　・複雑なことはせずに「絆」などを持っているNPCは問答無用ではじいています
+　・ペットが絡んだ3Pになることはありません
 　・「人見知りの心」だけはメインの2人のうちどちらかがフォロワーなら参加します
 　・性欲も見ておらず、声掛けNPCの出発点の近くに同性NPCがいたら、徒党をくんで迫り
-　　ます。発生率は一律20%で、グローバル変数「SLApproachMultiplayPercent」で変更で
+　　ます。発生率は一律10%で、グローバル変数「SLApproachMultiplayPercent」で変更で
 　　きます
 　　テストする場合はコンソールで「set SLApproachMultiplayPercent to 100」
 
