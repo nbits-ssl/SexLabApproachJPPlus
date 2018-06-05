@@ -78,14 +78,16 @@ sslBaseAnimation[] Function _buildAnimation(Actor[] actors, Actor caller, bool r
 	bool requireall = true
 	
 	if (!rape)
-		if (tag == "MM" || tag == "FF")
-			tag += ",FM"
+		if (tag == "mm" || tag == "ff")
+			tag += ",fm"
 			requireall = false
+		elseif (tag == "mmm" || tag == "fff")
+			tag = ""
 		endif
 		tagsuppress = "aggressive"
 	elseif (actors.Length == 2)
 		int srcSex = SexLab.GetGender(caller)
-		tag = "FM" ; workaround
+		tag = "fm" ; workaround
 		
 		if (srcSex == 1) ; female
 			tag += ",cowgirl"
@@ -122,7 +124,7 @@ Function PlayKiss(Actor src, Actor dst)
 	endif
 	
 	sslBaseAnimation[] anims
-	anims =  SexLab.GetAnimationsByTags(2, "MF, kissing", "sex")
+	anims =  SexLab.GetAnimationsByTags(2, "fm, kissing", "sex")
 	actor[] sexActors = new actor[2]
 	
 	int srcSex = SexLab.GetGender(src)
