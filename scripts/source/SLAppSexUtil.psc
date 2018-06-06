@@ -64,7 +64,15 @@ Function _startSexActors(Actor[] actors, Actor caller, Actor target, bool rape =
 	
 	if (rape)
 		victim = target
-	endif
+
+		int dstGender = SexLab.GetGender(target)
+		if (actors.Length == 2 && dstGender == 1 && dstGender == SexLab.GetGender(caller)) ; ff, cowgirl
+			actors[0] = caller
+			actors[1] = target
+			; To poke or to shake, that is the question.
+		endif
+	else
+		endif
 	
 	if (SexLab.IsValidActor(caller) && SexLab.IsValidActor(target))
 		SexLab.StartSex(actors, anims, Victim = victim)
