@@ -40,13 +40,17 @@ bool Function isSituationValid(Actor akRef, Actor player)
 		
 		if (!SLApproachMain.enableElderRaceFlag && akRace == ElderRace)
 			return false
-		elseif (akRace == HorseRace) ; for Immersive Horse
-			return false
+		elseif (akRace == HorseRace)
+			if (SLApproachMain.enablePlayerHorseFlag && slappUtil.ValidateHorse(akRef))
+				return true
+			else
+				return false
+			endif
 		elseif (akRace == ManakinRace)
 			return false
 		elseif (akRace.AllowPickpocket())
 			return true
-		elseif (akRef.IsPlayerTeammate())
+		elseif (SLApproachMain.enablePetsFlag && akRef.IsPlayerTeammate())
 			return true
 		endif
 	endif

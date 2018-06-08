@@ -147,7 +147,7 @@ EndFunction
 bool Function ValidateShyness(Actor akRef, Actor target)
 	if (akRef.IsEquipped(SLAppRingShyness) && !target.IsPlayerTeammate() && target != PlayerRef.GetActorRef())
 		return false
-	elseif (target.IsEquipped(SLAppRingShyness) && !akRef.IsPlayerTeammate())
+	elseif (target.IsEquipped(SLAppRingShyness) && (!akRef.IsPlayerTeammate() && !self.ValidateHorse(akRef)))
 		return false
 	else
 		return true
@@ -194,6 +194,14 @@ int Function ValidateChance(int x)
 	endif
 EndFunction
 
+bool Function ValidateHorse(Actor horse)
+	if (horse.IsInFaction(PlayerHorseFaction) || horse == Frost || horse == Shadowmere)
+		return true
+	else
+		return false
+	endif
+EndFunction
+
 SLApproachMainScript Property SLApproachMain Auto
 SexLabFramework Property SexLab  Auto
 
@@ -213,3 +221,7 @@ Armor Property SLAppRingHomoStrong  Auto
 Armor Property SLAppRingAgreement  Auto  
 
 ReferenceAlias Property PlayerRef  Auto  
+
+Actor Property Frost  Auto  
+Actor Property Shadowmere  Auto  
+Faction Property PlayerHorseFaction  Auto  

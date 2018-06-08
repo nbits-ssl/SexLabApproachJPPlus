@@ -13,6 +13,8 @@ bool Property enableRapeFlag = true Auto
 bool Property enableForceThirdPersonHug = true Auto
 bool Property enableRelationChangeFlag = false Auto ; no longer used
 bool Property enableElderRaceFlag = false Auto
+bool Property enablePetsFlag = true Auto
+bool Property enablePlayerHorseFlag = true Auto
 
 int Property lowestArousalPC = 0 Auto
 int Property lowestArousalNPC = 10 Auto

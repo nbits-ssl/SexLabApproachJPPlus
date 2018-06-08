@@ -11,6 +11,8 @@ int enableRapeFlagOID
 int enableForceThirdPersonHugOID
 int enableRelationChangeFlagOID ; no longer used
 int enableElderRaceFlagOID
+int enablePetsFlagOID
+int enablePlayerHorseFlagOID
 
 int lowestArousalPCOID
 int lowestArousalNPCOID
@@ -29,57 +31,98 @@ int userAddingHugPointNpcOID
 int userAddingKissPointPcOID
 int userAddingKissPointNpcOID
 
+int multiplayPercentOID
+
 int[] SLAppQuestScriptsOIDS
 
 SLApproachMainScript Property SLApproachMain Auto
 
+int Function GetVersion()
+	return 1
+EndFunction 
+
+Event OnVersionUpdate(int a_version)
+	OnConfigInit()
+EndEvent
+
+Event OnGameReload()
+	if !(Pages) ; I didn't know to define pages...
+		OnConfigInit()
+	endif
+EndEvent
+
+Event OnConfigInit()
+	Pages = new string[2]
+	Pages[0] = "$SLAppGeneral"
+	Pages[1] = "$SLAppQuests"
+EndEvent
+
 event OnPageReset(string page)
-	SetCursorFillMode(TOP_TO_BOTTOM)
-	SetCursorPosition(0)
+	if (page == "" || page == "$SLAppGeneral")
+		SetCursorFillMode(TOP_TO_BOTTOM)
+		SetCursorPosition(0)
 
-	AddHeaderOption("$SLAppGeneral")
-	
-	cloakFrequencyOID =  AddSliderOption("$CloakFrequency", SLApproachMain.cloakFrequency, "$per0sec")
-	cloakRangeOID =  AddSliderOption("$CloakRange", SLApproachMain.cloakRange)
-	baseChanceMultiplierOID =  AddSliderOption("$BaseChanceMultiplier", SLApproachMain.baseChanceMultiplier, "{1}")
-	enablePromiseFlagOID = AddToggleOption("$EnablePromiseRing", SLApproachMain.enablePromiseFlag)
-	enableRapeFlagOID = AddToggleOption("$EnableRape", SLApproachMain.enableRapeFlag)
-	enableForceThirdPersonHugOID = AddToggleOption("$EnableForceThirdPersonHug", SLApproachMain.enableForceThirdPersonHug)
-	enableElderRaceFlagOID = AddToggleOption("$EnableElderRace", SLApproachMain.enableElderRaceFlag)
-	debugLogFlagOID = AddToggleOption("$OutputPapyrusLog", SLApproachMain.debugLogFlag)
-	
-	lowestArousalPCOID = AddSliderOption("$LowestArousalPC", SLApproachMain.lowestArousalPC)
-	lowestArousalNPCOID = AddSliderOption("$LowestArousalNPC", SLApproachMain.lowestArousalNPC)
-	
-	dialogueArousalOID = AddSliderOption("$DialogueArousal", SLApproachDialogArousal.GetValue())
+		AddHeaderOption("$SLAppGeneral")
+		
+		cloakFrequencyOID =  AddSliderOption("$CloakFrequency", SLApproachMain.cloakFrequency, "$per0sec")
+		cloakRangeOID =  AddSliderOption("$CloakRange", SLApproachMain.cloakRange)
+		baseChanceMultiplierOID =  AddSliderOption("$BaseChanceMultiplier", SLApproachMain.baseChanceMultiplier, "{1}")
 
-	SetCursorPosition(1)
+		AddHeaderOption("$SLAppONOFF")
 
-	AddHeaderOption("$RegisteredApproachQuests")
-	
-	int indexCounter = 0
-	int amount = SLApproachMain.getRegisteredAmount()
-	SLAppQuestScriptsOIDS = new int[8]
-	
-	while (indexCounter != amount)
-		SLApproachBaseQuestScript xscript = SLApproachMain.getApproachQuestScript(indexCounter)
-		SLAppQuestScriptsOIDS[indexCounter] = AddToggleOption(xscript.ApproachName, !xscript.isSkipMode)
-		indexCounter += 1
-	endwhile
+		enableRapeFlagOID = AddToggleOption("$EnableRape", SLApproachMain.enableRapeFlag)
+		enablePetsFlagOID = AddToggleOption("$EnablePets", SLApproachMain.enablePetsFlag)
+		enablePlayerHorseFlagOID = AddToggleOption("$EnablePlayerHorse", SLApproachMain.enablePlayerHorseFlag)
+		enableElderRaceFlagOID = AddToggleOption("$EnableElderRace", SLApproachMain.enableElderRaceFlag)
+		enablePromiseFlagOID = AddToggleOption("$EnablePromiseRing", SLApproachMain.enablePromiseFlag)
 
-	AddHeaderOption("$RegisteredQuestsOptions")
+		SetCursorPosition(1)
 
-	userAddingPointPcOID =  AddSliderOption("$AddingPointsNPCPC", SLApproachMain.userAddingPointPc, "{0}")
-	userAddingPointNpcOID =  AddSliderOption("$AddingPointsNPCNPC", SLApproachMain.userAddingPointNpc, "{0}")
+		AddHeaderOption("$SLAppArousal")
+		
+		lowestArousalPCOID = AddSliderOption("$LowestArousalPC", SLApproachMain.lowestArousalPC)
+		lowestArousalNPCOID = AddSliderOption("$LowestArousalNPC", SLApproachMain.lowestArousalNPC)
+		dialogueArousalOID = AddSliderOption("$DialogueArousal", SLApproachDialogArousal.GetValue())
+		
+		AddHeaderOption("$SLAppETC")
+		
+		enableForceThirdPersonHugOID = AddToggleOption("$EnableForceThirdPersonHug", SLApproachMain.enableForceThirdPersonHug)
+		debugLogFlagOID = AddToggleOption("$OutputPapyrusLog", SLApproachMain.debugLogFlag)
 
-	userAddingRapePointPcOID =  AddSliderOption("$AddingRapePointsNPCPC", SLApproachMain.userAddingRapePointPc, "{0}")
-	userAddingRapePointNpcOID =  AddSliderOption("$AddingRapePointsNPCNPC", SLApproachMain.userAddingRapePointNpc, "{0}")
-	
-	userAddingHugPointPcOID =  AddSliderOption("$AddingHugPointsNPCPC", SLApproachMain.userAddingHugPointPc, "{0}")
-	userAddingHugPointNpcOID =  AddSliderOption("$AddingHugPointsNPCNPC", SLApproachMain.userAddingHugPointNpc, "{0}")
-	
-	userAddingKissPointPcOID =  AddSliderOption("$AddingKissPointsNPCPC", SLApproachMain.userAddingKissPointPc, "{0}")
-	userAddingKissPointNpcOID =  AddSliderOption("$AddingKissPointsNPCNPC", SLApproachMain.userAddingKissPointNpc, "{0}")
+	elseif (page == "$SLAppQuests")
+		SetCursorFillMode(TOP_TO_BOTTOM)
+
+		SetCursorPosition(0)
+		AddHeaderOption("$RegisteredApproachQuests")
+		
+		int indexCounter = 0
+		int amount = SLApproachMain.getRegisteredAmount()
+		SLAppQuestScriptsOIDS = new int[8]
+		
+		while (indexCounter != amount)
+			SLApproachBaseQuestScript xscript = SLApproachMain.getApproachQuestScript(indexCounter)
+			SLAppQuestScriptsOIDS[indexCounter] = AddToggleOption(xscript.ApproachName, !xscript.isSkipMode)
+			indexCounter += 1
+		endwhile
+
+		AddEmptyOption()
+		AddHeaderOption("$RegisteredQuestsCommonOptions")
+
+		multiplayPercentOID =  AddSliderOption("$SLAppMultiplayPercent", SLApproachMultiplayPercent.GetValue())
+
+		SetCursorPosition(1)
+		AddHeaderOption("$RegisteredQuestsOptions")
+
+		userAddingPointPcOID =  AddSliderOption("$AddingPointsNPCPC", SLApproachMain.userAddingPointPc, "{0}")
+		userAddingRapePointPcOID =  AddSliderOption("$AddingRapePointsNPCPC", SLApproachMain.userAddingRapePointPc, "{0}")
+		userAddingHugPointPcOID =  AddSliderOption("$AddingHugPointsNPCPC", SLApproachMain.userAddingHugPointPc, "{0}")
+		userAddingKissPointPcOID =  AddSliderOption("$AddingKissPointsNPCPC", SLApproachMain.userAddingKissPointPc, "{0}")
+
+		userAddingPointNpcOID =  AddSliderOption("$AddingPointsNPCNPC", SLApproachMain.userAddingPointNpc, "{0}")
+		userAddingRapePointNpcOID =  AddSliderOption("$AddingRapePointsNPCNPC", SLApproachMain.userAddingRapePointNpc, "{0}")
+		userAddingHugPointNpcOID =  AddSliderOption("$AddingHugPointsNPCNPC", SLApproachMain.userAddingHugPointNpc, "{0}")
+		userAddingKissPointNpcOID =  AddSliderOption("$AddingKissPointsNPCNPC", SLApproachMain.userAddingKissPointNpc, "{0}")
+	endif
 endevent
 
 Event OnOptionHighlight(int option)
@@ -87,6 +130,10 @@ Event OnOptionHighlight(int option)
 		SetInfoText("$BaseChanceMultiplierInfo")
 	elseif (option == enableRapeFlagOID)
 		SetInfoText("$EnableRapeInfo")
+	elseif (option == enablePetsFlagOID)
+		SetInfoText("$EnablePetsInfo")
+	elseif (option == enablePlayerHorseFlagOID)
+		SetInfoText("$EnablePlayerHorseInfo")
 	elseif (option == enableForceThirdPersonHugOID)
 		SetInfoText("$EnableForceThirdPersonHugInfo")
 	elseif (option == enablePromiseFlagOID)
@@ -113,6 +160,8 @@ Event OnOptionHighlight(int option)
 		SetInfoText("$LowestArousalNPCInfo")
 	elseif (option == dialogueArousalOID)
 		SetInfoText("$DialogueArousalInfo")
+	elseif (option == multiplayPercentOID)
+		SetInfoText("$SLAppMultiplayPercentInfo")
 	endif
 EndEvent
 
@@ -120,12 +169,19 @@ event OnOptionSelect(int option)
 	if(option == debugLogFlagOID)
 		SLApproachMain.debugLogFlag = !SLApproachMain.debugLogFlag
 		SetToggleOptionValue(debugLogFlagOID, SLApproachMain.debugLogFlag)
+
 	elseif(option == enablePromiseFlagOID)
 		SLApproachMain.enablePromiseFlag = !SLApproachMain.enablePromiseFlag
 		SetToggleOptionValue(enablePromiseFlagOID, SLApproachMain.enablePromiseFlag)
 	elseif(option == enableRapeFlagOID)
 		SLApproachMain.enableRapeFlag = !SLApproachMain.enableRapeFlag
 		SetToggleOptionValue(enableRapeFlagOID, SLApproachMain.enableRapeFlag)
+	elseif(option == enablePetsFlagOID)
+		SLApproachMain.enablePetsFlag = !SLApproachMain.enablePetsFlag
+		SetToggleOptionValue(enablePetsFlagOID, SLApproachMain.enablePetsFlag)
+	elseif(option == enablePlayerHorseFlagOID)
+		SLApproachMain.enablePlayerHorseFlag = !SLApproachMain.enablePlayerHorseFlag
+		SetToggleOptionValue(enablePlayerHorseFlagOID, SLApproachMain.enablePlayerHorseFlag)
 	elseif(option == enableForceThirdPersonHugOID)
 		SLApproachMain.enableForceThirdPersonHug = !SLApproachMain.enableForceThirdPersonHug
 		SetToggleOptionValue(option, SLApproachMain.enableForceThirdPersonHug)
@@ -219,6 +275,11 @@ event OnOptionSliderOpen(int option)
 		SetSliderDialogDefaultValue(50)
 		SetSliderDialogRange(0, 100)
 		SetSliderDialogInterval(1)
+	elseif (option == multiplayPercentOID)
+		SetSliderDialogStartValue(SLApproachMultiplayPercent.GetValue())
+		SetSliderDialogDefaultValue(10)
+		SetSliderDialogRange(0, 100)
+		SetSliderDialogInterval(1)
 	endif
 endevent
 
@@ -271,8 +332,12 @@ event OnOptionSliderAccept(int option, float value)
 	elseif (option == dialogueArousalOID)
 		SLApproachDialogArousal.SetValue(value as Int)
 		SetSliderOptionValue(dialogueArousalOID, SLApproachDialogArousal.GetValue())
+	elseif (option == multiplayPercentOID)
+		SLApproachMultiplayPercent.SetValue(value as Int)
+		SetSliderOptionValue(multiplayPercentOID, SLApproachMultiplayPercent.GetValue())
 
 	endif
 endevent
 
 GlobalVariable Property SLApproachDialogArousal auto
+GlobalVariable Property SLApproachMultiplayPercent  Auto  

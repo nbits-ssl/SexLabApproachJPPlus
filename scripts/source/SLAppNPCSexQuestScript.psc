@@ -85,7 +85,7 @@ bool Function chanceRoll(Actor akRef, Actor Player, float baseChanceMultiplier)
 	Actor target = SexLab.FindAvailableActor(akRef, 1000.0, gender, Player)
 
 	if (target && !target.IsDead())
-		if (!akRef.GetRace().AllowPickpocket() && !target.IsPlayerTeammate()) ; Pet only approach teammates
+		if (!akRef.GetRace().AllowPickpocket() && !target.IsPlayerTeammate()) ; Pet/Horse only approach teammates
 			return false
 		elseif (!SLApproachMain.enableElderRaceFlag && target.GetRace() == ElderRace)
 			return false
