@@ -38,7 +38,7 @@ int[] SLAppQuestScriptsOIDS
 SLApproachMainScript Property SLApproachMain Auto
 
 int Function GetVersion()
-	return 1
+	return 2
 EndFunction 
 
 Event OnVersionUpdate(int a_version)
@@ -46,9 +46,9 @@ Event OnVersionUpdate(int a_version)
 EndEvent
 
 Event OnGameReload()
-	if !(Pages) ; I didn't know to define pages...
-		OnConfigInit()
-	endif
+	; ##FIXME## this is work around, why nothing in new game
+	parent.OnGameReload() ; I didn't know to define pages...
+	OnConfigInit()
 EndEvent
 
 Event OnConfigInit()
