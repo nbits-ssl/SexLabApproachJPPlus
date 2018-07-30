@@ -9,9 +9,15 @@ Function startApproach(Actor akRef)
 	endif
 	
 	if (SSLAppAsk2.isRunning())
-		if (selectedScene == SSLAppAsk2Scene) ; sex
-			Actor target = ansRef.GetActorRef()
+		Actor target = ansRef.GetActorRef()
+		
+		if (SexLab.IsActorActive(akRef) || SexLab.IsActorActive(target) || \
+			target.IsInCombat() || target.IsWeaponDrawn() || target.IsBleedingOut() || \
+			target.IsInDialogueWithPlayer() || target.IsDead() || !SexLab.IsValidActor(target))
 			
+			slappUtil.log(ApproachName + " Pass: akRef or target has Locked by some reason")
+			maxTime = 2
+		elseif (selectedScene == SSLAppAsk2Scene) ; sex
 			int chance = self.calcChance(target, akRef)
 			chance += slappUtil.BedCalc(target)
 			chance += slappUtil.TimeCalc()
@@ -21,14 +27,7 @@ Function startApproach(Actor akRef)
 
 			slappUtil.log(ApproachName + " Ans: " + target.GetActorBase().GetName() + " : " + roll + " < " + result)
 		
-			if (SexLab.IsActorActive(akRef) || SexLab.IsActorActive(target) || \
-				target.IsInCombat() || target.IsWeaponDrawn() || target.IsBleedingOut() || \
-				target.IsInDialogueWithPlayer() || target.IsDead() || !SexLab.IsValidActor(target))
-			
-				slappUtil.log(ApproachName + " Pass: akRef or target has Locked by some reason")
-				maxTime = 2
-				
-			elseif (target.IsEquipped(SLAppRingServant) || target.IsEquipped(SLAppRingSlave) || roll < result)
+			if (target.IsEquipped(SLAppRingServant) || target.IsEquipped(SLAppRingSlave) || roll < result)
 				SSLAppAsk2Scene.Start()
 				HelperQuest.Start()
 			elseif (SLApproachMain.enableRapeFlag)
