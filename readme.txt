@@ -17,7 +17,7 @@ sexlab approach 28-4-2014 v3がなかなかアプローチしてくれなかっ�
 ## 必要なもの
 
 * SexLab 1.6x
-* SexLab Aroused
+* SexLab Aroused Redux
 * Dawnguard + Dragonborn DLC
 
 
@@ -77,10 +77,11 @@ AddItemMenuからとりあえず全部入手して、PCにshowinventoryするの
 * CKが落ちそうなので、これ以降の大幅な拡充の予定はなし
 
 
-2018-08-**
+2018-08-02
 -----------------------------
 ・更新は単純に上書きでOK……たぶん
 ・NPC⇔NPCのハグやキスで、相手の状態を気にせずアクションを実行していたのを修正
+・チェック方式をFactionからKeywordに切り替え
 
 
 2018-06-14

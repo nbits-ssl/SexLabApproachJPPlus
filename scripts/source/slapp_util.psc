@@ -72,7 +72,7 @@ int Function NudeCalc(Actor akRef)
 EndFunction
 
 int Function SexAnimActiveCalc(Actor akRef)
-	if(SexLab.IsActorActive(akRef))
+	if (akRef.HasKeyWordString("SexLabActive"))
 		return 40
 	else
 		return 0

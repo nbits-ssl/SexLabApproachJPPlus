@@ -32,7 +32,7 @@ bool Function isSituationValid(Actor akRef, Actor player)
 	if (!isSkipMode && \
 		!player.IsInCombat()  && !akRef.IsInCombat() && !akRef.IsWeaponDrawn() && \
 		!player.IsBleedingOut() && !akRef.IsBleedingOut() && \
-		SexLab.IsValidActor(akRef) && !SexLab.IsActorActive(akRef) && \
+		SexLab.IsValidActor(akRef) && !akRef.HasKeyWordString("SexLabActive") && \
 		!player.IsOnMount() && !player.IsSwimming() && !player.IsSneaking() && \
 		!akRef.IsEquipped(SLAppRingShame) && !akRef.GetItemCount(SLAppRingFamily))
 

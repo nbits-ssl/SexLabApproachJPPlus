@@ -49,7 +49,7 @@ bool Function chanceRoll(Actor akRef, Actor PlayerRef, float baseChanceMultiplie
 		return false
 	elseif (SLApproachAskForSexQuestFollowPlayerScene.isPlaying())
 		return false
-	elseif (SexLab.IsActorActive(PlayerRef))
+	elseif (PlayerRef.HasKeyWordString("SexLabActive"))
 		return false
 	elseif ((SexLab.GetGender(akRef) == 2) && (SexLab.GetGender(PlayerRef) == 0)) ; c/m
 		return false

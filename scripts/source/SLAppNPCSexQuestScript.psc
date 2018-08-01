@@ -11,7 +11,7 @@ Function startApproach(Actor akRef)
 	if (SSLAppAsk2.isRunning())
 		Actor target = ansRef.GetActorRef()
 		
-		if (SexLab.IsActorActive(akRef) || SexLab.IsActorActive(target) || \
+		if (akRef.HasKeyWordString("SexLabActive") || target.HasKeyWordString("SexLabActive") || \
 			target.IsInCombat() || target.IsWeaponDrawn() || target.IsBleedingOut() || \
 			target.IsInDialogueWithPlayer() || target.IsDead() || !SexLab.IsValidActor(target))
 			
