@@ -17,7 +17,7 @@ Event OnInit()
 EndEvent
 
 Event OnUpdate()
-	if (!SLApproachMain.isSkipUpdateMode)
+	if (!SLApproachMain.isSkipUpdateMode && !player.IsInCombat())
 		int tooSlowBySeconds = 0
 		while (SLApproachMain.actorsEffectStarted > SLApproachMain.actorsEffectFinished)
 			tooSlowBySeconds = tooSlowBySeconds  + 3
