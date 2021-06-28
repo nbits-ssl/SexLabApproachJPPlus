@@ -35,26 +35,32 @@ int multiplayPercentOID
 
 int[] SLAppQuestScriptsOIDS
 
-SLApproachMainScript Property SLApproachMain Auto
+int configMaleSaveID
+int configMaleLoadID
+int configFemaleSaveID
+int configFemaleLoadID
+
+string configFileForMale = "../SLAppJPPlusMaleConfig.json"
+string configFileForFemale = "../SLAppJPPlusFemaleConfig.json"
+
 
 int Function GetVersion()
-	return 2
+	return 20210628
 EndFunction 
 
 Event OnVersionUpdate(int a_version)
-	OnConfigInit()
-EndEvent
-
-Event OnGameReload()
-	; ##FIXME## this is work around, why nothing in new game
-	parent.OnGameReload() ; I didn't know to define pages...
-	OnConfigInit()
+	if (CurrentVersion == 0) ; new game
+	elseif (a_version != CurrentVersion)
+		OnConfigInit()
+	endif
 EndEvent
 
 Event OnConfigInit()
-	Pages = new string[2]
+	Pages = new string[4]
 	Pages[0] = "$SLAppGeneral"
 	Pages[1] = "$SLAppQuests"
+	Pages[2] = "$SLAppRingTool"
+	Pages[3] = "$SLAppProfile"
 EndEvent
 
 event OnPageReset(string page)
@@ -64,9 +70,9 @@ event OnPageReset(string page)
 
 		AddHeaderOption("$SLAppGeneral")
 		
-		cloakFrequencyOID =  AddSliderOption("$CloakFrequency", SLApproachMain.cloakFrequency, "$per0sec")
-		cloakRangeOID =  AddSliderOption("$CloakRange", SLApproachMain.cloakRange)
-		baseChanceMultiplierOID =  AddSliderOption("$BaseChanceMultiplier", SLApproachMain.baseChanceMultiplier, "{1}")
+		cloakFrequencyOID = AddSliderOption("$CloakFrequency", SLApproachMain.cloakFrequency, "$per0sec")
+		cloakRangeOID = AddSliderOption("$CloakRange", SLApproachMain.cloakRange)
+		baseChanceMultiplierOID = AddSliderOption("$BaseChanceMultiplier", SLApproachMain.baseChanceMultiplier, "{1}")
 
 		AddHeaderOption("$SLAppONOFF")
 
@@ -108,20 +114,43 @@ event OnPageReset(string page)
 		AddEmptyOption()
 		AddHeaderOption("$RegisteredQuestsCommonOptions")
 
-		multiplayPercentOID =  AddSliderOption("$SLAppMultiplayPercent", SLApproachMultiplayPercent.GetValue())
+		multiplayPercentOID = AddSliderOption("$SLAppMultiplayPercent", SLApproachMultiplayPercent.GetValue())
 
 		SetCursorPosition(1)
 		AddHeaderOption("$RegisteredQuestsOptions")
 
-		userAddingPointPcOID =  AddSliderOption("$AddingPointsNPCPC", SLApproachMain.userAddingPointPc, "{0}")
-		userAddingRapePointPcOID =  AddSliderOption("$AddingRapePointsNPCPC", SLApproachMain.userAddingRapePointPc, "{0}")
-		userAddingHugPointPcOID =  AddSliderOption("$AddingHugPointsNPCPC", SLApproachMain.userAddingHugPointPc, "{0}")
-		userAddingKissPointPcOID =  AddSliderOption("$AddingKissPointsNPCPC", SLApproachMain.userAddingKissPointPc, "{0}")
+		userAddingPointPcOID = AddSliderOption("$AddingPointsNPCPC", SLApproachMain.userAddingPointPc, "{0}")
+		userAddingRapePointPcOID = AddSliderOption("$AddingRapePointsNPCPC", SLApproachMain.userAddingRapePointPc, "{0}")
+		userAddingHugPointPcOID = AddSliderOption("$AddingHugPointsNPCPC", SLApproachMain.userAddingHugPointPc, "{0}")
+		userAddingKissPointPcOID = AddSliderOption("$AddingKissPointsNPCPC", SLApproachMain.userAddingKissPointPc, "{0}")
 
-		userAddingPointNpcOID =  AddSliderOption("$AddingPointsNPCNPC", SLApproachMain.userAddingPointNpc, "{0}")
-		userAddingRapePointNpcOID =  AddSliderOption("$AddingRapePointsNPCNPC", SLApproachMain.userAddingRapePointNpc, "{0}")
-		userAddingHugPointNpcOID =  AddSliderOption("$AddingHugPointsNPCNPC", SLApproachMain.userAddingHugPointNpc, "{0}")
-		userAddingKissPointNpcOID =  AddSliderOption("$AddingKissPointsNPCNPC", SLApproachMain.userAddingKissPointNpc, "{0}")
+		userAddingPointNpcOID = AddSliderOption("$AddingPointsNPCNPC", SLApproachMain.userAddingPointNpc, "{0}")
+		userAddingRapePointNpcOID = AddSliderOption("$AddingRapePointsNPCNPC", SLApproachMain.userAddingRapePointNpc, "{0}")
+		userAddingHugPointNpcOID = AddSliderOption("$AddingHugPointsNPCNPC", SLApproachMain.userAddingHugPointNpc, "{0}")
+		userAddingKissPointNpcOID = AddSliderOption("$AddingKissPointsNPCNPC", SLApproachMain.userAddingKissPointNpc, "{0}")
+
+	elseif (page == "$SLAppRingTool")
+	
+	elseif (page == "$SLAppProfile")
+		SetCursorFillMode(TOP_TO_BOTTOM)
+
+		SetCursorPosition(0)
+		AddHeaderOption("$SLAppConfigFemale")
+		configFemaleSaveID = AddTextOption("$SLAppConfigSave", "$SLAppDoIt")
+		if (JsonUtil.JsonExists(configFileForFemale))
+			configFemaleLoadID = AddTextOption("$SLAppConfigLoad", "$SLAppDoIt")
+		else
+			configFemaleLoadID = AddTextOption("$SLAppConfigLoad", "$SLAppDoIt", OPTION_FLAG_DISABLED)
+		endif
+
+		SetCursorPosition(1)
+		AddHeaderOption("$SLAppConfigMale")
+		configMaleSaveID = AddTextOption("$SLAppConfigSave", "$SLAppDoIt")
+		if (JsonUtil.JsonExists(configFileForMale))
+			configMaleLoadID = AddTextOption("$SLAppConfigLoad", "$SLAppDoIt")
+		else
+			configMaleLoadID = AddTextOption("$SLAppConfigLoad", "$SLAppDoIt", OPTION_FLAG_DISABLED)
+		endif
 	endif
 endevent
 
@@ -162,6 +191,12 @@ Event OnOptionHighlight(int option)
 		SetInfoText("$DialogueArousalInfo")
 	elseif (option == multiplayPercentOID)
 		SetInfoText("$SLAppMultiplayPercentInfo")
+		
+	elseif (option == configMaleSaveID || option == configFemaleSaveID)
+		SetInfoText("$SLAppConfigSaveInfo")
+	elseif (option == configMaleLoadID || option == configFemaleLoadID)
+		SetInfoText("$SLAppConfigLoadInfo")
+
 	endif
 EndEvent
 
@@ -195,6 +230,20 @@ event OnOptionSelect(int option)
 		bool opt = xscript.isSkipMode
 		xscript.isSkipMode = !opt
 		SetToggleOptionValue(option, opt)
+	
+	elseif (option == configMaleSaveID)
+		self.saveConfig(configFileForMale)
+		SetTextOptionValue(option, "$SLAppDone")
+	elseif (option == configFemaleSaveID)
+		self.saveConfig(configFileForFemale)
+		SetTextOptionValue(option, "$SLAppDone")
+	elseif (option == configMaleLoadID)
+		self.loadConfig(configFileForMale)
+		SetTextOptionValue(option, "$SLAppDone")
+	elseif (option == configFemaleLoadID)
+		self.loadConfig(configFileForFemale)
+		SetTextOptionValue(option, "$SLAppDone")
+
 	endif
 endevent
 
@@ -287,10 +336,10 @@ event OnOptionSliderAccept(int option, float value)
 	if (option == cloakFrequencyOID)
 		SLApproachMain.cloakFrequency= value as Int
 		SetSliderOptionValue(cloakFrequencyOID, SLApproachMain.cloakFrequency, "$per0sec")
-	elseif (option == cloakRangeOID )
+	elseif (option == cloakRangeOID)
 		SLApproachMain.cloakRange= value as Int
 		SetSliderOptionValue(cloakRangeOID , SLApproachMain.cloakRange)
-	elseif (option == baseChanceMultiplierOID )
+	elseif (option == baseChanceMultiplierOID)
 		SLApproachMain.baseChanceMultiplier= value
 		SetSliderOptionValue(baseChanceMultiplierOID , SLApproachMain.baseChanceMultiplier, "{1}")
 		
@@ -338,6 +387,77 @@ event OnOptionSliderAccept(int option, float value)
 
 	endif
 endevent
+
+; Profile
+
+Function saveConfig(string configFile)
+	JsonUtil.SetIntValue(configFile, "cloakFrequency", SLApproachMain.cloakFrequency)
+	JsonUtil.SetIntValue(configFile, "cloakRange", SLApproachMain.cloakRange)
+	JsonUtil.SetFloatValue(configFile, "baseChanceMultiplier", SLApproachMain.baseChanceMultiplier)
+
+	JsonUtil.SetIntValue(configFile, "enableRapeFlag", SLApproachMain.enableRapeFlag as int)
+	JsonUtil.SetIntValue(configFile, "enablePetsFlag", SLApproachMain.enablePetsFlag as int)
+	JsonUtil.SetIntValue(configFile, "enablePlayerHorseFlag", SLApproachMain.enablePlayerHorseFlag as int)
+	JsonUtil.SetIntValue(configFile, "enableElderRaceFlag", SLApproachMain.enableElderRaceFlag as int)
+	JsonUtil.SetIntValue(configFile, "enablePromiseFlag", SLApproachMain.enablePromiseFlag as int)
+
+	JsonUtil.SetIntValue(configFile, "lowestArousalPC", SLApproachMain.lowestArousalPC)
+	JsonUtil.SetIntValue(configFile, "lowestArousalNPC", SLApproachMain.lowestArousalNPC)
+
+	JsonUtil.SetIntValue(configFile, "enableForceThirdPersonHug", SLApproachMain.enableForceThirdPersonHug as int)
+	JsonUtil.SetIntValue(configFile, "debugLogFlag", SLApproachMain.debugLogFlag as int)
+
+	JsonUtil.SetIntValue(configFile, "userAddingPointPc", SLApproachMain.userAddingPointPc)
+	JsonUtil.SetIntValue(configFile, "userAddingRapePointPc", SLApproachMain.userAddingRapePointPc)
+	JsonUtil.SetIntValue(configFile, "userAddingHugPointPc", SLApproachMain.userAddingHugPointPc)
+	JsonUtil.SetIntValue(configFile, "userAddingKissPointPc", SLApproachMain.userAddingKissPointPc)
+
+	JsonUtil.SetIntValue(configFile, "userAddingPointNpc", SLApproachMain.userAddingPointNpc)
+	JsonUtil.SetIntValue(configFile, "userAddingRapePointNpc", SLApproachMain.userAddingRapePointNpc)
+	JsonUtil.SetIntValue(configFile, "userAddingHugPointNpc", SLApproachMain.userAddingHugPointNpc)
+	JsonUtil.SetIntValue(configFile, "userAddingKissPointNpc", SLApproachMain.userAddingKissPointNpc)
+
+
+	JsonUtil.SetIntValue(configFile, "SLApproachDialogArousal", SLApproachDialogArousal.GetValue() as int)
+	JsonUtil.SetIntValue(configFile, "SLApproachMultiplayPercent", SLApproachMultiplayPercent.GetValue() as int)
+
+	JsonUtil.Save(configFile)
+EndFunction
+
+Function loadConfig(string configFile)
+	SLApproachMain.cloakFrequency = JsonUtil.GetIntValue(configFile, "cloakFrequency")
+	SLApproachMain.cloakRange = JsonUtil.GetIntValue(configFile, "cloakRange")
+	SLApproachMain.baseChanceMultiplier = JsonUtil.GetFloatValue(configFile, "baseChanceMultiplier")
+
+	SLApproachMain.enableRapeFlag = JsonUtil.GetIntValue(configFile, "enableRapeFlag")
+	SLApproachMain.enablePetsFlag = JsonUtil.GetIntValue(configFile, "enablePetsFlag")
+	SLApproachMain.enablePlayerHorseFlag = JsonUtil.GetIntValue(configFile, "enablePlayerHorseFlag")
+	SLApproachMain.enableElderRaceFlag = JsonUtil.GetIntValue(configFile, "enableElderRaceFlag")
+	SLApproachMain.enablePromiseFlag = JsonUtil.GetIntValue(configFile, "enablePromiseFlag")
+
+	SLApproachMain.lowestArousalPC = JsonUtil.GetIntValue(configFile, "lowestArousalPC")
+	SLApproachMain.lowestArousalNPC = JsonUtil.GetIntValue(configFile, "lowestArousalNPC")
+
+	SLApproachMain.enableForceThirdPersonHug = JsonUtil.GetIntValue(configFile, "enableForceThirdPersonHug")
+	SLApproachMain.debugLogFlag = JsonUtil.GetIntValue(configFile, "debugLogFlag")
+
+	SLApproachMain.userAddingPointPc = JsonUtil.GetIntValue(configFile, "userAddingPointPc")
+	SLApproachMain.userAddingRapePointPc = JsonUtil.GetIntValue(configFile, "userAddingRapePointPc")
+	SLApproachMain.userAddingHugPointPc = JsonUtil.GetIntValue(configFile, "userAddingHugPointPc")
+	SLApproachMain.userAddingKissPointPc = JsonUtil.GetIntValue(configFile, "userAddingKissPointPc")
+
+	SLApproachMain.userAddingPointNpc = JsonUtil.GetIntValue(configFile, "userAddingPointNpc")
+	SLApproachMain.userAddingRapePointNpc = JsonUtil.GetIntValue(configFile, "userAddingRapePointNpc")
+	SLApproachMain.userAddingHugPointNpc = JsonUtil.GetIntValue(configFile, "userAddingHugPointNpc")
+	SLApproachMain.userAddingKissPointNpc = JsonUtil.GetIntValue(configFile, "userAddingKissPointNpc")
+
+
+	SLApproachDialogArousal.SetValue(JsonUtil.GetIntValue(configFile, "SLApproachDialogArousal"))
+	SLApproachMultiplayPercent.SetValue(JsonUtil.GetIntValue(configFile, "SLApproachMultiplayPercent"))
+EndFunction
+
+
+SLApproachMainScript Property SLApproachMain Auto
 
 GlobalVariable Property SLApproachDialogArousal auto
 GlobalVariable Property SLApproachMultiplayPercent  Auto  
