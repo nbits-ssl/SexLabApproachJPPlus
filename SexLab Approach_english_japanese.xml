@@ -1,0 +1,2807 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<SSTXMLRessources>
+  <Params>
+    <Addon>SexLab Approach.esp</Addon>
+    <Source>english</Source>
+    <Dest>japanese</Dest>
+    <Version>2</Version>
+  </Params>
+  <Content>
+    <String List="0">
+      <EDID>SLApproachToggleEffect</EDID>
+      <REC>MGEF:FULL</REC>
+      <Source>SLApproachToggleEffect</Source>
+      <Dest>SLApproachToggleEffect</Dest>
+    </String>
+    <String List="0">
+      <EDID>SLApproachCloakEffect</EDID>
+      <REC>MGEF:FULL</REC>
+      <Source>SLApproachCloakEffect</Source>
+      <Dest>SLApproachCloakEffect</Dest>
+    </String>
+    <String List="0">
+      <EDID>SLApproachApplyEffect</EDID>
+      <REC>MGEF:FULL</REC>
+      <Source>SLApproachApplyEffect</Source>
+      <Dest>SLApproachApplyEffect</Dest>
+    </String>
+    <String List="0">
+      <EDID>SLApproachApplySpell</EDID>
+      <REC>SPEL:FULL</REC>
+      <Source>SLApproachApplySpell</Source>
+      <Dest>SLApproachApplySpell</Dest>
+    </String>
+    <String List="0">
+      <EDID>SLApproachCloakAbility</EDID>
+      <REC>SPEL:FULL</REC>
+      <Source>SLApproachCloakAbility</Source>
+      <Dest>SLApproachCloakAbility</Dest>
+    </String>
+    <String List="0">
+      <EDID>SLApproachToggle</EDID>
+      <REC>SPEL:FULL</REC>
+      <Source>SLApproachToggle</Source>
+      <Dest>SLApproachToggle</Dest>
+    </String>
+    <String List="0">
+      <EDID>SLAppRing02</EDID>
+      <REC>ARMO:FULL</REC>
+      <Source>炎の絆</Source>
+      <Dest>Flame Bond</Dest>
+    </String>
+    <String List="0">
+      <EDID>SLAppRing01</EDID>
+      <REC>ARMO:FULL</REC>
+      <Source>竜の絆</Source>
+      <Dest>Dragon Bond</Dest>
+    </String>
+    <String List="0">
+      <EDID>SLAppRingFamily</EDID>
+      <REC>ARMO:FULL</REC>
+      <Source>家族の証</Source>
+      <Dest>Mark of Family</Dest>
+    </String>
+    <String List="0">
+      <EDID>SLAppRingEngagement</EDID>
+      <REC>ARMO:FULL</REC>
+      <Source>婚約の証</Source>
+      <Dest>Mark of Engagement</Dest>
+    </String>
+    <String List="0">
+      <EDID>SLAppRing05</EDID>
+      <REC>ARMO:FULL</REC>
+      <Source>風の絆</Source>
+      <Dest>Wind Bond</Dest>
+    </String>
+    <String List="0">
+      <EDID>SLAppRingBeast</EDID>
+      <REC>ARMO:FULL</REC>
+      <Source>獣の心</Source>
+      <Dest>Heart of a Beast</Dest>
+    </String>
+    <String List="0">
+      <EDID>SLAppRingSlave</EDID>
+      <REC>ARMO:FULL</REC>
+      <Source>性奴隷の心</Source>
+      <Dest>Heart of a Slave</Dest>
+    </String>
+    <String List="0">
+      <EDID>SLAppRingServant</EDID>
+      <REC>ARMO:FULL</REC>
+      <Source>奉仕の心</Source>
+      <Dest>Heart of Service</Dest>
+    </String>
+    <String List="0">
+      <EDID>SLAppRingShame</EDID>
+      <REC>ARMO:FULL</REC>
+      <Source>恥じらいの心</Source>
+      <Dest>Heart of Shame</Dest>
+    </String>
+    <String List="0">
+      <EDID>SLAppRingLove</EDID>
+      <REC>ARMO:FULL</REC>
+      <Source>博愛の心</Source>
+      <Dest>Heart of Love</Dest>
+    </String>
+    <String List="0">
+      <EDID>SLAppRingShyness</EDID>
+      <REC>ARMO:FULL</REC>
+      <Source>人見知りの心</Source>
+      <Dest>Heart of Shyness</Dest>
+    </String>
+    <String List="0">
+      <EDID>SLAppRingHomo</EDID>
+      <REC>ARMO:FULL</REC>
+      <Source>両性愛の心</Source>
+      <Dest>Heart of Bisexuality</Dest>
+    </String>
+    <String List="0">
+      <EDID>SLAppRingAgreement</EDID>
+      <REC>ARMO:FULL</REC>
+      <Source>約束の証</Source>
+      <Dest>Mark of Promise</Dest>
+    </String>
+    <String List="0">
+      <EDID>SLAppRingHomoStrong</EDID>
+      <REC>ARMO:FULL</REC>
+      <Source>同性愛の心</Source>
+      <Dest>Heart of Homosexuality</Dest>
+    </String>
+    <String List="0">
+      <EDID>SLAppRing04</EDID>
+      <REC>ARMO:FULL</REC>
+      <Source>血の絆</Source>
+      <Dest>Blood Bond</Dest>
+    </String>
+    <String List="0">
+      <EDID>SLAppRing03</EDID>
+      <REC>ARMO:FULL</REC>
+      <Source>刃の絆</Source>
+      <Dest>Blade Bond</Dest>
+    </String>
+    <String List="0">
+      <EDID>SLApproachAskForSexQuestDialogueTopicYes</EDID>
+      <REC>DIAL:FULL</REC>
+      <Source>ああ、そうするのもいいかもしれない</Source>
+      <Dest>Sounds good.</Dest>
+    </String>
+    <String List="0">
+      <EDID>SLApproachAskForSexQuestDialogueTopicNo</EDID>
+      <REC>DIAL:FULL</REC>
+      <Source>いや、今はそんな気分じゃないんだ</Source>
+      <Dest>I&apos;m not in the mood for that right now.</Dest>
+    </String>
+    <String List="0">
+      <EDID>SLApproachAskForSexQuestFollow</EDID>
+      <REC>DIAL:FULL</REC>
+      <Source>・・・ちょっと場所を移そうか</Source>
+      <Dest>...Let&apos;s go somewhere else.</Dest>
+    </String>
+    <String List="0">
+      <EDID>SLApproachAskForSexQuestKeepWalking</EDID>
+      <REC>DIAL:FULL</REC>
+      <Source>いや、やっぱりここじゃなくて・・・</Source>
+      <Dest>No, not here after all...</Dest>
+    </String>
+    <String List="0">
+      <EDID>SLApproachAskForSexQuestDialogueTopicRSUp</EDID>
+      <REC>DIAL:FULL</REC>
+      <Source>ちょうどそう思っていたところだ（友好度上昇）</Source>
+      <Dest>I was just thinking that. (Friendship Up)</Dest>
+    </String>
+    <String List="0">
+      <EDID>SLApproachAskForSexQuestRSDown</EDID>
+      <REC>DIAL:FULL</REC>
+      <Source>面白くもない冗談だ（友好度下降）</Source>
+      <Dest>That&apos;s not even funny. (Friendship Down)</Dest>
+    </String>
+    <String List="0">
+      <EDID>SLApproachHugToPCYes</EDID>
+      <REC>DIAL:FULL</REC>
+      <Source>もちろんだ</Source>
+      <Dest>Of course.</Dest>
+    </String>
+    <String List="0">
+      <EDID>SLApproachHugToPCNo</EDID>
+      <REC>DIAL:FULL</REC>
+      <Source>今はそんな気分じゃないんだ</Source>
+      <Dest>I&apos;m not in the mood for that right now.</Dest>
+    </String>
+    <String List="0">
+      <EDID>SLApproachKissToPCYes</EDID>
+      <REC>DIAL:FULL</REC>
+      <Source>もちろんだ</Source>
+      <Dest>Of course.</Dest>
+    </String>
+    <String List="0">
+      <EDID>SLApproachKissToPCNo</EDID>
+      <REC>DIAL:FULL</REC>
+      <Source>今はそんな気分じゃないんだ</Source>
+      <Dest>I&apos;m not in the mood for that right now.</Dest>
+    </String>
+    <String List="0">
+      <EDID>SLApproachAskForSexQuestMulti</EDID>
+      <REC>DIAL:FULL</REC>
+      <Source>誰かを誘ってしよう</Source>
+      <Dest>Let&apos;s invite someone else.</Dest>
+    </String>
+    <String List="0">
+      <EDID>SLApproachAskForSexQuestSexMultiTopic</EDID>
+      <REC>DIAL:FULL</REC>
+      <Source>一緒に楽しまないか？</Source>
+      <Dest>Do you want to have some fun with us?</Dest>
+    </String>
+    <String List="0">
+      <EDID>SLApproachAskForSexQuestFollowMultiContinue</EDID>
+      <REC>DIAL:FULL</REC>
+      <Source>いや、まだ探している</Source>
+      <Dest>No, I&apos;m still searching.</Dest>
+    </String>
+    <String List="0">
+      <EDID>SLApproachAskForSex2Quest</EDID>
+      <REC>QUST:FULL</REC>
+      <Source>SLApproachAsktoOtherQuest</Source>
+      <Dest>SLApproachAsktoOtherQuest</Dest>
+    </String>
+    <String List="0">
+      <EDID>SLApproach_Main</EDID>
+      <REC>QUST:FULL</REC>
+      <Source>SLApproach Main</Source>
+      <Dest>SLApproach Main</Dest>
+    </String>
+    <String List="0">
+      <EDID>SLApproachAskForSexQuest</EDID>
+      <REC>QUST:FULL</REC>
+      <Source>SLApproachAskForSexQuest</Source>
+      <Dest>SLApproachAskForSexQuest</Dest>
+    </String>
+    <String List="0">
+      <EDID>SLApproach_Config</EDID>
+      <REC>QUST:FULL</REC>
+      <Source>SLApproach Config</Source>
+      <Dest>SLApproach Config</Dest>
+    </String>
+    <String List="1">
+      <EDID>SLAppRing02</EDID>
+      <REC>ARMO:DESC</REC>
+      <Source>同じ絆を持つ者同士のみが、愛溢れるときを過ごすことができる</Source>
+      <Dest>Those who hold the same bond can spend their time filled with love.</Dest>
+    </String>
+    <String List="1">
+      <EDID>SLAppRing01</EDID>
+      <REC>ARMO:DESC</REC>
+      <Source>同じ絆を持つ者同士のみが、愛溢れるときを過ごすことができる</Source>
+      <Dest>Those who hold the same bond can spend their time filled with love.</Dest>
+    </String>
+    <String List="1">
+      <EDID>SLAppRingFamily</EDID>
+      <REC>ARMO:DESC</REC>
+      <Source>家族の証を所持している者は、性交につながる声掛けは行わない</Source>
+      <Dest>Those who own a Proof of Family will not approach others for sexual intercourse.</Dest>
+    </String>
+    <String List="1">
+      <EDID>SLAppRingEngagement</EDID>
+      <REC>ARMO:DESC</REC>
+      <Source>婚約の証を所持している者は、「あなた」以外に対して、性交につながる声掛けは行わない</Source>
+      <Dest>Those who hold a Proof of a Bethrothal will only approach you for sexual intercourse.</Dest>
+    </String>
+    <String List="1">
+      <EDID>SLAppRing05</EDID>
+      <REC>ARMO:DESC</REC>
+      <Source>同じ絆を持つ者同士のみが、愛溢れるときを過ごすことができる</Source>
+      <Dest>Those who hold the same bond can spend their time filled with love.</Dest>
+    </String>
+    <String List="1">
+      <EDID>SLAppRingBeast</EDID>
+      <REC>ARMO:DESC</REC>
+      <Source>獣の心を持つ者は、相手の状態にかかわらず、たとえ断られても自らの欲求を押し通す</Source>
+      <Dest>Those who hold the Heart of a Beast will seek to fulfill their desires, even if they are rejected.</Dest>
+    </String>
+    <String List="1">
+      <EDID>SLAppRingSlave</EDID>
+      <REC>ARMO:DESC</REC>
+      <Source>性奴隷の心を持つ者は、自らの状態にかかわらず、すべての人からの要求を受け入れる</Source>
+      <Dest>Those who hold the Heart of a Slave will seek to fulfill the desires of all people, no matter their own situation.</Dest>
+    </String>
+    <String List="1">
+      <EDID>SLAppRingServant</EDID>
+      <REC>ARMO:DESC</REC>
+      <Source>奉仕の心を持つ者は、自らの状態にかかわらず、すべての人からの要求を受け入れる</Source>
+      <Dest>Those who hold the Heart of Service will seek to fulfill the desires of all people, no matter their own situation.</Dest>
+    </String>
+    <String List="1">
+      <EDID>SLAppRingShame</EDID>
+      <REC>ARMO:DESC</REC>
+      <Source>恥じらいの心を持つ者は、その内心を告げることができず、ただ待つことしかできない</Source>
+      <Dest>Those who hold the Heart of Bashfulness will be forced to wait, unable to act upon their own desires.</Dest>
+    </String>
+    <String List="1">
+      <EDID>SLAppRingLove</EDID>
+      <REC>ARMO:DESC</REC>
+      <Source>博愛の心を持つ者は、絆を持つ者だけではなく、すべての人に愛を与え、また愛を与えられる</Source>
+      <Dest>Those who hold the Heart of Benevolence can exchange love freely with others, irregardless of Bonds.</Dest>
+    </String>
+    <String List="1">
+      <EDID>SLAppRingShyness</EDID>
+      <REC>ARMO:DESC</REC>
+      <Source>人見知りの心を持つ者は、仲間にしか自分を打ち明けられず、仲間しか受け入れない</Source>
+      <Dest>Those who hold the Heart of Shyness will only open up to their companions, and accept only them.</Dest>
+    </String>
+    <String List="1">
+      <EDID>SLAppRingHomo</EDID>
+      <REC>ARMO:DESC</REC>
+      <Source>両性愛の心を持つ者同士は、たとえ同性であっても声を掛け合い、愛を育む。「あなた」が両性愛の心を持つ場合、同性の者もその心を満たすために声を掛けるだろう</Source>
+      <Dest>Those who hold the Heart of Bisexuality will interact with each other irregardless of gender. Should you hold the Heart, both genders will approach you for love.</Dest>
+    </String>
+    <String List="1">
+      <EDID>SLAppRingAgreement</EDID>
+      <REC>ARMO:DESC</REC>
+      <Source>約束の証を所持している者は、性交につながる声掛けは行わない。ただし、「絆」を持つ者同士は例外である</Source>
+      <Dest>Those who own the Proof of a Promise will not approach others for sexual intercourse. Those who hold the same Bond are exempt from this, however.</Dest>
+    </String>
+    <String List="1">
+      <EDID>SLAppRingHomoStrong</EDID>
+      <REC>ARMO:DESC</REC>
+      <Source>同性愛の心を持つ「あなた」は、同性の者からのみ声を掛けられるだろう。</Source>
+      <Dest>Shoud you hold the Heart of Homosexuality, then only those of your gender will approach you.</Dest>
+    </String>
+    <String List="1">
+      <EDID>SLAppRing04</EDID>
+      <REC>ARMO:DESC</REC>
+      <Source>同じ絆を持つ者同士のみが、愛溢れるときを過ごすことができる</Source>
+      <Dest>Those who hold the same bond can spend their time filled with love.</Dest>
+    </String>
+    <String List="1">
+      <EDID>SLAppRing03</EDID>
+      <REC>ARMO:DESC</REC>
+      <Source>同じ絆を持つ者同士のみが、愛溢れるときを過ごすことができる</Source>
+      <Dest>Those who hold the same bond can spend their time filled with love.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06008962]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>お互い、疲れすぎているように思えます。よろしければ、少しリラックスを・・・</Source>
+      <Dest>We both seem pretty tired. Allow me to help you relax...</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051CA6]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>従士様、その・・・愚かな私に、あなたの慈悲を頂きたく・・・</Source>
+      <Dest>I beg you, Thane... bestow your benevolence upon me...</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051CA5]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>お辛いご様子で・・・私に何かできることはありますか？</Source>
+      <Dest>You seem to be in pain... Is there something I can do for you?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051CA7]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>その・・・少し休んでもいいのではありませんか？</Source>
+      <Dest>Shall... Shall we rest for a little time?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051CA8]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>我々は一刻も早く交わるべきだ。カジートはそう思う</Source>
+      <Dest>Khajit believes that we should lie with each other as fast as possible.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051CA9]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>カジートは愛を欲している。助けてはくれないか？</Source>
+      <Dest>Khajit is in need of love. Will you not help this one?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051CAA]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>大丈夫か？楽しみを我慢する必要はない。カジートが助けになろう</Source>
+      <Dest>Are you alright? You shouldn&apos;t deny pleasure. See, Khajiit will help you.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051CAB]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>少し休憩するのもいいと思わないか？</Source>
+      <Dest>Wouldn&apos;t a little break do us both good right now?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051CAD]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>なあ、もう我慢できないんだが・・・お互いに、そうなんじゃないか？</Source>
+      <Dest>I can&apos;t hold myself back anymore... but that&apos;s true for both of us, isn&apos;t it?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051CB0]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>なあ、もう我慢できないんだが・・・</Source>
+      <Dest>You know, I can&apos;t hold back anymore...</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051CAF]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>その・・・随分と辛そうに見える。自分で役に立てるか？</Source>
+      <Dest>You don&apos;t look too good. Can I be of use to you somehow?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051CAE]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>少し、その・・・休憩してもいいと思わないか？</Source>
+      <Dest>Shouldn&apos;t you, you know... take a break?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051CB1]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>その・・・我慢するのはよくはない。言っている意味はわかるだろう？</Source>
+      <Dest>It&apos;s not good to hold back, you know. You understand what I want to say, don&apos;t you?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051CB2]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>なあ・・・その、身体が熱いんだが・・・</Source>
+      <Dest>You know, my body is burning up right now...</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051CB3]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>随分と辛そうに見えるな。自分にできることなら、何でも言ってくれ</Source>
+      <Dest>You seem pretty uncomfortable. If there&apos;s anything I can do, just tell me.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051CB4]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>よければ、少し休憩をしないか？</Source>
+      <Dest>We can take a little break, if you&apos;d like?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051CB5]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>どうやらあてられてしまったようだ。したいことは一緒じゃないか？</Source>
+      <Dest>Looks like I&apos;ve been affected as well. But now we want the same, don&apos;t we?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051CB6]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>随分と身体が火照ってるんだ。よかったら鎮めてくれないか？</Source>
+      <Dest>My body feels like it&apos;s burning up. Will you help me quell it?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051CB7]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>自分を誘っているのか？まあ、相手をしてもいいが・・・</Source>
+      <Dest>Is that an invitation? I suppose I might as well...</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051CB8]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>ちょっと休憩してもいいんじゃないか？</Source>
+      <Dest>Don&apos;t you think you deserve a break?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051CB9]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>身体が熱くて爆発してしまいそうだ・・・そうだろう？</Source>
+      <Dest>Your body is so hot, you feel you&apos;re about to melt... am I right?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051CBA]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>ふう・・・身体が熱くてたまらない。どうにかしてくれないか？</Source>
+      <Dest>Phew... my body is feeling unbearably hot. Can&apos;t you do something about that?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051CBB]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>男に向かってそんな目をするんじゃない、危ないぞ。・・・自分に何かできるか？</Source>
+      <Dest>You shouldn&apos;t make those eyes at a man, that&apos;s dangerous... Can I do something for you?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051CBC]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>ちょっと休憩がてら、軽い運動でもどうだ？</Source>
+      <Dest>How would you like some light exercise?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051CA4]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>なあ、もう我慢できないんだが・・・お互いに、そうなんじゃないか？</Source>
+      <Dest>I can&apos;t hold myself back anymore... but that&apos;s true for both of us, isn&apos;t it?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051CBD]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>なあ、もう我慢できないんだが・・・</Source>
+      <Dest>You know, I can&apos;t hold back anymore...</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051CBF]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>その・・・随分と辛そうに見える。自分で役に立てるか？</Source>
+      <Dest>You don&apos;t look too good. Can I be of use to you somehow?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051CBE]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>少し、その・・・休憩してもいいと思わないか？</Source>
+      <Dest>Shouldn&apos;t you, you know... take a break?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051CC0]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>あの・・・その、より深い信頼関係のためにも・・・</Source>
+      <Dest>I believe, we should... deepen our relationship...</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051CC9]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>従士様、その・・・あなたの寵愛を・・・</Source>
+      <Dest>Thane, I, uh, ask for your favour...</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051CCB]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>随分と苦しそうに見えますが、その・・・よければ私をお使いください</Source>
+      <Dest>You seem to be in quite some pain. Um... you can use me, if it pleases you.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051CCA]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>少し休んでもいいのではありませんか？</Source>
+      <Dest>Shouldn&apos;t you take a small break now?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051CCC]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>ねえ、もう我慢できないの・・・あなたもそうでしょ？</Source>
+      <Dest>I can&apos;t bear it anymore... can you?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051CCD]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>ねえ、もう我慢できないの・・・</Source>
+      <Dest>I can&apos;t bear it anymore...</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051CCE]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>ねえ、随分と辛そうよ。よかったら、私が・・・</Source>
+      <Dest>That looks pretty painful. If you&apos;d like, I can help you with that...</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051CCF]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>ねえ、ちょっと休憩してもいいと思わない？</Source>
+      <Dest>Say, shouldn&apos;t you better take a break?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051CD0]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>私たち、随分と相性がいいのかも。あなたも・・・でしょう？</Source>
+      <Dest>You and I might be pretty compatible. You think so too... don&apos;t you?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051CD1]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>ねえ、身体が熱いの・・・</Source>
+      <Dest>My body is so hot...</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051CD2]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>ねえ、その・・・大丈夫？私にできることなら、何でも言ってね。</Source>
+      <Dest>Do you feel alright? If there&apos;s anything I can do for you, just say it.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051CD3]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>その・・・良かったら少し休憩しない？</Source>
+      <Dest>Would you like to,um... take a break with me?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051CD4]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>ところかまわず発情しているあなたに、私もあてられたようです。</Source>
+      <Dest>It seems your rutting has affected me as well.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051CD5]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>・・・動物だって発情期の雌は見分けるそうです。あなたは動物以下ですか。</Source>
+      <Dest>... Even beasts can distinguish females in heat. Can&apos;t you do even that?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051CD7]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>そんな目で見られると迷惑です。・・・特別に、楽にしてあげましょうか？</Source>
+      <Dest>Your lustful stare bothers me... Just this once, shall I ease your pain?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051CD6]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>ちょっと・・・少し休憩しませんか？</Source>
+      <Dest>Hey... would you like to take a break?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051CD8]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>ふふ、身体が熱いわ・・・あなたもそうなんでしょう？</Source>
+      <Dest>Fufu, my body is burning up... aren&apos;t you as well?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051CD9]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>ねえ、身体が熱くてたまらないの・・・</Source>
+      <Dest>My body is so unbearably hot right now...</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051CDA]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>獣みたいな顔をしてるわよ。何なら、私がお相手しましょうか？</Source>
+      <Dest>You have the expression of a lusting beast. Shall I be your companion for now?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051CDB]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>ちょっと休憩がてら、軽い運動でもどう？</Source>
+      <Dest>What do you think of a bit of exercise?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051CDC]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>その・・・身体が火照っていますの。あなたもそうでしょう？そうですわね？</Source>
+      <Dest>My body, it&apos;s burning up... you feel it as well... don&apos;t you?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051CDD]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>その・・・身体が火照って・・・</Source>
+      <Dest>My, um, body... it&apos;s burning up...</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051CDF]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>随分と気分が悪そうに見えますわ。その・・・よろしければ私が・・・</Source>
+      <Dest>You seem to be in a bad mood. If.. if you&apos;d like, I could help you...</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051CDE]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>少し休憩しませんこと？リラックスすることも、時には必要ですわ</Source>
+      <Dest>Wouldn&apos;t you like to take a break? Relaxing is important too at times.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051CC6]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>ねえ、もう我慢できないの・・・あなたもそうでしょ？</Source>
+      <Dest>I can&apos;t bear it anymore... can you?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051CC8]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>ねえ、もう我慢できないの・・・</Source>
+      <Dest>I can&apos;t bear it anymore...</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051CC2]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>ねえ、随分と辛そうよ。よかったら、私が・・・</Source>
+      <Dest>That looks pretty painful. If you&apos;d like, I can help you with that...</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051CC3]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>ねえ、ちょっと休憩してもいいと思わない？</Source>
+      <Dest>Say, shouldn&apos;t you better take a break?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[0601A6DD]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>(...がすり寄ってきた。どうやら発情しているようだ)</Source>
+      <Dest>(... came up to me. They seem excited.)</Dest>
+    </String>
+    <String List="2">
+      <EDID>[0608478A]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>(...がすり寄ってきた。どうやら発情しているようだ)</Source>
+      <Dest>(... seems to clash, apparently estrus)</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06008969]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>あなたにお仕えできること、光栄です</Source>
+      <Dest>It&apos;s an honor to be of service to you.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051CE2]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>任せてください。私がすぐに楽にして差し上げます・・・</Source>
+      <Dest>Leave it to me. I will give you comfort soon...</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051CE6]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>あなたのお役に立てること、嬉しく思います</Source>
+      <Dest>I&apos;m happy to be of use to you.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051CE5]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>いつでもお声がけください</Source>
+      <Dest>Please, come back anytime.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051CE4]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>私兵への寛大なる処遇に、感謝いたします</Source>
+      <Dest>Deep thanks for your generosity towards your troops.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051CE3]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>・・・とても優しい方だ、あなたは・・・</Source>
+      <Dest>...You&apos;re so kind...</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051CEC]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>ああ、素晴らしい考えだ！一緒に人生を楽しもう</Source>
+      <Dest>An excellent idea! Let us enjoy life together!</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051CEF]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>それでいい。我慢するには人生は短すぎる</Source>
+      <Dest>Very good. Life is too short for you to restrain yourself.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051CEE]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>任せてくれ。我慢なんてことは人生には必要ないことだ</Source>
+      <Dest>Leave it to me. I&apos;ve no need for restraint in my life.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051CED]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>カジートでよければ、いつだって付き合うぞ</Source>
+      <Dest>Khajit is happy to oblige you.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051CF1]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>ああ、素晴らしき友に乾杯だ</Source>
+      <Dest>Cheers to you, my wonderful friend!</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051CF0]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>その言葉をカジートは待っていた</Source>
+      <Dest>Khajit has waited for these words.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051CF2]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>ああ、一緒に楽しもう</Source>
+      <Dest>Yes, let&apos;s enjoy each other.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051CF3]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>ああ、やっぱり。ふふ、すぐ楽にしてやるよ</Source>
+      <Dest>I thought so. Fufu, I&apos;ll put you at ease soon enough...</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051CF7]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>ありがとう、光栄だね</Source>
+      <Dest>Thank you. It&apos;s an honor.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051CF6]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>自分でよければ、いつでも付き合うよ</Source>
+      <Dest>I&apos;m always ready, should you be fine with me.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051CF5]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>そう言ってくれると助かるよ。一緒に楽しもう</Source>
+      <Dest>It&apos;s good to hear you say that. Let&apos;s enjoy each other.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051CF4]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>そうだろう？じゃぁ、早速・・・</Source>
+      <Dest>Right? I&apos;ll go right ahead, then...</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051CF8]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>ああ、一緒に楽しもう</Source>
+      <Dest>Yes, let&apos;s enjoy each other.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051CF9]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>そうだと思ったよ。すぐに楽になる・・・</Source>
+      <Dest>I thought you&apos;d say so. I&apos;ll make you very happy...</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051CFD]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>ああ、すべて任せろ。大丈夫だ</Source>
+      <Dest>No problem. Leave everything to me.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051CFC]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>ああ、いつでも相談してくれて構わないぞ</Source>
+      <Dest>Sure, you can ask anything at any time.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051CFB]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>悪くない考えだろう？</Source>
+      <Dest>Not a bad idea, is it?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051CFA]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>同じ考えで嬉しいよ。さあ、はじめよう</Source>
+      <Dest>I&apos;m glad we thought the same. Now, let&apos;s begin.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051CFE]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>そう言ってくれると思っていたよ</Source>
+      <Dest>I thought you&apos;d say that.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051CFF]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>そうだ、我慢するのは身体によくない</Source>
+      <Dest>Exactly. Holding back is bad for your body.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051D00]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>ああ、全て任せればいい</Source>
+      <Dest>Yeah, you can leave everything to me.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051D02]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>自分でよければ、いつでも声をかけてくれ</Source>
+      <Dest>As long as you&apos;re fine with me, anytime.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051D03]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>そうだろう、そうだろう。わかっていたさ</Source>
+      <Dest>Right? Right? I knew you&apos;d agree.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051D01]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>ほう、どうするのがいいんだ？・・・冗談だよ</Source>
+      <Dest>Now, what should I do... Just kidding.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051D04]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>一緒にいられる奴がいるっていうのもいいものだ</Source>
+      <Dest>No a bad thing, to have someone sticking with you.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051D05]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>我慢は良くないな。すぐ楽にしてやる</Source>
+      <Dest>It&apos;s no good to just hold out. I&apos;ll put you at ease soon.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051D06]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>おう、任せておけ</Source>
+      <Dest>Sure, leave it to me.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051D07]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>良い顔をしてるよ。吸い込まれちまいそうだ</Source>
+      <Dest>I like that expression. Feels like I&apos;m getting sucked right in.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051D08]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>話が早い奴は嫌いじゃない。さあ、はじめよう</Source>
+      <Dest>Good, I like quick thinkers. Now, let&apos;s begin.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051D09]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>そうだろう？そう言ってくれると思っていたよ</Source>
+      <Dest>Right? I thought you&apos;d say so.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051CE1]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>ああ、一緒に楽しもう</Source>
+      <Dest>Yes, let&apos;s enjoy each other.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051CEA]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>ああ、やっぱり。ふふ、すぐ楽にしてやるよ</Source>
+      <Dest>I thought so. Fufu, I&apos;ll put you at ease soon enough...</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051CE9]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>ありがとう、光栄だね</Source>
+      <Dest>Thank you. It&apos;s an honor.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051CE8]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>自分でよければ、いつでも付き合うよ</Source>
+      <Dest>I&apos;m always ready, should you be fine with me.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051CE7]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>そう言ってくれると助かるよ。一緒に楽しもう</Source>
+      <Dest>It&apos;s good to hear you say that. Let&apos;s enjoy each other.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051CEB]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>そうだろう？じゃぁ、早速・・・</Source>
+      <Dest>Right? I&apos;ll go right ahead, then...</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051D0A]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>光栄です。喜んでお相手いたします</Source>
+      <Dest>I&apos;m honored to be your companion.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051D11]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>はい、遠慮なさらないでください</Source>
+      <Dest>Please, there&apos;s no need for restraint.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051D12]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>お役に立てて光栄です、従士様</Source>
+      <Dest>I&apos;m honored to serve you, Thane.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051D13]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>いつでも私をお使いください</Source>
+      <Dest>Please make use of me anytime you want.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051D14]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>ああ、ありがとうございます。優しいのですね・・・</Source>
+      <Dest>Thank you very much. How kind of you...</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051D15]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>はい、喜んでお相手いたします</Source>
+      <Dest>Yes, with pleasure.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051D16]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>良かった。一緒に楽しみましょ</Source>
+      <Dest>I&apos;m so glad. Let&apos;s enjoy ourselves then.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051D18]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>やっぱりね、そうだと思ってた</Source>
+      <Dest>I knew you&apos;d agree.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051D19]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>ふふ、任せて</Source>
+      <Dest>Fufu, leave it to me.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051D17]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>もう、遠慮せず言ってくれたらいいのに</Source>
+      <Dest>Oh, you could&apos;ve said so sooner, you know?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051D1A]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>ああ、良かった。一緒に楽しみましょう</Source>
+      <Dest>I&apos;m glad to hear that. Let&apos;s have fun then.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051D1B]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>そうでしょ？ ね、はやくしましょう</Source>
+      <Dest>I know, right? Let&apos;s do it quickly, now.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051D1C]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>ふふ・・・あなたと一緒にいられて嬉しいわ</Source>
+      <Dest>Fufu... I&apos;m so happy to be with you.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051D1D]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>やっぱりね、そうだと思っていたわ</Source>
+      <Dest>I thought you&apos;d say so.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051D1E]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>私に任せて。楽にしてあげる</Source>
+      <Dest>Leave it to me. I&apos;ll give you comfort.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051D1F]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>ふふ、いつでもそう言ってくれていいのよ</Source>
+      <Dest>Fufu, you can say so any time you want.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051D20]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>悪くない考えでしょう？ふふ・・・</Source>
+      <Dest>Not a bad idea, is it? Fufu...</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051D21]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>同意が得られてなによりよ。さあ、きて・・・</Source>
+      <Dest>I&apos;m glad we agree. Now, come here...</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051D22]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>そうだろうと思っていました</Source>
+      <Dest>I thought as much.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051D23]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>物わかりのいい人は嫌いじゃありません</Source>
+      <Dest>I like people who are quick on the uptake.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051D24]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>素直になればいいんです</Source>
+      <Dest>You should just be honest to yourself.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051D25]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>あなたにそうしてくれる人なんて、私くらいでしょうしね</Source>
+      <Dest>I&apos;m probably the only one who&apos;d do this for you.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051D26]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>まあ、たまには悪くないかもしれませんね</Source>
+      <Dest>I suppose this isn&apos;t bad once in a while.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051D27]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>どうするのも？まあ、あなたの考えなんてひとつでしょうけど</Source>
+      <Dest>What would you like to do? Well, you&apos;re obviously thinking of just one thing.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051D28]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>ふふ、一緒に楽しみましょう</Source>
+      <Dest>Fufu, let&apos;s have fun together.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051D2A]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>そうでしょう？ 我慢はよくないわ</Source>
+      <Dest>Isn&apos;t it just? You shouldn&apos;t hold back.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051D2C]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>好きなように私の中に吐き出していいわよ</Source>
+      <Dest>You can come inside me as much as you want.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051D2D]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>ああ、良い顔ね・・・求められるのは、悪くないわ</Source>
+      <Dest>I like that expression... being sought after isn&apos;t bad at all.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051D2B]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>ああ、もう我慢できないわ。ねえ、激しくてね</Source>
+      <Dest>Yes, I can&apos;t hold back anymore. I beg you, take me hard.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051D29]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>さすがね、さあ、はじめましょう</Source>
+      <Dest>As expected. Now, let&apos;s begin.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051D2E]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>楽しむことは悪いことではありませんわ</Source>
+      <Dest>Enjoying yourself is not a bad thing.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051D2F]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>そうおっしゃると思いましたわ</Source>
+      <Dest>My, I just knew you&apos;d say so.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051D30]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>溜まっているもの、すべて私が吸い出してさしあげます</Source>
+      <Dest>I&apos;ll suck out everything you&apos;ve saved up until now.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051D33]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>私の身体でよろしければ、存分に使ってくだい</Source>
+      <Dest>Use my body to your content, if it pleases you.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051D32]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>この火照りを鎮められるなら、何をしても構いません</Source>
+      <Dest>I&apos;ll do anything to calm this burning inside me.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051D31]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>そういうことではないんですけれども・・・まあ、あなたがそうおっしゃるなら・・・</Source>
+      <Dest>That wasn&apos;t my intention... but I you say so...</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051D10]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>良かった。一緒に楽しみましょ</Source>
+      <Dest>I&apos;m so glad. Let&apos;s enjoy ourselves then.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051D0D]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>やっぱりね、そうだと思ってた</Source>
+      <Dest>I knew you&apos;d agree.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051D0F]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>ふふ、任せて</Source>
+      <Dest>Fufu, leave it to me.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051D0E]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>もう、遠慮せず言ってくれたらいいのに</Source>
+      <Dest>Oh, you could&apos;ve said so sooner, you know?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051D0C]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>ああ、良かった。一緒に楽しみましょう</Source>
+      <Dest>I&apos;m glad to hear that. Let&apos;s have fun then.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051D0B]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>そうでしょ？ね、はやくしましょう</Source>
+      <Dest>Right? Now, let&apos;s hurry.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[0601A6DF]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>(...は興奮し、ますます身体をすりよせてきた)</Source>
+      <Dest>(...grows agitated, and nestles even closer)</Dest>
+    </String>
+    <String List="2">
+      <EDID>[0600896A]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>失礼を致しました。従士</Source>
+      <Dest>Excuse my rudeness then, Thane.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C70]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>かしこまりました</Source>
+      <Dest>I understand</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C71]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>そうか？お前がそんな気分でいるのをカジートは悲しく思う</Source>
+      <Dest>Khajiit is very sad you feel that way.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C72]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>元気を出せ、友よ。人生は短い。精一杯、楽しむんだ</Source>
+      <Dest>Cheer up, my friend. Life is short. Enjoy it to the fullest.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C73]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>そうか・・・それは残念だ</Source>
+      <Dest>I see... that&apos;s a shame.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C74]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>そうか？まあ、気が変わったら声をかけてくれ</Source>
+      <Dest>Indeed? Well, call for me if you change your mind.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C75]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>わかった。まあ、仕方ないな</Source>
+      <Dest>I get it. Well, can&apos;t help it then.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C76]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>そうか・・・良かったら、また声をかけてくれ</Source>
+      <Dest>I see... Come back if you&apos;d like.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C77]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>それじゃぁ、仕方ないな</Source>
+      <Dest>Can&apos;t be helped then.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C78]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>そうか・・・残念だ</Source>
+      <Dest>I see... what a shame.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C79]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>わかった。その気になったら言ってくれよ</Source>
+      <Dest>I understand. Tell me should your mood change.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C7A]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>そうか、それは残念だな</Source>
+      <Dest>I see, that&apos;s too bad.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C6E]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>そうか・・・それは残念だ</Source>
+      <Dest>I see... that&apos;s a shame.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C6F]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>そうか？まあ、気が変わったら声をかけてくれ</Source>
+      <Dest>Indeed? Well, call for me if you change your mind.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[0601A6E3]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>そうですか・・・</Source>
+      <Dest>I see...</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C7E]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>そうですか。我慢なさらないでくださいね</Source>
+      <Dest>I see. Please, don&apos;t restrain yourself.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C7F]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>そう・・・？</Source>
+      <Dest>Oh, I see...</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C80]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>そう、せっかく・・・残念</Source>
+      <Dest>I see, and I&apos;d thought... too bad.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C81]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>そう・・・仕方ないわね</Source>
+      <Dest>Really... that&apos;s too bad, then.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C82]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>そう、せっかく・・・良かったら、また声をかけてね</Source>
+      <Dest>I see, here I thought... if you&apos;d like, let&apos;s talk again.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C83]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>ああ、そうですか</Source>
+      <Dest>Oh, I see.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C84]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>そうですか、せっかく・・・いえ、なんでも</Source>
+      <Dest>I see, and I thought I&apos;d finally... no, never mind.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C85]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>そう？</Source>
+      <Dest>Oh?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C86]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>あら、そう・・・</Source>
+      <Dest>My, I see...</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C87]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>それは失礼をいたしましたわね</Source>
+      <Dest>That was rude of me then.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C88]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>そうですか、せっかく・・・いえ、なんでもありませんわ</Source>
+      <Dest>I see, I&apos;d thought finally... no, it&apos;s nothing.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C7C]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>そう・・・？</Source>
+      <Dest>Oh, I see...</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C7D]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>そう、せっかく・・・残念</Source>
+      <Dest>I see, and I&apos;d thought... too bad.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[0601A6E4]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>(...は悲しそうな表情を見せ、うなだれた)</Source>
+      <Dest>(... shows a sad expression and hangs its head</Dest>
+    </String>
+    <String List="2">
+      <EDID>[0600B488]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>その言葉には、従えないようです！</Source>
+      <Dest>I cannot obey you in that!</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C8B]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>申し訳ありません！もう、我慢ができないのです！</Source>
+      <Dest>Forgive me, but I can&apos;t bear it anymore!</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C8C]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>そんなことを言わないでくれ！カジートはもう我慢できない！</Source>
+      <Dest>Don&apos;t say that! This one can&apos;t hold back anymore!</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C8D]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>なぜそんなことを言う！？したいときにできない人生など、願い下げだ！</Source>
+      <Dest>How can you say that?! I&apos;m going to do what I want, whenever I want it!</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C8E]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>そんなこと言うなよ！もう我慢できないんだ！</Source>
+      <Dest>Don&apos;t say that! I can&apos;t hold back anymore!</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C8F]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>すまないが、もう我慢ができないんだ！</Source>
+      <Dest>Sorry, but I can&apos;t restrain myself anymore!</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C90]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>そう言わないでくれ、もう我慢ができないんだ！</Source>
+      <Dest>Please don&apos;t say that! I can&apos;t hold back anymore!</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C91]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>すまないが、我慢できそうもない・・・！</Source>
+      <Dest>Sorry, but I don&apos;t think I can restrain myself...!</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C92]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>そうか・・・残念だ。まあ、無理やりっていうのも嫌いじゃない！</Source>
+      <Dest>I see... that&apos;s a shame. Well, I don&apos;t mind raping you either!</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C93]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>そう言われて我慢できる状態じゃないんだ！</Source>
+      <Dest>I&apos;m not in a state where that&apos;s enough to calm me down!</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C94]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>おいおいつれないこと言うなよ！なあ！</Source>
+      <Dest>Woah, woah, don&apos;t be so heartless!</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C95]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>悪いがもう止められないんだよ！</Source>
+      <Dest>Sorry, but I can&apos;t stop now!</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C89]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>そんなこと言うなよ！なあ！もう我慢できないんだ！</Source>
+      <Dest>Come on, don&apos;t be like that! I can&apos;t hold myself back anymore!</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C8A]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>すまないが、もう我慢ができないんだ！</Source>
+      <Dest>Sorry, but I can&apos;t restrain myself anymore!</Dest>
+    </String>
+    <String List="2">
+      <EDID>[0601A6E0]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>そういわれても、私も我慢できないんです！</Source>
+      <Dest>You can say what you want, but I can&apos;t hold myself back any longer!</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C99]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>申し訳ありません！もう、我慢ができないのです！</Source>
+      <Dest>Forgive me, but I can&apos;t bear it anymore!</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C9A]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>そんなこと言わないで！もう我慢できないの！</Source>
+      <Dest>Please, don&apos;t say that! I can&apos;t hold myself back anymore!</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C9B]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>ごめんなさい、もう我慢できないの！</Source>
+      <Dest>I&apos;m sorry, but I can&apos;t restrain myself anymore!</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C9C]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>そんなこと言わないで！もう我慢できないの！</Source>
+      <Dest>Please, don&apos;t say that! I can&apos;t hold myself back anymore!</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C9D]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>ごめんなさい、もう我慢できないの！</Source>
+      <Dest>I&apos;m sorry, but I can&apos;t restrain myself anymore!</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C9E]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>そういわれても、私も我慢できないんです！</Source>
+      <Dest>You can say what you want, but I can&apos;t hold myself back any longer!</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C9F]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>あなたの意見は聞いていません！</Source>
+      <Dest>I didn&apos;t ask for your opinion!</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051CA0]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>そんなこと言われても、私の身体は止まらないのよ！</Source>
+      <Dest>Even if you say that, my body won&apos;t stop now!</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051CA1]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>ああ、ダメなのよ。もう疼きが止まらないの・・・！</Source>
+      <Dest>Aah, it&apos;s too late... I can&apos;t stop this aching...!</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051CA2]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>そんなことをおっしゃらないで！もう許してください！</Source>
+      <Dest>I beg you, don&apos;t say that! Forgive me!</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051CA3]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>ああ、ダメなんです！私の身体があなたを欲していますの！</Source>
+      <Dest>Aah, it&apos;s no good! My body longs for you!</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C97]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>そんなこと言わないで！もう我慢できないの！</Source>
+      <Dest>Please, don&apos;t say that! I can&apos;t hold myself back anymore!</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C98]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>ごめんなさい、もう我慢できないの！</Source>
+      <Dest>I&apos;m sorry, but I can&apos;t restrain myself anymore!</Dest>
+    </String>
+    <String List="2">
+      <EDID>[0601A6E1]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>(...はあなたの静止もきかず、とびかかってきた！)</Source>
+      <Dest>(... ignores your warnings and lunges at you!)</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06008ED0]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>わかりました。ついていきます</Source>
+      <Dest>I understand. I&apos;ll follow you.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C44]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>わかりました。では、どちらへ？</Source>
+      <Dest>I understand. Where are we going?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C45]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>わかった。どこがいい？</Source>
+      <Dest>Got it. Where do you want to go?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[0601A6E5]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>わかった。どこに行く？</Source>
+      <Dest>Got it. Where are you going?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[0601A6E6]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>(...は嬉しそうにしている。ついてくるようだ)</Source>
+      <Dest>(... looks happy. They will apparently follow you.)</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06008ED3]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>ここでなら、よろしいのですか？</Source>
+      <Dest>Does this place seem acceptable to you?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C47]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>ここでするのがお望みですか？</Source>
+      <Dest>Is this where you wish to do it?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C46]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>ここでしたいのか？</Source>
+      <Dest>Do you want to do it here?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[0601A6E7]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>ここでするの？</Source>
+      <Dest>Are we doing it here?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[0601A6E8]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>(...はあなたの様子をうかがっている)</Source>
+      <Dest>(... is watching your reaction.)</Dest>
+    </String>
+    <String List="2">
+      <EDID>[0600AF25]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>・・・</Source>
+      <Dest>...</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06028923]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>その言葉が何よりの栄誉です。従士</Source>
+      <Dest>Your words honor me greatly, Thane.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C4B]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>もったいないお言葉です、従士様・・・</Source>
+      <Dest>Your words are wasted on me, my Thane.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C4C]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>お前といると、カジートは心が温まるよ</Source>
+      <Dest>Khajiit&apos;s heart is warmed by your presence.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C4D]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>そう言ってくれると嬉しいね</Source>
+      <Dest>I&apos;m happy to hear you say that.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C4E]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>嬉しい。あなたのこと、もっと知りたいの・・・</Source>
+      <Dest>Thank you. I&apos;d like to get to know you better...</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C4F]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>嬉しいね。きっと、もっとよくわかりあえる・・・</Source>
+      <Dest>Thank you. I&apos;m sure we&apos;ll get to know each other even more...</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C50]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>嬉しいわ。あなたのこと、もっと教えて・・・</Source>
+      <Dest>How delightful. Please, tell me more about you...</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C51]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>そうだろう？なんでもお見通しさ</Source>
+      <Dest>I can see right through you, can&apos;t I?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C52]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>そうですか。まあ、そう言われて悪い気はしませんね</Source>
+      <Dest>I see. Well, hearing that doesn&apos;t feel bad.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C53]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>そうか？いや、そう言われると悪い気分はしないな</Source>
+      <Dest>Really? Well, hearing you say that doesn&apos;t feel bad at all.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C54]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>ふふ、素直な人は好きよ</Source>
+      <Dest>Fufu, I like honest people.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C55]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>誰にでもそう言っているのではなくて？ ・・・でも、悪い気はしませんわ</Source>
+      <Dest>You&apos;re not just saying that to everybody, are you? ...Still, this doesn&apos;t feel bad.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C4A]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>そう言ってくれると嬉しいね</Source>
+      <Dest>I&apos;m happy to hear you say that.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06028924]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>嬉しい。あなたのこと、もっと知りたいの・・・</Source>
+      <Dest>Thank you. I&apos;d like to get to know you better...</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06028925]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>(…は幸せそうにあなたのそばに寄り添ってきた)</Source>
+      <Dest>(... happily snuggles up to you.)</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06028927]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>少し頭を冷やしたほうがよろしいのでは？</Source>
+      <Dest>Shouldn&apos;t you cool your head a bit?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C57]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>そのような言葉はお使いになりませんように</Source>
+      <Dest>You mustn&apos;t talk like that.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C58]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>忠告しておこう。カジートは夜目が利く。言っている意味は分かるな？</Source>
+      <Dest>Khajit can see very well in the dark. You understand what this one is telling you, no?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C59]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>そうかいそうかい、後悔するんじゃないぞ</Source>
+      <Dest>I see, I see... I hope you won&apos;t regret this.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C5A]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>そんなことを言う人だって思ってなかったわ</Source>
+      <Dest>I didn&apos;t think you to be the kind of person to say something like that.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C5B]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>声をかけた自分が馬鹿だった。そういうことだな</Source>
+      <Dest>Is that so? I was a fool for even trying to talk to you.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C5C]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>あなたに声をかけた私が馬鹿だったようね</Source>
+      <Dest>It seems I was being foolish by trying to talk to you.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C5D]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>そうかいそうかい、後悔するんじゃないぞ</Source>
+      <Dest>I see, I see... I hope you won&apos;t regret this.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C5E]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>ふん、どうぞご自由に</Source>
+      <Dest>Humph, go ahead then.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C5F]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>ふんっ、いつか後悔させてやるぞ</Source>
+      <Dest>Humph. I&apos;ll make you regret this one day.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C60]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>あなたに声をかけた私が馬鹿だったようね</Source>
+      <Dest>It seems I was being foolish by trying to talk to you.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C61]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>ふんっ、勝手になさって</Source>
+      <Dest>Humph, do what you will.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C56]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>そうかいそうかい、後悔するんじゃないぞ</Source>
+      <Dest>I see, I see... I hope you won&apos;t regret this.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06028929]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>そんなことを言う人だって思ってなかったわ</Source>
+      <Dest>I didn&apos;t think you to be the kind of person to say something like that.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06028928]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>(...はあなたを見てうなり声をあげた)</Source>
+      <Dest>(... looks at you and growls.)</Dest>
+    </String>
+    <String List="2">
+      <EDID>[0602892A]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>なるほど・・・では、従者として主人を教育するのも我が務めです！</Source>
+      <Dest>I see... it seems the servant must educate the master then!</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C64]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>面白い！カジートにそんな言葉を浴びせて、どうなるかわからないのか！？</Source>
+      <Dest>Interesting! Don&apos;t you realize what will happen if you insult this one?!</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C6D]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>馬鹿にされるのは好きじゃないんだ。じゃぁ、無理やりしてやるよ！</Source>
+      <Dest>I don&apos;t like being made a fool of. You know what, I&apos;m just going to fuck you anyway!</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C65]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>男を馬鹿にするのなら、もっとよく考えるべきだったな！</Source>
+      <Dest>You probably should&apos;ve thought a bit harder about making a fool of a man!</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C66]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>ふんっ、お高くとまりやがって！無理やりっていうのも嫌いじゃないがな！</Source>
+      <Dest>Pah, don&apos;t put on airs! Raping you has its own charm, you know!</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C67]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>喧嘩を売っているのか？そんな態度を取ったことを後悔させてやろう！</Source>
+      <Dest>Are you picking a fight with me? I&apos;ll make you regret that attitude!</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C63]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>そうですか。では、私は従士としてふさわしくないあなたを教育してさしあげます！</Source>
+      <Dest>Is that so? I&apos;ll have to teach you the propers manners of a Thane, then!</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C68]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>少し調子に乗りすぎじゃない？私がその鼻、へし折ってあげる！</Source>
+      <Dest>You&apos;re getting a bit too carried away. I&apos;ll break that nose of yours!</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C69]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>女に恥をかかせて素通りするつもり？そんなこと許さない！</Source>
+      <Dest>Did you think you could just walk on after shaming a woman? I won&apos;t let you!</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C6A]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>礼儀を知らない人ですね。そんな野蛮人は私が躾けてあげます！</Source>
+      <Dest>You&apos;re a barbarian who knows nothing of etiquette. I&apos;ll just have to teach you then!</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C6B]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>へえ、私に喧嘩を売っているのかしら？足腰立たなくしてあげるわ！</Source>
+      <Dest>Oh, are you picking a fight with me? You won&apos;t be standing after this!</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C6C]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>私をからかっているのですか？そういう態度を取る方にはお仕置きしてさしあげます！</Source>
+      <Dest>Are you mocking me? I will have to chastise you, then!</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C62]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>馬鹿にされるのは好きじゃないんだ。じゃぁ、無理やりしてやるよ！</Source>
+      <Dest>I don&apos;t like being made a fool of. You know what, I&apos;m just going to fuck you anyway!</Dest>
+    </String>
+    <String List="2">
+      <EDID>[0602892C]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>少し調子に乗りすぎじゃない？私がその鼻、へし折ってあげる！</Source>
+      <Dest>You&apos;re getting a bit too carried away. I&apos;ll break that nose of yours!</Dest>
+    </String>
+    <String List="2">
+      <EDID>[0602892B]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>(...はあなたに向けてうなった後、静止もきかずとびかかってきた！)</Source>
+      <Dest>(... growls and then jumps at you!) </Dest>
+    </String>
+    <String List="2">
+      <EDID>[060293F7]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>その・・・抱きしめてもよろしいですか？従士</Source>
+      <Dest>May I, um, embrace you, Thane?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[0604CAE8]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>従士様、あなたの温もりを感じさせてほしいのです・・・</Source>
+      <Dest>I would like to feel your heat on my skin, my Thane...</Dest>
+    </String>
+    <String List="2">
+      <EDID>[0604CAE9]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>・・・抱きしめてもよろしいですか？従士様</Source>
+      <Dest>...May I embrace you, my Thane?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[0604CAE7]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>抱きしめあうことも時には必要だ、そうは思わないか？</Source>
+      <Dest>This is just the right time for a hug. Don&apos;t you agree?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[0604CAE6]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>なあ・・・抱きしめてもいいか？</Source>
+      <Dest>Hey... can I hug you?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[0604CAEA]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>ねえ・・・抱きしめてもいい？</Source>
+      <Dest>Can I... hug you?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[0604CAEB]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>ねえ、あなたのこと、抱きしめたくなっちゃった</Source>
+      <Dest>I&apos;ve just got this sudden desire to hug you.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[0604CAEC]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>なあ・・・抱きしめてもいいか？</Source>
+      <Dest>Hey... can I hug you?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[0604CAED]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>あなたの温もりを感じさせてくれる？</Source>
+      <Dest>Will you let me feel the warmth of your skin?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[0604CAEE]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>ねえ・・・抱きしめてもいい？</Source>
+      <Dest>Can I... hug you?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[0604CAEF]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>よかったら、抱きしめてあげてもいい。どうする？</Source>
+      <Dest>I might just be persuaded to hug you. What do you say?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[0604CAF0]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>その・・・抱きしめてもいいですか？</Source>
+      <Dest>Could I... hug you?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[0604CAF1]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>あなたのことを抱きしめたくなりました。いいですね？</Source>
+      <Dest>I would like to hug you. That&apos;s fine, isn&apos;t it?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[0604CAF2]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>なあ・・・もし嫌じゃなかったら、その、抱きしめてもいいか？</Source>
+      <Dest>Hey... if you don&apos;t mind, would you let me hug you?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[0604CAF3]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>あなたの温もりを感じさせてくれるかしら？</Source>
+      <Dest>Would you let me feel your heat?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[0604CAF5]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>ねえ・・・抱きしめてもいい？</Source>
+      <Dest>Can I... hug you?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[0604CAF6]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>その・・・私は体温が低いので・・・温めてくださいますか？</Source>
+      <Dest>I, um... have a very low body temperature. Could you... heat me up?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[0604CAF7]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>人の温もりというものを感じさせてくれませんか？</Source>
+      <Dest>Would you let me feel the warmth of another person?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[0604CAF8]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>なあ・・・抱きしめてもいいか？</Source>
+      <Dest>Hey... can I hug you?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[0604CAF9]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>ねえ・・・抱きしめてもいい？</Source>
+      <Dest>Can I... hug you?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[0604CAFA]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>ねえ、あなたのこと、抱きしめたくなっちゃった</Source>
+      <Dest>I&apos;ve just got this sudden desire to hug you.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[060293FA]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>・・・</Source>
+      <Dest>...</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06029EC4]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>ふふっ・・・</Source>
+      <Dest>Fufu...</Dest>
+    </String>
+    <String List="2">
+      <EDID>[060293FC]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>仰せの通りに</Source>
+      <Dest>As you will.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[0604CAFC]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>申し訳ありません、従士</Source>
+      <Dest>Forgive me then, Thane.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[0604CAFD]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>・・・わかりました</Source>
+      <Dest>...I understand.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[0604CAFF]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>申し訳ありません、従士</Source>
+      <Dest>Forgive me then, Thane.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[0604CB00]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>そうか。そんな気分になったらいつでも声をかけてくれ</Source>
+      <Dest>All right. Call out to me whenever you do feel like it.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[0604CB01]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>それは失礼をした。そういう時も確かにある</Source>
+      <Dest>Certainly, we all have those moments. My apologies, then.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[0604CB02]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>そうか・・・</Source>
+      <Dest>I see...</Dest>
+    </String>
+    <String List="2">
+      <EDID>[0604CB03]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>あ・・・ああ、すまなかった</Source>
+      <Dest>Ah... I see. My bad.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[0604CB04]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>ご、ごめんなさい・・・</Source>
+      <Dest>I... I&apos;m sorry...</Dest>
+    </String>
+    <String List="2">
+      <EDID>[0604CB05]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>そう・・・</Source>
+      <Dest>Oh...</Dest>
+    </String>
+    <String List="2">
+      <EDID>[0604CB06]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>まあ、そんな時もある</Source>
+      <Dest>We all have those moments.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[0604CB07]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>そうか、すまなかったな</Source>
+      <Dest>I see, my apologies then.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[0604CB08]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>ごめんなさい、邪魔するつもりはなかったの</Source>
+      <Dest>I&apos;m sorry. I didn&apos;t mean to bother you.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[0604CB09]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>そう、わかったわ</Source>
+      <Dest>I understand.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[0604CB0A]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>そうか・・・</Source>
+      <Dest>I see...</Dest>
+    </String>
+    <String List="2">
+      <EDID>[0604CB0B]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>そうか、気が変わったら言ってくれ</Source>
+      <Dest>I see. Tell me should you change your mind.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[0604CB0C]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>気が回らない女ですいませんね</Source>
+      <Dest>Well, sorry for being such a meddlesome woman.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[0604CB0D]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>そうですか・・・</Source>
+      <Dest>I see...</Dest>
+    </String>
+    <String List="2">
+      <EDID>[0604CB0E]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>そうか・・・</Source>
+      <Dest>I see...</Dest>
+    </String>
+    <String List="2">
+      <EDID>[0604CB0F]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>悪かったな、気にしないでくれ</Source>
+      <Dest>Sorry, never mind me then.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[0604CB10]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>そう、悪かったわね</Source>
+      <Dest>I see. I&apos;m sorry then.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[0604CB11]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>そう・・</Source>
+      <Dest>Oh...</Dest>
+    </String>
+    <String List="2">
+      <EDID>[0604CB12]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>それは失礼いたしました</Source>
+      <Dest>My apologies then.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[0604CB13]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>そうですか・・・</Source>
+      <Dest>I see...</Dest>
+    </String>
+    <String List="2">
+      <EDID>[0604CB14]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>そうか・・・</Source>
+      <Dest>I see...</Dest>
+    </String>
+    <String List="2">
+      <EDID>[0604CB16]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>あ・・・ああ、すまなかった</Source>
+      <Dest>Ah... I see. My bad.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[0604CB15]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>ご、ごめんなさい・・・</Source>
+      <Dest>I... I&apos;m sorry...</Dest>
+    </String>
+    <String List="2">
+      <EDID>[0604CB17]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>そう・・・</Source>
+      <Dest>Oh...</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06029ECA]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>従士・・・その、キスをしてもよろしいですか？</Source>
+      <Dest>Thane... may I... may I kiss you?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C1A]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>従士様・・・キスしてもよろしいですか？</Source>
+      <Dest>Thane... may I kiss you?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C1B]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>口付けは親愛の何よりの表現だ</Source>
+      <Dest>There&apos;s no greater expression of love than a kiss.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C1C]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>なあ・・・キスしてもいいか？</Source>
+      <Dest>Hey... can I kiss you?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C1D]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>ねえ・・・キスしてもいい？</Source>
+      <Dest>Say... can I kiss you?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C1E]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>なあ・・・キスしてもいいか？</Source>
+      <Dest>Hey... can I kiss you?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C1F]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>ねえ・・・キスしてもいいかしら？</Source>
+      <Dest>Say... may I kiss you?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C20]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>キスしたいなら、してくれてもいい。こっちは準備できている</Source>
+      <Dest>You can kiss me if you want. I&apos;m ready for it.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C21]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>キスしたかったら、してもいいですよ？</Source>
+      <Dest>If you want to kiss me, you can go ahead, you know?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C22]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>ああ、その・・・なんだ、キスをしてもいいか？</Source>
+      <Dest>Can I, uh... can I kiss you?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C23]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>ねえ・・・キスしてもいいかしら？</Source>
+      <Dest>Say... may I kiss you?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C24]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>その・・・キスをしてもよろしくって？</Source>
+      <Dest>May I... kiss you?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C25]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>なあ・・・キスしてもいいか？</Source>
+      <Dest>Hey... can I kiss you?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C26]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>ねえ・・・キスしてもいい？</Source>
+      <Dest>Say... can I kiss you?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06029ECE]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>・・・</Source>
+      <Dest>...</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06029ED1]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>ふふっ・・・</Source>
+      <Dest>Fufu...</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06029ED0]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>仰せの通りに</Source>
+      <Dest>As you will.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C28]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>申し訳ありません、従士</Source>
+      <Dest>Forgive me then, Thane.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C29]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>・・・わかりました</Source>
+      <Dest>...I understand.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C2A]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>申し訳ありません、従士</Source>
+      <Dest>Forgive me then, Thane.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C2C]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>そうか。そんな気分になったらいつでも声をかけてくれ</Source>
+      <Dest>All right. Call out to me whenever you do feel like it.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C2D]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>それは失礼をした。そういう時も確かにある</Source>
+      <Dest>Certainly, we all have those moments. My apologies, then.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C2E]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>そうか・・・</Source>
+      <Dest>I see...</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C2F]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>あ・・・ああ、すまなかった</Source>
+      <Dest>Ah... I see. My bad.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C30]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>ご、ごめんなさい・・・</Source>
+      <Dest>I... I&apos;m sorry...</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C31]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>そう・・・</Source>
+      <Dest>Oh...</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C32]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>まあ、そんな時もある</Source>
+      <Dest>We all have those moments.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C33]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>そうか、すまなかったな</Source>
+      <Dest>I see, my apologies then.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C34]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>ごめんなさい、邪魔するつもりはなかったの</Source>
+      <Dest>I&apos;m sorry. I didn&apos;t mean to bother you.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C35]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>そう、わかったわ</Source>
+      <Dest>I understand.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C36]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>そうか・・・</Source>
+      <Dest>I see...</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C37]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>そうか、気が変わったら言ってくれ</Source>
+      <Dest>I see. Tell me should you change your mind.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C38]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>気が回らない女ですいませんね</Source>
+      <Dest>Well, sorry for being such a meddlesome woman.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C39]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>そうですか・・・</Source>
+      <Dest>I see...</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C3A]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>そうか・・・</Source>
+      <Dest>I see...</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C3B]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>悪かったな、気にしないでくれ</Source>
+      <Dest>Sorry, never mind me then.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C3C]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>そう、悪かったわね</Source>
+      <Dest>I see. I&apos;m sorry then.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C3D]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>そう・・</Source>
+      <Dest>Oh...</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C3E]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>それは失礼をいたしました</Source>
+      <Dest>How rude of me then.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C3F]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>そうですか・・・</Source>
+      <Dest>I see...</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C40]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>そうか・・・</Source>
+      <Dest>I see...</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C41]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>あ・・・ああ、すまなかった</Source>
+      <Dest>Ah... I see. My bad.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C42]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>ご、ごめんなさい・・・</Source>
+      <Dest>I... I&apos;m sorry...</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06051C43]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>そう・・・</Source>
+      <Dest>Oh...</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06061038]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>仰せの通りに。それで、どなたをお誘いに？</Source>
+      <Dest>As you will it. Wo shall we invite?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06061044]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>それは素晴らしい考えだ！誰がその幸せ者なんだ？</Source>
+      <Dest>That&apos;s an excellent idea? Who&apos;s going to be the lucky one then?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06061045]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>すごいことを言い出すな。いいさ、誰を誘う？</Source>
+      <Dest>You say some outrageous things. Alright, who are we inviting?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06061046]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>それは・・・わかったわかった。誰を誘うんだ？</Source>
+      <Dest>That&apos;s... alright, alright. Who are we inviting?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06061047]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>そういうのも嫌いじゃない。誰を誘うんだ？</Source>
+      <Dest>I don&apos;t dislike that sort of thing. Who are going to invite?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06061048]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>おいおい、身体がますます熱くなるぞ。誰を誘うんだ？</Source>
+      <Dest>Woah, woah, and I&apos;m already almost at my limit. Who are inviting?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06061049]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>ちょっと恥ずかしいけど・・・誰を誘うの？</Source>
+      <Dest>That&apos;s a bit embarassing... who are you going to invite?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[0606104A]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>それはちょっと・・・わかったわ、誰を誘うの？</Source>
+      <Dest>That&apos;s a bit... I understand, who will you be inviting?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[0606104B]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>私だけでは不満ですか。どうぞお好きな人に声をかけてください</Source>
+      <Dest>I&apos;m not enough for you then, I see. Very well, take along whoever you like.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[0606104C]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>随分と自信家なのね。いいわ、誰を誘うの？</Source>
+      <Dest>You&apos;re quite confident, aren&apos;t you. Very well, who will you invite along?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[0606104D]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>おぞましくも魅力的な提案ですわね。誰を誘うんですの？</Source>
+      <Dest>That is an obscene, yet fascinating proposal. Who will you invite along?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06061043]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>すごいことを言い出すな。いいさ、誰を誘う？</Source>
+      <Dest>You say some outrageous things. Alright, who are we inviting?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[0606104E]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>ちょっと恥ずかしいけど・・・誰を誘うの？</Source>
+      <Dest>That&apos;s a bit embarassing... who are you going to invite?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[0606104F]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>(...は小首をかしげている。ついてくるようだ)</Source>
+      <Dest>(... tilts their head. They will follow, it seems.)</Dest>
+    </String>
+    <String List="2">
+      <EDID>[0606103B]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>どうしました？やはり、ふたりでいたしますか？</Source>
+      <Dest>Is something the matter? Shall it be just the two of us after all?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06061075]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>まだですの？どうせなら、ふたりきりで・・・？</Source>
+      <Dest>Are you still not finished? Wouldn&apos;t you rather have it be just the two of us...?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06061076]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>ねえ、待ちきれないの。何なら、ふたりでもいいわよ？</Source>
+      <Dest>I can&apos;t wait anymore. Let&apos;s do it with just the two of us, all right?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[0606107A]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>どうしました？なんなら、ふたりでしても一向に構いませんよ</Source>
+      <Dest>Is something wrong? I wouldn&apos;t it just being the two of us.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06061077]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>どうするんだ？ふたりでしても構わないぞ？</Source>
+      <Dest>What are you going to do? I don&apos;t care even if it&apos;s just the two of us.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06061074]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>どうした？やっぱりふたりでするか？</Source>
+      <Dest>What is it? Just us two after all?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06061079]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>どうしたの？やっぱりふたりでする？</Source>
+      <Dest>What&apos;s wrong? Will it be just us two after all?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[0606107B]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>(...は焦れったそうにしている。今にもとびかかってきそうだ)</Source>
+      <Dest>(... seems irritated. They might leap at you at any minute.)</Dest>
+    </String>
+    <String List="2">
+      <EDID>[0606103F]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>かしこまりました。一緒にお相手させていただきます</Source>
+      <Dest>I understand. Let me also keep you company.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06061059]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>私も加えてくださるのですか。光栄です、従士</Source>
+      <Dest>Will you take me as well? I&apos;m honored, Thane.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[0606105A]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>私も加えてくださるのですか？光栄です、従士様</Source>
+      <Dest>Will you take me as well? I&apos;m honored, Thane</Dest>
+    </String>
+    <String List="2">
+      <EDID>[0606105B]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>すまないな、お前がかすんでしまうかもしれないぞ？</Source>
+      <Dest>Sure, I hope you won&apos;t be overshadowed.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[0606105C]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>それは素晴らしい提案だ、友よ</Source>
+      <Dest>That&apos;s a wonderful idea, my friend.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[0606105D]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>誘ってくれてありがとう。付き合うよ</Source>
+      <Dest>Thank you for inviting me. I will come with you.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[0606105E]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>ひとりじゃ足りないのか？仕方がないな</Source>
+      <Dest>Is one not enough for you? No choice about it, then.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[0606105F]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>まあ、たまには変わった趣向も必要だな。付き合おう</Source>
+      <Dest>I might enjoy doing something unusual once in a while. I&apos;ll accompany you.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06061060]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>わかったわかった。そんな目で見ないでくれ</Source>
+      <Dest>All right, All right. Stop making those eyes at me.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06061061]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>ちょっとしたお仕置きだな。ぜひ加えてくれ</Source>
+      <Dest>A little bit of punishment, eh? Count me in.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06061062]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>ひとりで満足できないなんて、随分と欲張りだな</Source>
+      <Dest>Are you not satisfied with one alone? You seem quite greedy.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06061063]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>主役が交代するがいいのか？・・・冗談だよ、楽しもう</Source>
+      <Dest>Do you want to switch places then? ...Just kidding. Let&apos;s have fun.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06061064]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>断るのは難しいな。いいぞ、一緒に楽しもう</Source>
+      <Dest>I have a hard time turning this down. Very well, let us enjoy each other.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06061065]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>私も一緒に？ちょっと、ドキドキするわね</Source>
+      <Dest>You want me as well? I admit, I am a bit excited.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06061066]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>別にいいけど、ちゃんと平等に扱ってよ</Source>
+      <Dest>I don&apos;t mind, but treat us both equally.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06061067]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>まあ・・・たまには気分転換も必要かもね</Source>
+      <Dest>Well... I might need a change of pace like this once in a while.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06061068]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>ふふ、まとめて楽しもうだなんて、ずいぶんと贅沢ね</Source>
+      <Dest>Fufu, having us all enjoying ourselves seems quite extravagant to me.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06061069]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>仕方ない人ですね。まあ、そこまで言うのなら・・・</Source>
+      <Dest>You really are hopeless. Well, if you insist.-</Dest>
+    </String>
+    <String List="2">
+      <EDID>[0606106A]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>わかりました。あなたの顔をたててあげましょう</Source>
+      <Dest>I understand. I will defer to you.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[0606106B]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>ひとりじゃ相手できないの？いいわ、助けてあげる</Source>
+      <Dest>Are you alone not enough? Very well, I&apos;ll help you.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[0606106C]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>ふふ、全員を満足させられるんでしょうね？</Source>
+      <Dest>Fufu, can you satisy us all?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[0606106D]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>わかりましたわ。一緒に搾り取ってさしあげましょう</Source>
+      <Dest>I understand. Let&apos;s squeeze him dry together.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[0606106E]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>いいですわ、私たちが搾り取ってさしあげます</Source>
+      <Dest>Very well, we&apos;ll squeeze you dry.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06061058]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>誘ってくれてありがとう。付き合うよ</Source>
+      <Dest>Thank you for inviting me. I will come with you.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[0606106F]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>ひとりじゃ足りないのか？仕方がないな</Source>
+      <Dest>Is one not enough for you? No choice about it, then.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06061070]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>私も一緒に？ちょっと、ドキドキするわね</Source>
+      <Dest>You want me as well? I admit, I am a bit excited.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06061071]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>別にいいけど、ちゃんと平等に扱ってよ</Source>
+      <Dest>I don&apos;t mind, but treat us both equally.</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06061057]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>(...は喜びを表現している。伝わったようだ)</Source>
+      <Dest>(... looks pleased. They seem to understand your intent.)</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06061042]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>どうかなさいましたか？</Source>
+      <Dest>Is something wrong?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06061051]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>どうかなさいまして？</Source>
+      <Dest>Is something the matter?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06061052]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>何？</Source>
+      <Dest>What is it?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06061055]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>何だ？</Source>
+      <Dest>What is it?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06061053]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>どうかしましたか？</Source>
+      <Dest>Is something wrong?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06061050]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>どうした？</Source>
+      <Dest>What&apos;s the matter?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06061054]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>どうしたの？</Source>
+      <Dest>What&apos;s the matter?</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06061056]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>(...は小首をかしげている)</Source>
+      <Dest>(... is tilting their head.)</Dest>
+    </String>
+    <String List="2">
+      <EDID>[06061073]</EDID>
+      <REC>INFO:NAM1</REC>
+      <Source>・・・</Source>
+      <Dest>...</Dest>
+    </String>
+  </Content>
+</SSTXMLRessources>
