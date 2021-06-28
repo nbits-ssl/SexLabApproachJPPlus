@@ -43,6 +43,13 @@ int configFemaleLoadID
 string configFileForMale = "../SLAppJPPlusMaleConfig.json"
 string configFileForFemale = "../SLAppJPPlusFemaleConfig.json"
 
+int BondsLength
+int HeartsLength
+int MarksLength
+
+int[] BondsIDs
+int[] HeartsIDs
+int[] MarksIDs
 
 int Function GetVersion()
 	return 20210628
@@ -61,6 +68,14 @@ Event OnConfigInit()
 	Pages[1] = "$SLAppQuests"
 	Pages[2] = "$SLAppRingTool"
 	Pages[3] = "$SLAppProfile"
+	
+	BondsLength = SLApproachBonds.GetSize()
+	HeartsLength = SLApproachHearts.GetSize()
+	MarksLength = SLApproachMarks.GetSize()
+	
+	BondsIDs = Utility.CreateIntArray(BondsLength)
+	HeartsIDs = Utility.CreateIntArray(HeartsLength)
+	MarksIDs = Utility.CreateIntArray(MarksLength)
 EndEvent
 
 event OnPageReset(string page)
@@ -130,6 +145,31 @@ event OnPageReset(string page)
 		userAddingKissPointNpcOID = AddSliderOption("$AddingKissPointsNPCNPC", SLApproachMain.userAddingKissPointNpc, "{0}")
 
 	elseif (page == "$SLAppRingTool")
+		SetCursorFillMode(TOP_TO_BOTTOM)
+		
+		SetCursorPosition(0)
+		AddHeaderOption("$SLAppHearts")
+		int i = 0
+		while i < HeartsLength
+			HeartsIDs[i] = AddTextOption(SLApproachHearts.GetAt(i).GetName(), "")
+			i += 1
+		endwhile
+
+		SetCursorPosition(1)
+		AddHeaderOption("$SLAppBonds")
+		i = 0
+		while i < BondsLength
+			BondsIDs[i] = AddTextOption(SLApproachBonds.GetAt(i).GetName(), "")
+			i += 1
+		endwhile
+		AddEmptyOption()
+
+		AddHeaderOption("$SLAppMarks")
+		i = 0
+		while i < MarksLength
+			MarksIDs[i] = AddTextOption(SLApproachMarks.GetAt(i).GetName(), "")
+			i += 1
+		endwhile
 	
 	elseif (page == "$SLAppProfile")
 		SetCursorFillMode(TOP_TO_BOTTOM)
@@ -196,6 +236,24 @@ Event OnOptionHighlight(int option)
 		SetInfoText("$SLAppConfigSaveInfo")
 	elseif (option == configMaleLoadID || option == configFemaleLoadID)
 		SetInfoText("$SLAppConfigLoadInfo")
+	else
+		int i = BondsIDs.Find(option)
+		if i != -1
+			SetInfoText("$SLAppRingInfo{" + SLApproachBonds.GetAt(i).GetName() + "}")
+			return
+		endif
+		
+		i = HeartsIDs.Find(option)
+		if i != -1
+			SetInfoText("$SLAppRingInfo{" + SLApproachHearts.GetAt(i).GetName() + "}")
+			return
+		endif
+
+		i = MarksIDs.Find(option)
+		if i != -1
+			SetInfoText("$SLAppRingInfo{" + SLApproachMarks.GetAt(i).GetName() + "}")
+			return
+		endif
 
 	endif
 EndEvent
@@ -243,6 +301,24 @@ event OnOptionSelect(int option)
 	elseif (option == configFemaleLoadID)
 		self.loadConfig(configFileForFemale)
 		SetTextOptionValue(option, "$SLAppDone")
+	else
+		int i = BondsIDs.Find(option)
+		if i != -1
+			Game.GetPlayer().AddItem(SLApproachBonds.GetAt(i))
+			return
+		endif
+		
+		i = HeartsIDs.Find(option)
+		if i != -1
+			Game.GetPlayer().AddItem(SLApproachHearts.GetAt(i))
+			return
+		endif
+
+		i = MarksIDs.Find(option)
+		if i != -1
+			Game.GetPlayer().AddItem(SLApproachMarks.GetAt(i))
+			return
+		endif
 
 	endif
 endevent
@@ -461,3 +537,7 @@ SLApproachMainScript Property SLApproachMain Auto
 
 GlobalVariable Property SLApproachDialogArousal auto
 GlobalVariable Property SLApproachMultiplayPercent  Auto  
+
+FormList Property SLApproachBonds  Auto  
+FormList Property SLApproachHearts  Auto  
+FormList Property SLApproachMarks  Auto  
