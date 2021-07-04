@@ -1,6 +1,8 @@
 Scriptname SLApproachPlayerAliasScript extends ReferenceAlias  
 
 SLApproachMainScript Property SLApproachMain Auto
+SexLabFramework Property SexLab  Auto
+
 Spell Property CloakAbility Auto
 Actor player
 
@@ -17,7 +19,8 @@ Event OnInit()
 EndEvent
 
 Event OnUpdate()
-	if (!SLApproachMain.isSkipUpdateMode && !player.IsInCombat())
+	; debug.trace("Sexlab Approach: " + SexLab.Enabled)
+	if (!SLApproachMain.isSkipUpdateMode && !player.IsInCombat() && SexLab.Enabled)
 		int tooSlowBySeconds = 0
 		while (SLApproachMain.actorsEffectStarted > SLApproachMain.actorsEffectFinished)
 			tooSlowBySeconds = tooSlowBySeconds  + 3
